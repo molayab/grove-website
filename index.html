@@ -3,48 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grove — AI-powered dev workspace for macOS</title>
-  <meta name="description" content="Run AI coding agents, manage git worktrees, and track your diffs — all from one native macOS app." />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Grove — AI-powered dev workspace for macOS" />
+  <title>Grove — Git workspace for macOS</title>
+  <meta name="description" content="Run AI coding agents, manage git worktrees, and review diffs — all from one native macOS app." />
+  <meta property="og:title" content="Grove — Git workspace for macOS" />
   <meta property="og:description" content="Run Claude Code, opencode, Codex, Gemini CLI or Aider alongside a real shell, file tree, and diff viewer — one native macOS window." />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="style.css" />
-  <!-- Gumroad overlay checkout -->
+  <!-- Cloudflare Web Analytics: replace YOUR_TOKEN at cloudflare.com → Analytics → Web Analytics → Add site -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"YOUR_TOKEN"}'></script>
   <script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <span class="logo">Grove</span>
-      <div class="nav-actions">
-        <a href="#pricing" class="btn btn-ghost btn-nav">Pricing</a>
-        <a href="https://devmateoolaya.gumroad.com/l/grove"
-           data-gumroad-overlay-checkout="true"
-           class="btn btn-primary btn-nav">Buy — $29</a>
-      </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">Grove</span>
+    <div class="nav-actions">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="https://devmateoolaya.gumroad.com/l/grove"
+         data-gumroad-overlay-checkout="true"
+         class="btn-nav-buy">Buy — $29</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-badge">macOS 15+ · Native Swift · Developer ID</div>
-    <h1>Your entire dev workflow,<br>one window.</h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">macOS 15 &nbsp;·&nbsp; Native Swift &nbsp;·&nbsp; Developer ID</div>
+    <h1>Your dev workspace,<br>one window.</h1>
     <p class="hero-sub">
-      Manage git repositories, run AI coding agents side-by-side with a real shell,
-      browse your working tree, and review diffs — without leaving a single native macOS app.
+      AI agents, git, a real shell, and diff — all following the same checkout, without switching apps.
     </p>
     <div class="hero-cta">
       <a href="https://devmateoolaya.gumroad.com/l/grove"
          data-gumroad-overlay-checkout="true"
-         class="btn btn-primary">Buy now — $29 one-time</a>
-      <a href="#features" class="btn btn-ghost">See what's inside ↓</a>
+         class="btn btn-primary btn-large">Start free trial</a>
+      <a href="#features" class="btn btn-ghost btn-large">See what's inside</a>
     </div>
-    <p class="hero-trial">14-day free trial · No credit card required</p>
+    <p class="hero-trial">14-day free trial &nbsp;·&nbsp; No credit card required</p>
+  </div>
 
-    <!-- Fake window mockup -->
+  <!-- Window mockup -->
+  <div class="window-wrap">
     <div class="window-mockup">
       <div class="window-chrome">
         <span class="dot dot-red"></span>
@@ -54,11 +58,11 @@
       </div>
       <div class="window-body">
         <div class="sidebar-mock">
-          <div class="sidebar-section">WORKSPACES</div>
+          <div class="sidebar-section">Workspaces</div>
           <div class="sidebar-item active">grove</div>
           <div class="sidebar-item">my-api</div>
           <div class="sidebar-item">design-system</div>
-          <div class="sidebar-section" style="margin-top:16px">WORKTREES</div>
+          <div class="sidebar-section" style="margin-top:12px">Worktrees</div>
           <div class="sidebar-item">feat/agent-panel</div>
           <div class="sidebar-item">fix/diff-view</div>
         </div>
@@ -70,68 +74,91 @@
             <span class="tab">Diff</span>
           </div>
           <div class="terminal-mock">
-            <span class="term-prompt">$</span> claude<br/>
-            <span class="term-dim">Claude Code 1.0.51 · grove · feat/agent-panel</span><br/><br/>
-            <span class="term-green">✓</span> Ready. What should I build next?<br/>
-            <span class="cursor">█</span>
+            <span class="term-prompt">%</span> claude<br>
+            <span class="term-dim">Claude Code 1.0.51 · grove · feat/agent-panel</span><br><br>
+            <span class="term-ok">✓</span> Ready. What should I build next?<br>
+            <span class="term-cursor"></span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURES -->
-  <section class="features" id="features">
-    <div class="section-label">Features</div>
+<!-- FEATURES -->
+<section class="section features" id="features">
+  <div class="section-inner">
+    <p class="eyebrow">Features</p>
     <h2>Everything a modern developer needs.</h2>
-    <p class="section-sub">No Electron. No bloat. Just a fast, native app that stays out of your way.</p>
+    <p class="section-sub">No Electron. No subscriptions. Just a fast, focused native app.</p>
 
     <div class="feature-grid">
 
-      <div class="feature-card feature-card--wide">
-        <div class="feature-icon">⌨️</div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="8" width="28" height="20" rx="3"/>
+          <path d="M12 16l4 4-4 4M19 24h5"/>
+        </svg>
         <h3>AI Agents, natively</h3>
-        <p>Run Claude Code, opencode, Codex, Gemini CLI, or Aider inside a real PTY — the same terminal session, auto-resolved to the right directory.</p>
+        <p>Run Claude Code, opencode, Codex, Gemini CLI, or Aider inside a real PTY — auto-resolved to the right directory, no PATH wrangling.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">🌿</div>
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="10" r="3.5"/><circle cx="9" cy="26" r="3.5"/><circle cx="27" cy="26" r="3.5"/>
+          <path d="M18 13.5V20M18 20l-6.5 3M18 20l6.5 3"/>
+        </svg>
         <h3>Worktree-first</h3>
-        <p>Each worktree is a full session: agent, shell, file tree, and diff all follow the active checkout. Switch without losing context.</p>
+        <p>Each worktree is a full session: agent, shell, file tree, and diff all follow the active checkout. Switch branches without losing context.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">🔀</div>
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 12h20M8 18h14M8 24h10"/>
+          <circle cx="27" cy="24" r="4.5"/>
+          <path d="M25 24l1.5 1.5L29 22"/>
+        </svg>
         <h3>Git panel built in</h3>
-        <p>Branch switch, fetch, pull, push, and stage-all commit — without touching a terminal when you don't need to.</p>
+        <p>Branch switch, fetch, pull, push, and stage-all commit. A recent commit log shows where you left off. No terminal needed.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">📂</div>
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 6h14l6 6v18H8z"/><path d="M22 6v6h6"/>
+          <path d="M12 20h7M12 24h5"/>
+        </svg>
         <h3>File tree + Diff</h3>
-        <p>Lazily-expanding file browser with Finder integration. Inline diff against HEAD, with one-click open in FileMerge.</p>
+        <p>Lazily-expanding file browser with icon grid view. Working-tree diff against HEAD with per-file stats, rendered unified or side-by-side.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">⚡</div>
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="8" width="28" height="20" rx="3"/>
+          <path d="M10 18l3 3-3 3M16 21h10"/>
+        </svg>
         <h3>Shell tab</h3>
-        <p>An interactive login shell in the exact same directory as your agent — copy a path, run a test, check a log.</p>
+        <p>An interactive login shell in the exact same directory as your agent — run a test, check a log, copy a path.</p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">🔒</div>
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 4l14 8v12l-14 8L4 24V12z"/>
+          <path d="M18 4v28M4 12l14 8 14-8"/>
+        </svg>
         <h3>No destructive defaults</h3>
-        <p>Force push, branch delete, and discard are deliberately absent. Every outward action confirms first.</p>
+        <p>Force push, branch delete, and discard are deliberately absent. Every outward-facing action confirms before it runs.</p>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- WHY -->
-  <section class="why">
+<!-- WHY -->
+<section class="section why">
+  <div class="section-inner">
     <div class="why-inner">
       <div class="why-text">
-        <div class="section-label">Why native?</div>
+        <p class="eyebrow">Why native?</p>
         <h2>Built for macOS.<br>Not ported to it.</h2>
         <ul class="why-list">
           <li>
@@ -144,7 +171,7 @@
           </li>
           <li>
             <span class="check">✓</span>
-            <span>Signed with Developer ID, notarized by Apple. No App Store required.</span>
+            <span>Signed with Developer ID, notarized by Apple — not the App Store.</span>
           </li>
           <li>
             <span class="check">✓</span>
@@ -159,17 +186,19 @@
           <div class="badge">macOS 15+</div>
           <div class="badge">Developer ID</div>
           <div class="badge">No Electron</div>
-          <div class="badge">No App Store</div>
+          <div class="badge">No subscriptions</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- AGENTS -->
-  <section class="agents">
-    <div class="section-label">Supported Agents</div>
+<!-- AGENTS -->
+<section class="section agents">
+  <div class="section-inner">
+    <p class="eyebrow">Supported agents</p>
     <h2>Choose your AI coding partner.</h2>
-    <p class="section-sub">Grove auto-resolves the agent binary — no PATH configuration needed.</p>
+    <p class="section-sub">Grove finds the agent binary automatically — no PATH configuration required.</p>
     <div class="agent-row">
       <div class="agent-pill">Claude Code</div>
       <div class="agent-pill">opencode</div>
@@ -177,56 +206,64 @@
       <div class="agent-pill">Gemini CLI</div>
       <div class="agent-pill">Aider</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PRICING -->
-  <section class="pricing" id="pricing">
-    <div class="section-label">Pricing</div>
-    <h2>Simple, honest pricing.</h2>
-    <p class="section-sub">One price. No subscriptions. No feature tiers.</p>
+<!-- PRICING -->
+<section class="section pricing" id="pricing">
+  <div class="section-inner">
+    <p class="eyebrow">Pricing</p>
+    <h2>One price. No tiers.</h2>
+    <p class="section-sub">Pay once, own it forever. Every future update included.</p>
 
     <div class="pricing-card">
-      <div class="pricing-top">
-        <span class="pricing-name">Grove</span>
-        <div class="pricing-amount">
-          <span class="pricing-currency">$</span>
-          <span class="pricing-price">29</span>
-        </div>
-        <span class="pricing-period">one-time purchase</span>
+      <span class="pricing-name">Grove</span>
+      <div class="pricing-amount">
+        <span class="pricing-currency">$</span>
+        <span class="pricing-price">29</span>
       </div>
+      <span class="pricing-period">one-time purchase</span>
 
       <ul class="pricing-features">
         <li><span class="check">✓</span> All current features</li>
         <li><span class="check">✓</span> All future updates</li>
         <li><span class="check">✓</span> Unlimited workspaces &amp; worktrees</li>
-        <li><span class="check">✓</span> All AI agents (Claude Code, opencode, Codex, Gemini CLI, Aider)</li>
+        <li><span class="check">✓</span> All AI agents — Claude Code, opencode, Codex, Gemini CLI, Aider</li>
         <li><span class="check">✓</span> macOS 15+ · Developer ID signed &amp; notarized</li>
         <li><span class="check">✓</span> 14-day free trial — no credit card required</li>
       </ul>
 
       <a href="https://devmateoolaya.gumroad.com/l/grove"
          data-gumroad-overlay-checkout="true"
-         class="btn btn-primary btn-large pricing-btn">Start free trial</a>
+         class="btn pricing-btn">Start free trial</a>
 
-      <p class="pricing-note">
-        Sold securely via <strong>Gumroad</strong>. Instant download after purchase.
-        License key delivered to your inbox.
-      </p>
+      <p class="pricing-note">Secure checkout via Gumroad &nbsp;·&nbsp; Instant download after purchase</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <span class="logo">Grove</span>
-      <div class="footer-links">
-        <a href="mailto:support@example.com">Support</a>
-        <a href="#">Privacy</a>
-        <a href="#">Refund Policy</a>
-      </div>
-      <span class="footer-copy">© 2026 Mateo Olaya Bernal. All rights reserved.</span>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="logo">Grove</span>
+    <div class="footer-links">
+      <a href="mailto:molayab@icloud.com">Support</a>
+      <a href="#">Privacy</a>
+      <a href="#">Refund Policy</a>
     </div>
-  </footer>
+    <span class="footer-copy">© 2026 Mateo Olaya Bernal</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var saved = localStorage.getItem('grove-theme');
+  if (saved) dark = saved === 'dark';
+  root.setAttribute('data-theme', dark ? 'dark' : 'light');
+})();
+</script>
 
 </body>
 </html>
