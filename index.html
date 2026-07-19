@@ -20,6 +20,7 @@
     <span class="logo">Grove</span>
     <div class="nav-actions">
       <a href="#features" class="nav-link">Features</a>
+      <a href="#screenshots" class="nav-link">Screenshots</a>
       <a href="#pricing" class="nav-link">Pricing</a>
       <a href="https://devmateoolaya.gumroad.com/l/grove"
          data-gumroad-overlay-checkout="true"
@@ -45,40 +46,12 @@
     <p class="hero-trial">14-day free trial &nbsp;·&nbsp; No credit card required</p>
   </div>
 
-  <!-- Window mockup -->
+  <!-- Real screenshot -->
   <div class="window-wrap">
-    <div class="window-mockup">
-      <div class="window-chrome">
-        <span class="dot dot-red"></span>
-        <span class="dot dot-yellow"></span>
-        <span class="dot dot-green"></span>
-        <span class="window-title">Grove</span>
-      </div>
-      <div class="window-body">
-        <div class="sidebar-mock">
-          <div class="sidebar-section">Workspaces</div>
-          <div class="sidebar-item active">grove</div>
-          <div class="sidebar-item">my-api</div>
-          <div class="sidebar-item">design-system</div>
-          <div class="sidebar-section" style="margin-top:12px">Worktrees</div>
-          <div class="sidebar-item">feat/agent-panel</div>
-          <div class="sidebar-item">fix/diff-view</div>
-        </div>
-        <div class="content-mock">
-          <div class="tab-bar">
-            <span class="tab active">Agent</span>
-            <span class="tab">Shell</span>
-            <span class="tab">Files</span>
-            <span class="tab">Diff</span>
-          </div>
-          <div class="terminal-mock">
-            <span class="term-prompt">%</span> claude<br>
-            <span class="term-dim">Claude Code 1.0.51 · grove · feat/agent-panel</span><br><br>
-            <span class="term-ok">✓</span> Ready. What should I build next?<br>
-            <span class="term-cursor"></span>
-          </div>
-        </div>
-      </div>
+    <div class="hero-shot">
+      <img src="screenshots/hero-diff.png" width="1800" height="1133"
+           alt="Grove's window showing three workspaces and their worktrees in the sidebar, a git panel with recent commits, and a live diff view with additions highlighted in green"
+           loading="eager" />
     </div>
   </div>
 </section>
@@ -147,6 +120,57 @@
         <p>Force push, branch delete, and discard are deliberately absent. Every outward-facing action confirms before it runs.</p>
       </div>
 
+      <div class="feature-card feature-highlight">
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="18" r="14"/>
+          <path d="M18 10v8l6 4"/>
+        </svg>
+        <div>
+          <h3>Keeps working while you don't</h3>
+          <p>Switch to another workspace and its agent and shell keep running in the background — Grove pools the underlying processes independently of whatever's on screen. Check on one project without pausing another. Come back, and it's on the tab you left it on.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="section screenshots" id="screenshots">
+  <div class="section-inner">
+    <p class="eyebrow">Screenshots</p>
+    <h2>See it in the window.</h2>
+    <p class="section-sub">The same checkout, four ways to work on it.</p>
+
+    <div class="screenshot-gallery">
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/shell.png" width="1800" height="1133" loading="lazy"
+               alt="Grove's Shell tab showing an interactive login shell rooted at the selected workspace" />
+        </div>
+        <p class="screenshot-caption">A real login shell, rooted at the exact same checkout as your agent.</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/files.png" width="1800" height="1133" loading="lazy"
+               alt="Grove's Files tab showing an expandable file tree for a Node.js project" />
+        </div>
+        <p class="screenshot-caption">An expandable file tree, or an icon grid — your call in Settings.</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/diff-sidebyside.png" width="1800" height="1133" loading="lazy"
+               alt="Grove's Diff tab rendering a side-by-side comparison of changed files" />
+        </div>
+        <p class="screenshot-caption">Unified or side-by-side — diffs render either way, per file.</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/settings.png" width="1400" height="900" loading="lazy"
+               alt="Grove's Settings window showing the worktrees folder, git executable, and agent configuration" />
+        </div>
+        <p class="screenshot-caption">Every default is automatic — worktrees root, git binary, agent, shell.</p>
+      </div>
     </div>
   </div>
 </section>
