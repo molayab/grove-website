@@ -22,6 +22,7 @@
       <a href="#features" class="nav-link">Features</a>
       <a href="#screenshots" class="nav-link">Screenshots</a>
       <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#download" class="btn btn-primary-dark">Download</a>
     </div>
   </div>
 </nav>
@@ -35,12 +36,10 @@
       AI agents, git, a real shell, and diff — all following the same checkout, without switching apps.
     </p>
     <div class="hero-cta">
-      <a href="https://github.com/molayab/grove-website/releases/latest/download/Grove.dmg"
-         class="btn btn-primary btn-large btn-disabled"
-         aria-disabled="true" tabindex="-1">Start free trial</a>
+      <a href="#download" class="btn btn-primary btn-large">Start free trial</a>
       <a href="#features" class="btn btn-ghost btn-large">See what's inside</a>
     </div>
-    <p class="hero-trial">Coming soon &nbsp;·&nbsp; Grove is being notarized by Apple</p>
+    <p class="hero-trial">Free during preview &nbsp;·&nbsp; ad-hoc signed while notarization is in progress</p>
   </div>
 
   <!-- Real screenshot -->
@@ -49,6 +48,46 @@
       <img src="screenshots/hero-diff.png" width="1800" height="1133"
            alt="Grove's window showing three workspaces and their worktrees in the sidebar, a git panel with recent commits, and a live diff view with additions highlighted in green"
            loading="eager" />
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="section download" id="download">
+  <div class="section-inner">
+    <p class="eyebrow">Download</p>
+    <h2>Try Grove, free.</h2>
+    <p class="section-sub">A fully-featured trial build, served straight from the latest GitHub release — no account, no email required.</p>
+
+    <div class="download-grid">
+      <div class="download-card">
+        <a id="download-btn" class="btn btn-primary btn-large download-btn"
+           href="https://github.com/molayab/grove-website/releases/latest/download/Grove.dmg">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 3v10M6 9l4 4 4-4M4 16h12"/>
+          </svg>
+          Download for macOS
+        </a>
+        <p class="download-meta" id="download-meta">Fetching the latest release&hellip;</p>
+        <p class="download-note">Ad-hoc signed while notarization is in progress — right-click&nbsp;→&nbsp;Open on first launch.</p>
+        <a id="download-all-releases" class="download-alt-link"
+           href="https://github.com/molayab/grove-website/releases">All releases on GitHub →</a>
+      </div>
+
+      <div class="whats-new-card">
+        <div class="whats-new-head">
+          <h3>What's new</h3>
+          <span class="whats-new-version" id="whats-new-version">v0.0.1-preview</span>
+        </div>
+        <div class="whats-new-body" id="whats-new-body">
+          <h4>Installation</h4>
+          <ol>
+            <li>Download <code>Grove.dmg</code> (always the latest version), or <code>Grove-v0.0.1-preview.dmg</code> for this exact release</li>
+            <li>Open the DMG and drag Grove to Applications</li>
+            <li>Right-click → Open on first launch (ad-hoc signed build, until notarization lands)</li>
+          </ol>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -331,6 +370,37 @@
   var saved = localStorage.getItem('grove-theme');
   if (saved) dark = saved === 'dark';
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
+})();
+</script>
+
+<script>
+(function () {
+  fetch('download.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error('bad status'); return r.json(); })
+    .then(function (data) {
+      var btn = document.getElementById('download-btn');
+      var meta = document.getElementById('download-meta');
+      var versionEl = document.getElementById('whats-new-version');
+      var body = document.getElementById('whats-new-body');
+      var allReleases = document.getElementById('download-all-releases');
+
+      if (data.download_url) btn.href = data.download_url;
+
+      if (meta) {
+        var sizeMb = data.size_bytes ? (data.size_bytes / (1024 * 1024)).toFixed(1) + ' MB · ' : '';
+        var date = data.published_at
+          ? new Date(data.published_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
+          : '';
+        meta.textContent = (data.version ? 'v' + data.version + ' · ' : '') + sizeMb + date;
+      }
+
+      if (versionEl && data.version) versionEl.textContent = 'v' + data.version;
+      if (body && data.notes_html) body.innerHTML = data.notes_html;
+      if (allReleases && data.html_url) allReleases.href = data.html_url.replace(/\/tag\/.*$/, '');
+    })
+    .catch(function () {
+      // Static fallback already in the markup covers this case.
+    });
 })();
 </script>
 

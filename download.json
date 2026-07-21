@@ -1,0 +1,10 @@
+{
+  "version": "0.0.1-preview",
+  "tag": "v0.0.1-preview",
+  "name": "Grove v0.0.1-preview",
+  "published_at": "2026-07-21T22:33:42Z",
+  "html_url": "https://github.com/molayab/grove-website/releases/tag/v0.0.1-preview",
+  "download_url": "https://github.com/molayab/grove-website/releases/download/v0.0.1-preview/Grove.dmg",
+  "size_bytes": 3005424,
+  "notes_html": "<h4>Installation</h4>\n<ol>\n<li>Download <code>Grove.dmg</code> (always the latest version), or <code>Grove-v0.0.1-preview.dmg</code> for this exact release</li>\n<li>Open the DMG and drag Grove to Applications</li>\n<li>Right-click → Open on first launch (ad-hoc signed build, until notarization lands)</li>\n</ol>"
+}
