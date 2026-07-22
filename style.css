@@ -261,6 +261,19 @@ nav {
 .nav-actions { display: flex; gap: 0.625rem; align-items: center; }
 .nav-actions .btn { padding: 0.5rem 1.2rem; font-size: 0.875rem; }
 
+/* Language switcher — always visible, unlike .nav-link which hides on mobile */
+.lang-link {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.7rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+.lang-link:hover { color: var(--text); border-color: var(--text-2); }
+
 /* ── Hero ───────────────────────────────────────────────────── */
 /* Hero is always dark — a committed design choice. */
 .hero {
