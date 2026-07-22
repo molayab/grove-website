@@ -59,35 +59,18 @@
     <h2>Try Grove, free.</h2>
     <p class="section-sub">A fully-featured trial build, served straight from the latest GitHub release — no account, no email required.</p>
 
-    <div class="download-grid">
-      <div class="download-card">
-        <a id="download-btn" class="btn btn-primary btn-large download-btn"
-           href="https://github.com/molayab/grove-website/releases/latest/download/Grove.dmg">
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10 3v10M6 9l4 4 4-4M4 16h12"/>
-          </svg>
-          Download for macOS
-        </a>
-        <p class="download-meta" id="download-meta">Fetching the latest release&hellip;</p>
-        <p class="download-note">Ad-hoc signed while notarization is in progress — right-click&nbsp;→&nbsp;Open on first launch.</p>
-        <a id="download-all-releases" class="download-alt-link"
-           href="https://github.com/molayab/grove-website/releases">All releases on GitHub →</a>
-      </div>
-
-      <div class="whats-new-card">
-        <div class="whats-new-head">
-          <h3>What's new</h3>
-          <span class="whats-new-version" id="whats-new-version">v0.0.1-preview</span>
-        </div>
-        <div class="whats-new-body" id="whats-new-body">
-          <h4>Installation</h4>
-          <ol>
-            <li>Download <code>Grove.dmg</code> (always the latest version), or <code>Grove-v0.0.1-preview.dmg</code> for this exact release</li>
-            <li>Open the DMG and drag Grove to Applications</li>
-            <li>Right-click → Open on first launch (ad-hoc signed build, until notarization lands)</li>
-          </ol>
-        </div>
-      </div>
+    <div class="download-card">
+      <a id="download-btn" class="btn btn-primary btn-large download-btn"
+         href="https://github.com/molayab/grove-website/releases/latest/download/Grove.dmg">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 3v10M6 9l4 4 4-4M4 16h12"/>
+        </svg>
+        Download for macOS
+      </a>
+      <p class="download-meta" id="download-meta">Fetching the latest release&hellip;</p>
+      <p class="download-note">Ad-hoc signed while notarization is in progress — right-click&nbsp;→&nbsp;Open on first launch.</p>
+      <a id="download-all-releases" class="download-alt-link"
+         href="https://github.com/molayab/grove-website/releases">All releases on GitHub →</a>
     </div>
   </div>
 </section>
@@ -380,8 +363,6 @@
     .then(function (data) {
       var btn = document.getElementById('download-btn');
       var meta = document.getElementById('download-meta');
-      var versionEl = document.getElementById('whats-new-version');
-      var body = document.getElementById('whats-new-body');
       var allReleases = document.getElementById('download-all-releases');
 
       if (data.download_url) btn.href = data.download_url;
@@ -394,8 +375,6 @@
         meta.textContent = (data.version ? 'v' + data.version + ' · ' : '') + sizeMb + date;
       }
 
-      if (versionEl && data.version) versionEl.textContent = 'v' + data.version;
-      if (body && data.notes_html) body.innerHTML = data.notes_html;
       if (allReleases && data.html_url) allReleases.href = data.html_url.replace(/\/tag\/.*$/, '');
     })
     .catch(function () {

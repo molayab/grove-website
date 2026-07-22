@@ -332,28 +332,18 @@ nav {
 /* ── Download ───────────────────────────────────────────────── */
 .download { background: var(--bg-section); }
 
-.download-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 3rem;
-  text-align: left;
-  align-items: stretch;
-}
-
-.download-card,
-.whats-new-card {
+.download-card {
+  max-width: 420px;
+  margin: 3rem auto 0;
   background: var(--bg-raised);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 2.5rem 2.25rem;
-}
-
-.download-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.875rem;
+  text-align: left;
 }
 
 .download-btn svg { width: 18px; height: 18px; }
@@ -375,59 +365,6 @@ nav {
   margin-top: 0.25rem;
 }
 .download-alt-link:hover { text-decoration: underline; }
-
-.whats-new-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-}
-.whats-new-head h3 { flex-shrink: 0; }
-
-.whats-new-version {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border-radius: var(--radius-pill);
-  padding: 0.2rem 0.75rem;
-  white-space: nowrap;
-}
-
-.whats-new-body {
-  font-size: 0.9375rem;
-  color: var(--text-2);
-  line-height: 1.65;
-  max-height: 260px;
-  overflow-y: auto;
-}
-.whats-new-body h1,
-.whats-new-body h2,
-.whats-new-body h3,
-.whats-new-body h4,
-.whats-new-body h5,
-.whats-new-body h6 {
-  font-size: 0.9375rem;
-  color: var(--text);
-  margin: 1rem 0 0.5rem;
-}
-.whats-new-body h1:first-child,
-.whats-new-body h2:first-child,
-.whats-new-body h3:first-child,
-.whats-new-body h4:first-child,
-.whats-new-body h5:first-child,
-.whats-new-body h6:first-child { margin-top: 0; }
-.whats-new-body p { margin-bottom: 0.75rem; }
-.whats-new-body ul,
-.whats-new-body ol {
-  padding-left: 1.25rem;
-  margin-bottom: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
-}
-.whats-new-body a { color: var(--accent); text-decoration: underline; }
 
 /* ── Features ───────────────────────────────────────────────── */
 .features { background: var(--bg-section); }
@@ -804,7 +741,6 @@ footer {
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .download-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
   .feature-grid { grid-template-columns: 1fr 1fr; }
   .why-inner { flex-direction: column; gap: 3rem; }
   .why-visual { width: 100%; }
