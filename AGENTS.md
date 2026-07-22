@@ -28,6 +28,12 @@ There is no `/dist`, no bundler, no JS framework. Pages are deployed as-is on pu
 `vendor/pico.min.css` is checked in as a plain file — update it by re-downloading the release
 from picocss.com or the `@picocss/pico` npm tarball, there's no package.json tracking the version.
 
+`style.css` is linked with a cache-busting query string (`style.css?v=YYYYMMDD`) in every page.
+There's no hashed-filename build step, so without this a CSS-only change can deploy successfully
+while visitors keep getting the old stylesheet from browser/CDN cache indefinitely — bump the
+date in **every** `<link>` that references `style.css` whenever you touch it (grep for
+`style.css?v=` to find them all).
+
 ## Design system
 
 Every page loads `vendor/pico.min.css` first, then `style.css`. `style.css` defines the brand's
