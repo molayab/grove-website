@@ -15,10 +15,12 @@ static file (see below) rather than pulled from a CDN or npm.
 
 ```
 index.html            Single-page marketing site (hero, features, screenshots, pricing, footer)
-refund-policy.html     Legal page: refund policy
+refund-policy.html     Legal page: refund policy (English only — see Localization below)
+es/index.html          Spanish translation of the marketing page
 style.css              All styles for every page — design tokens + per-section rules, loaded after Pico
 vendor/pico.min.css     Vendored Pico CSS (MIT) — classless-free build, used as the base stylesheet
-screenshots/            PNGs referenced by index.html
+favicon.svg, favicon-*.png, apple-touch-icon.png   Site favicon (SVG + PNG fallbacks)
+screenshots/            PNGs referenced by index.html and es/index.html
 CNAME                   GitHub Pages custom domain
 ```
 
@@ -51,6 +53,26 @@ When adding a new page:
   classes added for the refund policy page.
 - Keep every page self-contained HTML — no shared includes/templating exists, so structural
   changes to nav/footer must be applied by hand to every `.html` file.
+
+## Localization
+
+The marketing page has an English original (`index.html`, `lang="en"`) and a Spanish
+translation (`es/index.html`, `lang="es"`) — plain duplicated static HTML, no i18n
+library or build step, consistent with the rest of this repo. `es/index.html` uses
+`../`-prefixed paths for every shared asset (`style.css`, `vendor/pico.min.css`,
+favicons, `screenshots/`, `download.json`) since it lives one directory down.
+
+- Both pages carry `<link rel="alternate" hreflang="...">` tags pointing at each other
+  plus `x-default`, and a small always-visible `.lang-link` (EN/ES) in the nav — update
+  both ends whenever you add or rename a page that should be reachable in both languages.
+- Only the marketing page is translated today. `refund-policy.html` is English-only;
+  `es/index.html`'s footer links to it labeled "(EN)" rather than silently switching
+  languages. Don't translate legal content without going through the same review this
+  repo's AGENTS.md already asks for on English legal copy (see "Legal/policy content —
+  special care" below) — consumer-protection wording is jurisdiction-sensitive and a
+  literal translation can accidentally change a legal commitment.
+- When editing marketing copy in `index.html`, check whether `es/index.html` needs the
+  same change. They're independent files, not generated from a shared source.
 
 ## Business context relevant to content changes
 
