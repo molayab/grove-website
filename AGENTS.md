@@ -6,32 +6,46 @@ Guidance for AI coding agents (Claude Code, Codex, Copilot, etc.) working in thi
 
 `grove-website` is the static marketing site for **Grove**, a native macOS git
 workspace app sold as a one-time-purchase license by an independent developer
-(Mateo Olaya Bernal). It is plain HTML/CSS — no build step, no framework, no
+(Mateo Olaya Bernal). It is plain HTML/CSS — no build step, no bundler, no
 package manager. It's served via GitHub Pages at `grove.molayab.com` (see `CNAME`).
+The one framework dependency is [Pico CSS](https://picocss.com), vendored as a
+static file (see below) rather than pulled from a CDN or npm.
 
 ## Structure
 
 ```
-index.html          Single-page marketing site (hero, features, screenshots, pricing, footer)
-refund-policy.html   Legal page: refund policy
-style.css            All styles for every page — shared design tokens + per-section rules
-screenshots/          PNGs referenced by index.html
-CNAME                 GitHub Pages custom domain
+index.html            Single-page marketing site (hero, features, screenshots, pricing, footer)
+refund-policy.html     Legal page: refund policy
+style.css              All styles for every page — design tokens + per-section rules, loaded after Pico
+vendor/pico.min.css     Vendored Pico CSS (MIT) — classless-free build, used as the base stylesheet
+screenshots/            PNGs referenced by index.html
+CNAME                   GitHub Pages custom domain
 ```
 
 There is no `/dist`, no bundler, no JS framework. Pages are deployed as-is on push to `main`.
+`vendor/pico.min.css` is checked in as a plain file — update it by re-downloading the release
+from picocss.com or the `@picocss/pico` npm tarball, there's no package.json tracking the version.
 
 ## Design system
 
-`style.css` defines CSS custom properties at the top (`:root`) for colors, radii, and fonts.
+Every page loads `vendor/pico.min.css` first, then `style.css`. `style.css` defines the brand's
+own CSS custom properties at the top (`:root`) for colors, radii, and fonts, and also re-points
+Pico's own `--pico-*` variables (primary color, card background, border radius, etc.) at those
+same tokens — so native Pico elements (`article`, `[role="button"]`, form controls) stay in sync
+with the brand palette automatically. Prefer real Pico elements over bespoke divs where they fit:
+cards are `<article>`, button-styled links carry `role="button"` alongside their `.btn*` class.
+
 The site is **dark-first** with a light-mode override via `prefers-color-scheme` and a
 `data-theme` attribute (toggled by the inline script at the bottom of each page — currently
-theme is inferred from the OS, there's no visible toggle control yet). Grove green
-(`--accent`) is the only accent color; don't introduce other hues.
+theme is inferred from the OS, there's no visible toggle control yet; Pico also reads
+`data-theme`, so the same attribute drives both). Grove crimson (`--accent`, `#CB2957`) is the
+only accent color; the rest of the palette is `#000000` / `#DDDDDD` / `#EEEEEE` plus white —
+don't introduce other hues.
 
 When adding a new page:
-- Copy the `<head>`, `<nav>`, `<footer>`, and theme-detection `<script>` from an existing
-  page (`index.html` or `refund-policy.html`) verbatim so nav/footer/theme stay consistent.
+- Copy the `<head>` (including both stylesheet links), `<nav>`, `<footer>`, and
+  theme-detection `<script>` from an existing page (`index.html` or `refund-policy.html`)
+  verbatim so nav/footer/theme stay consistent.
 - Reuse existing classes (`.section`, `.section-inner`, `.eyebrow`, `.btn*`) before adding
   new CSS. Legal/prose pages should reuse the `.legal`, `.legal-inner`, `.legal-prose`
   classes added for the refund policy page.
