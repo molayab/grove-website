@@ -8,6 +8,7 @@
   <meta property="og:title" content="Grove — Git workspace for macOS" />
   <meta property="og:description" content="Run Claude Code, opencode, Codex, Gemini CLI or Aider alongside a real shell, file tree, and diff viewer — one native macOS window." />
   <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="vendor/pico.min.css" />
   <link rel="stylesheet" href="style.css" />
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
   <script src="https://gumroad.com/js/gumroad.js"></script>
@@ -22,7 +23,7 @@
       <a href="#features" class="nav-link">Features</a>
       <a href="#screenshots" class="nav-link">Screenshots</a>
       <a href="#pricing" class="nav-link">Pricing</a>
-      <a href="#download" class="btn btn-primary-dark">Download</a>
+      <a href="#download" role="button" class="btn btn-primary-dark">Download</a>
     </div>
   </div>
 </nav>
@@ -36,8 +37,8 @@
       AI agents, git, a real shell, and diff — all following the same checkout, without switching apps.
     </p>
     <div class="hero-cta">
-      <a href="#download" class="btn btn-primary btn-large">Start free trial</a>
-      <a href="#features" class="btn btn-ghost btn-large">See what's inside</a>
+      <a href="#download" role="button" class="btn btn-primary btn-large">Start free trial</a>
+      <a href="#features" role="button" class="btn btn-ghost btn-large">See what's inside</a>
     </div>
     <p class="hero-trial">Free during preview &nbsp;·&nbsp; ad-hoc signed while notarization is in progress</p>
   </div>
@@ -59,8 +60,8 @@
     <h2>Try Grove, free.</h2>
     <p class="section-sub">A fully-featured trial build, served straight from the latest GitHub release — no account, no email required.</p>
 
-    <div class="download-card">
-      <a id="download-btn" class="btn btn-primary btn-large download-btn"
+    <article class="download-card">
+      <a id="download-btn" role="button" class="btn btn-primary btn-large download-btn"
          href="https://github.com/molayab/grove-website/releases/latest/download/Grove.dmg">
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M10 3v10M6 9l4 4 4-4M4 16h12"/>
@@ -71,7 +72,7 @@
       <p class="download-note">Ad-hoc signed while notarization is in progress — right-click&nbsp;→&nbsp;Open on first launch.</p>
       <a id="download-all-releases" class="download-alt-link"
          href="https://github.com/molayab/grove-website/releases">All releases on GitHub →</a>
-    </div>
+    </article>
   </div>
 </section>
 
@@ -84,25 +85,25 @@
 
     <div class="feature-grid">
 
-      <div class="feature-card">
+      <article class="feature-card">
         <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <rect x="4" y="8" width="28" height="20" rx="3"/>
           <path d="M12 16l4 4-4 4M19 24h5"/>
         </svg>
         <h3>AI Agents, natively</h3>
         <p>Run Claude Code, opencode, Codex, Gemini CLI, or Aider inside a real PTY — auto-resolved to the right directory, no PATH wrangling.</p>
-      </div>
+      </article>
 
-      <div class="feature-card">
+      <article class="feature-card">
         <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="18" cy="10" r="3.5"/><circle cx="9" cy="26" r="3.5"/><circle cx="27" cy="26" r="3.5"/>
           <path d="M18 13.5V20M18 20l-6.5 3M18 20l6.5 3"/>
         </svg>
         <h3>Worktree-first</h3>
         <p>Each worktree is a full session: agent, shell, file tree, and diff all follow the active checkout. Switch branches without losing context.</p>
-      </div>
+      </article>
 
-      <div class="feature-card">
+      <article class="feature-card">
         <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M8 12h20M8 18h14M8 24h10"/>
           <circle cx="27" cy="24" r="4.5"/>
@@ -110,36 +111,36 @@
         </svg>
         <h3>Git panel built in</h3>
         <p>Branch switch, fetch, pull, push, and stage-all commit. A recent commit log shows where you left off. No terminal needed.</p>
-      </div>
+      </article>
 
-      <div class="feature-card">
+      <article class="feature-card">
         <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M8 6h14l6 6v18H8z"/><path d="M22 6v6h6"/>
           <path d="M12 20h7M12 24h5"/>
         </svg>
         <h3>File tree + Diff</h3>
         <p>Lazily-expanding file browser with icon grid view. Working-tree diff against HEAD with per-file stats, rendered unified or side-by-side.</p>
-      </div>
+      </article>
 
-      <div class="feature-card">
+      <article class="feature-card">
         <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <rect x="4" y="8" width="28" height="20" rx="3"/>
           <path d="M10 18l3 3-3 3M16 21h10"/>
         </svg>
         <h3>Shell tab</h3>
         <p>An interactive login shell in the exact same directory as your agent — run a test, check a log, copy a path.</p>
-      </div>
+      </article>
 
-      <div class="feature-card">
+      <article class="feature-card">
         <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 4l14 8v12l-14 8L4 24V12z"/>
           <path d="M18 4v28M4 12l14 8 14-8"/>
         </svg>
         <h3>No destructive defaults</h3>
         <p>Force push, branch delete, and discard are deliberately absent. Every outward-facing action confirms before it runs.</p>
-      </div>
+      </article>
 
-      <div class="feature-card feature-highlight">
+      <article class="feature-card feature-highlight">
         <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="18" cy="18" r="14"/>
           <path d="M18 10v8l6 4"/>
@@ -148,7 +149,7 @@
           <h3>Keeps working while you don't</h3>
           <p>Switch to another workspace and its agent and shell keep running in the background — Grove pools the underlying processes independently of whatever's on screen. Check on one project without pausing another. Come back, and it's on the tab you left it on.</p>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
@@ -260,7 +261,7 @@
 
     <div class="pricing-grid">
 
-      <div class="pricing-card">
+      <article class="pricing-card">
         <span class="pricing-name">1 License</span>
         <div class="pricing-amount">
           <span class="pricing-currency">$</span>
@@ -278,11 +279,11 @@
 
         <a href="https://devmateoolaya.gumroad.com/l/grove"
            data-gumroad-overlay-checkout="true"
-           class="btn pricing-btn btn-disabled"
+           role="button" class="btn pricing-btn btn-disabled"
            aria-disabled="true" tabindex="-1">Buy License</a>
-      </div>
+      </article>
 
-      <div class="pricing-card pricing-featured">
+      <article class="pricing-card pricing-featured">
         <span class="pricing-badge">Most popular</span>
         <span class="pricing-name">3 Licenses</span>
         <div class="pricing-amount">
@@ -301,11 +302,11 @@
 
         <a href="https://devmateoolaya.gumroad.com/l/grove"
            data-gumroad-overlay-checkout="true"
-           class="btn pricing-btn btn-disabled"
+           role="button" class="btn pricing-btn btn-disabled"
            aria-disabled="true" tabindex="-1">Buy License</a>
-      </div>
+      </article>
 
-      <div class="pricing-card">
+      <article class="pricing-card">
         <span class="pricing-name">5 Licenses</span>
         <div class="pricing-amount">
           <span class="pricing-currency">$</span>
@@ -323,9 +324,9 @@
 
         <a href="https://devmateoolaya.gumroad.com/l/grove"
            data-gumroad-overlay-checkout="true"
-           class="btn pricing-btn btn-disabled"
+           role="button" class="btn pricing-btn btn-disabled"
            aria-disabled="true" tabindex="-1">Buy License</a>
-      </div>
+      </article>
 
     </div>
 
