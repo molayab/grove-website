@@ -54,8 +54,8 @@
   <!-- Real screenshot -->
   <div class="window-wrap">
     <div class="hero-shot">
-      <img src="../screenshots/hero-diff.png" width="1800" height="1133"
-           alt="La ventana de Grove mostrando tres espacios de trabajo y sus worktrees en la barra lateral, un panel de git con commits recientes, y una vista de diff en vivo con las adiciones resaltadas en verde"
+      <img src="../screenshots/hero-diff.png" width="1800" height="995"
+           alt="La ventana de Grove mostrando tres espacios de trabajo y sus worktrees en la barra lateral, un panel de git con commits recientes, y un agente de IA a mitad de conversación, explicando un arreglo y el diff que hizo"
            loading="eager" />
     </div>
   </div>
@@ -99,7 +99,7 @@
           <path d="M12 16l4 4-4 4M19 24h5"/>
         </svg>
         <h3>Agentes de IA, de forma nativa</h3>
-        <p>Ejecuta Claude Code, opencode, Codex, Gemini CLI o Aider dentro de un PTY real — resuelto automáticamente al directorio correcto, sin pelear con el PATH.</p>
+        <p>Trae tu propio agente de IA — Claude Code, opencode, Codex, Gemini CLI o Aider — y simplemente funciona, ya apuntado a la carpeta correcta. Sin configurar el PATH, sin una ventana de terminal aparte que vigilar.</p>
       </article>
 
       <article class="feature-card">
@@ -108,7 +108,7 @@
           <path d="M18 13.5V20M18 20l-6.5 3M18 20l6.5 3"/>
         </svg>
         <h3>Worktrees primero</h3>
-        <p>Cada worktree es una sesión completa: agente, shell, árbol de archivos y diff siguen el checkout activo. Cambia de rama sin perder el contexto.</p>
+        <p>Trabaja en tres ramas a la vez sin perder tu lugar. Cada worktree tiene su propio agente, shell, archivos y diff — haz clic en un worktree y todo lo sigue, automáticamente.</p>
       </article>
 
       <article class="feature-card">
@@ -118,7 +118,7 @@
           <path d="M25 24l1.5 1.5L29 22"/>
         </svg>
         <h3>Panel de git integrado</h3>
-        <p>Cambio de rama, fetch, pull, push y commit de todos los cambios. Un historial de commits recientes muestra dónde lo dejaste. Sin necesidad de terminal.</p>
+        <p>Haz el trabajo de git de todos los días sin salir de la ventana. Cambia de rama, haz fetch, pull, push y commit — más un historial de commits recientes para saber siempre dónde lo dejaste.</p>
       </article>
 
       <article class="feature-card">
@@ -127,7 +127,7 @@
           <path d="M12 20h7M12 24h5"/>
         </svg>
         <h3>Árbol de archivos + Diff</h3>
-        <p>Explorador de archivos de carga progresiva con vista de cuadrícula de iconos. Diff del árbol de trabajo contra HEAD con estadísticas por archivo, en formato unificado o lado a lado.</p>
+        <p>Explora tu proyecto a tu manera — en árbol o en cuadrícula de iconos — y ve exactamente qué cambió, unificado o lado a lado, antes de comprometerte a nada.</p>
       </article>
 
       <article class="feature-card">
@@ -136,7 +136,7 @@
           <path d="M10 18l3 3-3 3M16 21h10"/>
         </svg>
         <h3>Pestaña de shell</h3>
-        <p>Una shell interactiva en el mismo directorio exacto que tu agente — ejecuta una prueba, revisa un log, copia una ruta.</p>
+        <p>¿Necesitas una terminal real? Está ahí mismo, en la misma carpeta que tu agente — ejecuta una prueba, revisa un log, copia una ruta, sin cambiar de contexto.</p>
       </article>
 
       <article class="feature-card">
@@ -145,7 +145,7 @@
           <path d="M18 4v28M4 12l14 8 14-8"/>
         </svg>
         <h3>Sin acciones destructivas por defecto</h3>
-        <p>Force push, eliminar ramas y descartar cambios están deliberadamente ausentes. Toda acción visible pide confirmación antes de ejecutarse.</p>
+        <p>Grove no deja que un clic accidental borre tu trabajo. Force push, eliminar ramas y descartar cambios no están aquí — y todo lo que sale de tu máquina pide confirmación antes.</p>
       </article>
 
       <article class="feature-card feature-highlight">
@@ -155,7 +155,7 @@
         </svg>
         <div>
           <h3>Sigue trabajando aunque tú no</h3>
-          <p>Cambia a otro espacio de trabajo y su agente y shell siguen corriendo en segundo plano — Grove gestiona los procesos de forma independiente a lo que esté en pantalla. Revisa un proyecto sin pausar otro. Vuelve, y estará en la misma pestaña donde lo dejaste.</p>
+          <p>Cambia a otro proyecto y este sigue corriendo — su agente y su shell siguen en segundo plano aunque no lo estés mirando. Revisa uno sin pausar el otro, y vuelve exactamente a la pestaña donde lo dejaste.</p>
         </div>
       </article>
 
@@ -168,9 +168,16 @@
   <div class="section-inner">
     <p class="eyebrow">Capturas</p>
     <h2>Míralo en la ventana.</h2>
-    <p class="section-sub">El mismo checkout, cuatro formas de trabajar en él.</p>
+    <p class="section-sub">El mismo checkout, cinco formas de trabajar en él.</p>
 
     <div class="screenshot-gallery">
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="../screenshots/home.png" width="1800" height="1113" loading="lazy"
+               alt="La pestaña Home de Grove mostrando sitios anclados para un espacio de trabajo — tablero de Jira, repositorio de GitHub y tablero de Trello — abiertos como pestañas junto al checkout" />
+        </div>
+        <p class="screenshot-caption">Ancla tu tablero de Jira, repositorio de GitHub o tablero de Trello — a un clic, sin salir del espacio de trabajo.</p>
+      </div>
       <div class="screenshot-item">
         <div class="screenshot-frame">
           <img src="../screenshots/shell.png" width="1800" height="1133" loading="lazy"
@@ -194,7 +201,7 @@
       </div>
       <div class="screenshot-item">
         <div class="screenshot-frame">
-          <img src="../screenshots/settings.png" width="1400" height="900" loading="lazy"
+          <img src="../screenshots/settings.png" width="1400" height="1194" loading="lazy"
                alt="La ventana de Configuración de Grove mostrando la carpeta de worktrees, el ejecutable de git y la configuración del agente" />
         </div>
         <p class="screenshot-caption">Todo viene configurado automáticamente — carpeta raíz de worktrees, binario de git, agente, shell.</p>
@@ -213,19 +220,19 @@
         <ul class="why-list">
           <li>
             <span class="check">✓</span>
-            <span>Swift 6.2 con concurrencia estricta — sin data races, sin fallos ocultos.</span>
+            <span>Hecho para no colgarse nunca — sin la ruedita de la muerte, ni con varios agentes corriendo a la vez.</span>
           </li>
           <li>
             <span class="check">✓</span>
-            <span>SwiftUI de principio a fin — respeta la fuente del sistema, Dynamic Type y el modo oscuro.</span>
+            <span>Se siente parte de macOS, no una página web en una ventana — respeta tu modo oscuro, tu tamaño de fuente, tu sistema, desde el primer momento.</span>
           </li>
           <li>
             <span class="check">✓</span>
-            <span>Firmado con Developer ID y notarizado por Apple — fuera de la App Store.</span>
+            <span>Instálalo con confianza — Apple verificó que Grove es seguro, así que no verás una advertencia de "desarrollador no identificado", aunque esté fuera de la App Store.</span>
           </li>
           <li>
             <span class="check">✓</span>
-            <span>Encuentra Homebrew, <code>~/.local/bin</code>, <code>~/.bun/bin</code> y más — incluso al abrirse desde el Dock.</span>
+            <span>Encuentra tus herramientas donde sea que las hayas instalado — Homebrew, <code>~/.local/bin</code>, <code>~/.bun/bin</code> — incluso al abrir Grove desde el Dock, no solo desde la terminal.</span>
           </li>
         </ul>
       </div>

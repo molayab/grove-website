@@ -54,8 +54,8 @@
   <!-- Real screenshot -->
   <div class="window-wrap">
     <div class="hero-shot">
-      <img src="screenshots/hero-diff.png" width="1800" height="1133"
-           alt="Grove's window showing three workspaces and their worktrees in the sidebar, a git panel with recent commits, and a live diff view with additions highlighted in green"
+      <img src="screenshots/hero-diff.png" width="1800" height="995"
+           alt="Grove's window showing three workspaces and their worktrees in the sidebar, a git panel with recent commits, and an AI coding agent mid-conversation, explaining a fix and the diff it made"
            loading="eager" />
     </div>
   </div>
@@ -99,7 +99,7 @@
           <path d="M12 16l4 4-4 4M19 24h5"/>
         </svg>
         <h3>AI Agents, natively</h3>
-        <p>Run Claude Code, opencode, Codex, Gemini CLI, or Aider inside a real PTY — auto-resolved to the right directory, no PATH wrangling.</p>
+        <p>Bring your own AI coding agent — Claude Code, opencode, Codex, Gemini CLI, or Aider — and it just works, already pointed at the right folder. No PATH to configure, no separate terminal window to babysit.</p>
       </article>
 
       <article class="feature-card">
@@ -108,7 +108,7 @@
           <path d="M18 13.5V20M18 20l-6.5 3M18 20l6.5 3"/>
         </svg>
         <h3>Worktree-first</h3>
-        <p>Each worktree is a full session: agent, shell, file tree, and diff all follow the active checkout. Switch branches without losing context.</p>
+        <p>Work on three branches at once, without losing your place. Every worktree gets its own agent, shell, files, and diff — click a worktree and everything follows, automatically.</p>
       </article>
 
       <article class="feature-card">
@@ -118,7 +118,7 @@
           <path d="M25 24l1.5 1.5L29 22"/>
         </svg>
         <h3>Git panel built in</h3>
-        <p>Branch switch, fetch, pull, push, and stage-all commit. A recent commit log shows where you left off. No terminal needed.</p>
+        <p>Do the everyday git stuff without leaving the window. Branch, fetch, pull, push, and commit — plus a recent-commit log so you always know where you left off.</p>
       </article>
 
       <article class="feature-card">
@@ -127,7 +127,7 @@
           <path d="M12 20h7M12 24h5"/>
         </svg>
         <h3>File tree + Diff</h3>
-        <p>Lazily-expanding file browser with icon grid view. Working-tree diff against HEAD with per-file stats, rendered unified or side-by-side.</p>
+        <p>Browse your project your way — tree or icon grid — and see exactly what changed, unified or side-by-side, before you commit to anything.</p>
       </article>
 
       <article class="feature-card">
@@ -136,7 +136,7 @@
           <path d="M10 18l3 3-3 3M16 21h10"/>
         </svg>
         <h3>Shell tab</h3>
-        <p>An interactive login shell in the exact same directory as your agent — run a test, check a log, copy a path.</p>
+        <p>Need a real terminal? It's right there, rooted in the same folder as your agent — run a test, tail a log, copy a path, no context switch.</p>
       </article>
 
       <article class="feature-card">
@@ -145,7 +145,7 @@
           <path d="M18 4v28M4 12l14 8 14-8"/>
         </svg>
         <h3>No destructive defaults</h3>
-        <p>Force push, branch delete, and discard are deliberately absent. Every outward-facing action confirms before it runs.</p>
+        <p>Grove won't let a stray click wipe your work. Force push, branch delete, and discard aren't in here — and anything that reaches beyond your machine asks first.</p>
       </article>
 
       <article class="feature-card feature-highlight">
@@ -155,7 +155,7 @@
         </svg>
         <div>
           <h3>Keeps working while you don't</h3>
-          <p>Switch to another workspace and its agent and shell keep running in the background — Grove pools the underlying processes independently of whatever's on screen. Check on one project without pausing another. Come back, and it's on the tab you left it on.</p>
+          <p>Switch to another project and this one keeps going — its agent and shell run on in the background even when you're not looking. Check in on one thing without pausing another, and come back to exactly the tab you left.</p>
         </div>
       </article>
 
@@ -168,9 +168,16 @@
   <div class="section-inner">
     <p class="eyebrow">Screenshots</p>
     <h2>See it in the window.</h2>
-    <p class="section-sub">The same checkout, four ways to work on it.</p>
+    <p class="section-sub">The same checkout, five ways to work on it.</p>
 
     <div class="screenshot-gallery">
+      <div class="screenshot-item">
+        <div class="screenshot-frame">
+          <img src="screenshots/home.png" width="1800" height="1113" loading="lazy"
+               alt="Grove's Home tab showing pinned sites for a workspace — Jira board, GitHub repo, and Trello board — opened as tabs alongside the checkout" />
+        </div>
+        <p class="screenshot-caption">Pin your Jira board, GitHub repo, or Trello board — one click away, without leaving the workspace.</p>
+      </div>
       <div class="screenshot-item">
         <div class="screenshot-frame">
           <img src="screenshots/shell.png" width="1800" height="1133" loading="lazy"
@@ -194,7 +201,7 @@
       </div>
       <div class="screenshot-item">
         <div class="screenshot-frame">
-          <img src="screenshots/settings.png" width="1400" height="900" loading="lazy"
+          <img src="screenshots/settings.png" width="1400" height="1194" loading="lazy"
                alt="Grove's Settings window showing the worktrees folder, git executable, and agent configuration" />
         </div>
         <p class="screenshot-caption">Every default is automatic — worktrees root, git binary, agent, shell.</p>
@@ -213,19 +220,19 @@
         <ul class="why-list">
           <li>
             <span class="check">✓</span>
-            <span>Swift 6.2 with strict concurrency — no data races, no hidden crashes.</span>
+            <span>Built to never freeze on you — no spinning beachballs, even with several agents running at once.</span>
           </li>
           <li>
             <span class="check">✓</span>
-            <span>SwiftUI throughout — respects your system font, Dynamic Type, and Dark Mode.</span>
+            <span>Feels like part of macOS, not a webpage in a window — matches your Dark Mode, your font size, your system, right out of the box.</span>
           </li>
           <li>
             <span class="check">✓</span>
-            <span>Signed with Developer ID, notarized by Apple — not the App Store.</span>
+            <span>Install with confidence — Apple has verified Grove is safe, so you won't hit a scary "unidentified developer" warning, even outside the App Store.</span>
           </li>
           <li>
             <span class="check">✓</span>
-            <span>Finds Homebrew, <code>~/.local/bin</code>, <code>~/.bun/bin</code>, and more — even when launched from the Dock.</span>
+            <span>Finds your tools wherever you installed them — Homebrew, <code>~/.local/bin</code>, <code>~/.bun/bin</code> — even when you launch Grove from the Dock, not a terminal.</span>
           </li>
         </ul>
       </div>
