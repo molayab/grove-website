@@ -207,14 +207,6 @@ code {
   font-size: 1.0625rem;
 }
 
-/* Temporarily disabled while Grove is being notarized — link stays intact for re-enabling later */
-.btn-disabled {
-  pointer-events: none;
-  opacity: 0.45;
-  filter: grayscale(0.4);
-  cursor: not-allowed;
-}
-
 /* ── Nav ────────────────────────────────────────────────────── */
 nav {
   position: sticky;
@@ -568,21 +560,6 @@ nav {
 
 /* ── Pricing ────────────────────────────────────────────────── */
 .pricing { background: var(--bg); }
-
-.coming-soon-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid rgba(203, 41, 87, 0.4);
-  border-radius: var(--radius-pill);
-  padding: 0.3rem 0.875rem;
-  margin: 0 0 1.25rem;
-}
 
 .pricing-grid {
   display: grid;
