@@ -1,9 +1,9 @@
 {
-  "version": "0.0.1-preview",
-  "tag": "v0.0.1-preview",
-  "name": "Grove v0.0.1-preview",
-  "published_at": "2026-07-21T23:32:44Z",
-  "html_url": "https://github.com/molayab/grove-website/releases/tag/v0.0.1-preview",
-  "download_url": "https://github.com/molayab/grove-website/releases/download/v0.0.1-preview/Grove.dmg",
-  "size_bytes": 3005434
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "name": "Grove v0.1.0",
+  "published_at": "2026-07-23T07:42:26Z",
+  "html_url": "https://github.com/molayab/grove-website/releases/tag/v0.1.0",
+  "download_url": "https://github.com/molayab/grove-website/releases/download/v0.1.0/Grove.dmg",
+  "size_bytes": 5069676
 }
