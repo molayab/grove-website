@@ -16,16 +16,8 @@
   <link rel="icon" href="../favicon-16.png" sizes="16x16" type="image/png" />
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
   <link rel="stylesheet" href="../vendor/pico.min.css" />
-  <link rel="stylesheet" href="../style.css?v=20260723" />
+  <link rel="stylesheet" href="../style.css?v=20260806" />
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-435ZWRJN2B"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-435ZWRJN2B');
-  </script>
   <script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
 <body>
@@ -359,12 +351,28 @@
     <span class="logo">Grove</span>
     <div class="footer-links">
       <a href="mailto:hello@molayab.com">Soporte</a>
-      <a href="#">Privacidad</a>
+      <a href="../privacy-policy.html">Privacidad (EN)</a>
       <a href="../refund-policy.html">Política de reembolsos (EN)</a>
+      <a href="#" id="cookie-settings-link">Preferencias de cookies</a>
     </div>
     <span class="footer-copy">© 2026 Mateo Olaya Bernal</span>
   </div>
 </footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-banner-inner">
+    <p class="cookie-banner-text">
+      Usamos un beacon de analítica sin cookies en cada visita y — solo si aceptas — Google
+      Analytics, que sí usa una cookie. Consulta nuestra
+      <a href="../privacy-policy.html">Política de Privacidad (EN)</a>.
+    </p>
+    <div class="cookie-banner-actions">
+      <button type="button" id="cookie-decline" class="btn btn-ghost cookie-banner-btn">Rechazar</button>
+      <button type="button" id="cookie-accept" class="btn btn-primary cookie-banner-btn">Aceptar</button>
+    </div>
+  </div>
+</div>
 
 <script>
 (function () {
@@ -373,6 +381,55 @@
   var saved = localStorage.getItem('grove-theme');
   if (saved) dark = saved === 'dark';
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
+})();
+</script>
+
+<script>
+(function () {
+  var CONSENT_KEY = 'grove-cookie-consent';
+  var GA_ID = 'G-435ZWRJN2B';
+  var banner = document.getElementById('cookie-banner');
+
+  function loadGA() {
+    if (window.__groveGaLoaded) return;
+    window.__groveGaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+  }
+
+  function showBanner() { if (banner) banner.hidden = false; }
+  function hideBanner() { if (banner) banner.hidden = true; }
+
+  var consent = localStorage.getItem(CONSENT_KEY);
+  if (consent === 'accepted') {
+    loadGA();
+  } else if (consent !== 'declined') {
+    showBanner();
+  }
+
+  var acceptBtn = document.getElementById('cookie-accept');
+  var declineBtn = document.getElementById('cookie-decline');
+  var settingsLink = document.getElementById('cookie-settings-link');
+
+  if (acceptBtn) acceptBtn.addEventListener('click', function () {
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    hideBanner();
+    loadGA();
+  });
+  if (declineBtn) declineBtn.addEventListener('click', function () {
+    localStorage.setItem(CONSENT_KEY, 'declined');
+    hideBanner();
+  });
+  if (settingsLink) settingsLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    showBanner();
+  });
 })();
 </script>
 

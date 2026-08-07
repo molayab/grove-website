@@ -16,6 +16,7 @@ static file (see below) rather than pulled from a CDN or npm.
 ```
 index.html            Single-page marketing site (hero, features, screenshots, pricing, footer)
 refund-policy.html     Legal page: refund policy (English only — see Localization below)
+privacy-policy.html    Legal page: privacy policy + cookie disclosure (English only — see Localization below)
 es/index.html          Spanish translation of the marketing page
 style.css              All styles for every page — design tokens + per-section rules, loaded after Pico
 vendor/pico.min.css     Vendored Pico CSS (MIT) — classless-free build, used as the base stylesheet
@@ -71,12 +72,14 @@ favicons, `screenshots/`, `download.json`) since it lives one directory down.
 - Both pages carry `<link rel="alternate" hreflang="...">` tags pointing at each other
   plus `x-default`, and a small always-visible `.lang-link` (EN/ES) in the nav — update
   both ends whenever you add or rename a page that should be reachable in both languages.
-- Only the marketing page is translated today. `refund-policy.html` is English-only;
-  `es/index.html`'s footer links to it labeled "(EN)" rather than silently switching
-  languages. Don't translate legal content without going through the same review this
-  repo's AGENTS.md already asks for on English legal copy (see "Legal/policy content —
-  special care" below) — consumer-protection wording is jurisdiction-sensitive and a
-  literal translation can accidentally change a legal commitment.
+- Only the marketing page is translated today. `refund-policy.html` and
+  `privacy-policy.html` are English-only; `es/index.html`'s footer links to them labeled
+  "(EN)" rather than silently switching languages. Don't translate legal content without
+  going through the same review this repo's AGENTS.md already asks for on English legal
+  copy (see "Legal/policy content — special care" below) — consumer-protection wording is
+  jurisdiction-sensitive and a literal translation can accidentally change a legal
+  commitment. The cookie-consent banner's UI text (not the linked privacy policy itself)
+  *is* translated on `es/index.html`, since it's a short functional prompt, not legal prose.
 - When editing marketing copy in `index.html`, check whether `es/index.html` needs the
   same change. They're independent files, not generated from a shared source.
 
