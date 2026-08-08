@@ -16,7 +16,7 @@
   <link rel="icon" href="../favicon-16.png" sizes="16x16" type="image/png" />
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
   <link rel="stylesheet" href="../vendor/pico.min.css" />
-  <link rel="stylesheet" href="../style.css?v=20260806" />
+  <link rel="stylesheet" href="../style.css?v=20260807" />
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
   <script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
@@ -51,12 +51,68 @@
     <p class="hero-trial">Prueba gratis &nbsp;·&nbsp; Firmado con Developer ID y notarizado por Apple</p>
   </div>
 
-  <!-- Real screenshot -->
+  <!-- Intro animado: workspaces -> worktrees -> git -> spaces (pestañas) -->
   <div class="window-wrap">
-    <div class="hero-shot">
-      <img src="../screenshots/hero-diff.png" width="1800" height="995"
-           alt="La ventana de Grove mostrando tres espacios de trabajo y sus worktrees en la barra lateral, un panel de git con commits recientes, y un agente de IA a mitad de conversación, explicando un arreglo y el diff que hizo"
-           loading="eager" />
+    <div class="hero-shot" role="img" aria-label="La ventana de Grove: una barra lateral de proyectos, los worktrees y el estado de git del proyecto seleccionado, y las pestañas Home, Agent, Shell y Files sobre una sesión CLI con el agente">
+      <div class="hero-anim">
+        <div class="ha-titlebar">
+          <div class="ha-titlebar-left">
+            <span class="ha-traffic">
+              <span class="ha-tdot ha-tdot-red"></span><span class="ha-tdot ha-tdot-yellow"></span><span class="ha-tdot ha-tdot-green"></span>
+            </span>
+            <span class="ha-sidebar-toggle"><span></span><span></span></span>
+          </div>
+          <nav class="ha-tabs">
+            <span class="ha-tab">Home</span>
+            <span class="ha-tab ha-active">Agent</span>
+            <span class="ha-tab">Shell</span>
+            <span class="ha-tab">Files</span>
+          </nav>
+        </div>
+        <div class="ha-body">
+          <aside class="ha-sidebar">
+            <div class="ha-workspaces">
+              <div class="ha-workspace"><svg class="ha-folder" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 5.5a1 1 0 0 1 1-1h3.7l1.3 1.7h7.5a1 1 0 0 1 1 1v7.3a1 1 0 0 1-1 1h-12.5a1 1 0 0 1-1-1z"/></svg><span class="ha-ws-name">grove</span></div>
+              <div class="ha-workspace ha-active"><svg class="ha-folder" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 5.5a1 1 0 0 1 1-1h3.7l1.3 1.7h7.5a1 1 0 0 1 1 1v7.3a1 1 0 0 1-1 1h-12.5a1 1 0 0 1-1-1z"/></svg><span class="ha-ws-name">web-app</span></div>
+              <div class="ha-workspace"><svg class="ha-folder" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 5.5a1 1 0 0 1 1-1h3.7l1.3 1.7h7.5a1 1 0 0 1 1 1v7.3a1 1 0 0 1-1 1h-12.5a1 1 0 0 1-1-1z"/></svg><span class="ha-ws-name">ios-client</span></div>
+            </div>
+            <p class="ha-label">Worktrees</p>
+            <div class="ha-worktrees">
+              <div class="ha-worktree"><svg class="ha-wicon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 10 3l7 6.5M5 8v8h4v-5h2v5h4V8"/></svg><span class="ha-wt-name">main</span><span class="ha-badge">Main</span></div>
+              <div class="ha-worktree ha-active"><svg class="ha-wicon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="4.5" r="1.6"/><circle cx="6" cy="15.5" r="1.6"/><circle cx="14.5" cy="9" r="1.6"/><path d="M6 6.1v7.8M6 9c3.2 0 5-1.4 5-2.7"/></svg><span class="ha-wt-name">feature/agent-ui</span></div>
+            </div>
+            <p class="ha-label">Git</p>
+            <div class="ha-git-status"><svg class="ha-wicon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="4.5" r="1.6"/><circle cx="6" cy="15.5" r="1.6"/><circle cx="14.5" cy="9" r="1.6"/><path d="M6 6.1v7.8M6 9c3.2 0 5-1.4 5-2.7"/></svg><span class="ha-wt-name">feature/agent-ui</span></div>
+            <p class="ha-git-sub">Up to date</p>
+            <div class="ha-git-actions">
+              <span class="ha-gbtn ha-gbtn-primary">Up to date</span>
+              <span class="ha-gbtn">Save changes</span>
+            </div>
+            <p class="ha-label">Recent saves</p>
+            <div class="ha-git-log">
+              <div class="ha-commit"><span class="ha-hash">a3f91c2</span>fix: diff scroll offset</div>
+              <div class="ha-commit"><span class="ha-hash">7c02b6e</span>feat: agent status pill</div>
+            </div>
+          </aside>
+          <main class="ha-main">
+            <div class="ha-toolbar">
+              <span class="ha-newtab">+</span>
+              <span class="ha-agent-picker">✦ Claude Code ⌄</span>
+            </div>
+            <div class="ha-cli">
+              <div class="ha-cli-line ha-cli-meta">✱ Cogitated for 12s</div>
+              <div class="ha-cli-prompt">&rsaquo; Wire up the agent status pill</div>
+              <div class="ha-cli-line">&bull; Edit(AgentStatusView.swift)</div>
+              <div class="ha-cli-line ha-cli-sub">&#9492; Added 3 lines</div>
+            </div>
+            <div class="ha-composer">
+              <span class="ha-prompt">&rsaquo;</span>
+              <span class="ha-composer-text">Message the agent…</span>
+              <span class="ha-cursor"></span>
+            </div>
+          </main>
+        </div>
+      </div>
     </div>
   </div>
 </section>
