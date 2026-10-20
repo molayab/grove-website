@@ -28,9 +28,16 @@ html { scroll-behavior: smooth; }
   --text:       #EEEEEE;
   --text-2:     rgba(238, 238, 238, 0.68);
   --text-3:     rgba(238, 238, 238, 0.44);
+}
 
-  /* Pico variable bridge — keeps native Pico elements (article, [role=button],
-     nav) in sync with the tokens above instead of Pico's own default palette. */
+/* Pico variable bridge — keeps native Pico elements (article, [role=button],
+   nav) in sync with the tokens above instead of Pico's own default palette.
+   The extra selectors are needed for specificity: Pico declares its light
+   palette on `:root:not([data-theme=dark])` (0,2,0), which would otherwise
+   beat a plain `:root` and leak Pico's blue/white defaults into light mode. */
+:root,
+:root[data-theme],
+:root:not([data-theme]) {
   --pico-font-family: var(--font);
   --pico-border-radius: var(--radius);
   --pico-background-color: var(--bg);
@@ -208,7 +215,9 @@ code {
 }
 
 /* ── Nav ────────────────────────────────────────────────────── */
-nav {
+/* `body > nav` (not bare `nav`) so the hero mock's <nav class="ha-tabs">
+   doesn't pick up the sticky site-nav chrome and light-mode background. */
+body > nav {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -218,10 +227,10 @@ nav {
   border-bottom: 1px solid var(--border);
 }
 @media (prefers-color-scheme: light) {
-  nav { background: rgba(238, 238, 238, 0.82); }
+  body > nav { background: rgba(238, 238, 238, 0.82); }
 }
-:root[data-theme="light"] nav { background: rgba(238, 238, 238, 0.82); }
-:root[data-theme="dark"] nav { background: rgba(0, 0, 0, 0.75); }
+:root[data-theme="light"] body > nav { background: rgba(238, 238, 238, 0.82); }
+:root[data-theme="dark"] body > nav { background: rgba(0, 0, 0, 0.75); }
 
 .nav-inner {
   width: 100%;
@@ -331,6 +340,11 @@ nav {
   flex-wrap: wrap;
   margin-bottom: 0.875rem;
 }
+
+/* Ghost button sits on the always-black hero, so it can't follow the
+   theme-reactive --text/--border tokens (black-on-black in light mode). */
+.hero .btn-ghost { color: #EEEEEE; border-color: rgba(238, 238, 238, 0.14); }
+.hero .btn-ghost:hover { border-color: rgba(238, 238, 238, 0.68); }
 
 .hero-trial {
   font-size: 0.8125rem;
