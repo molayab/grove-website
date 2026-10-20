@@ -16,7 +16,7 @@
   <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="vendor/pico.min.css" />
-  <link rel="stylesheet" href="style.css?v=20261020" />
+  <link rel="stylesheet" href="style.css?v=20261020-2" />
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
   <script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
@@ -53,7 +53,7 @@
 
   <!-- Animated intro: workspaces -> worktrees -> git -> spaces (tabs) -->
   <div class="window-wrap">
-    <div class="hero-shot" role="img" aria-label="Grove's window: a sidebar of project workspaces, the worktrees and git status for the selected one, and Home, Agent, Shell, and Files tabs above a CLI agent session">
+    <div class="hero-shot" role="img" aria-label="Grove's window: a sidebar of project workspaces, the worktrees and git status for the selected one, and Browser, Agent, Shell, Changes, and Files tabs above a CLI agent session">
       <div class="hero-anim">
         <div class="ha-titlebar">
           <div class="ha-titlebar-left">
@@ -63,9 +63,10 @@
             <span class="ha-sidebar-toggle"><span></span><span></span></span>
           </div>
           <nav class="ha-tabs">
-            <span class="ha-tab">Home</span>
+            <span class="ha-tab">Browser</span>
             <span class="ha-tab ha-active">Agent</span>
             <span class="ha-tab">Shell</span>
+            <span class="ha-tab">Changes</span>
             <span class="ha-tab">Files</span>
           </nav>
         </div>
@@ -155,7 +156,7 @@
           <path d="M12 16l4 4-4 4M19 24h5"/>
         </svg>
         <h3>AI Agents, natively</h3>
-        <p>Bring your own AI coding agent — Claude Code, opencode, Codex, Gemini CLI, or Aider — and it just works, already pointed at the right folder. No PATH to configure, no separate terminal window to babysit.</p>
+        <p>Bring your own AI coding agent — Claude Code, opencode, Codex, Gemini CLI, Aider, or any other CLI you add yourself — and it just works, already pointed at the right folder. Run several agent tabs side by side, no PATH to configure.</p>
       </article>
 
       <article class="feature-card">
@@ -164,7 +165,27 @@
           <path d="M18 13.5V20M18 20l-6.5 3M18 20l6.5 3"/>
         </svg>
         <h3>Worktree-first</h3>
-        <p>Work on three branches at once, without losing your place. Every worktree gets its own agent, shell, files, and diff — click a worktree and everything follows, automatically.</p>
+        <p>Work on three branches at once, without losing your place. Start a new worktree from any branch in a click — each one gets its own agent, shell, files, and changes, and everything follows when you switch.</p>
+      </article>
+
+      <article class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 10h18M9 16h18M9 22h10"/>
+          <path d="M25 21l2.5 2.5L25 26"/>
+          <path d="M19 23.5h8.5"/>
+        </svg>
+        <h3>Review, then hand it back</h3>
+        <p>The Changes tab updates live as your agent edits files. Read the diff, comment on any line, and send that note straight to the agent — no copy-pasting file paths and line numbers.</p>
+      </article>
+
+      <article class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="7" width="24" height="22" rx="3"/>
+          <path d="M11 14h14M11 19h9"/>
+          <path d="M22 24h4"/>
+        </svg>
+        <h3>Prompts &amp; commands, ⌘K away</h3>
+        <p>Save the prompts and commands you reach for every day, per project or in a shared library. Press ⌘K, pick one, and it lands in your agent or a shell tab — ready to run.</p>
       </article>
 
       <article class="feature-card">
@@ -173,8 +194,8 @@
           <circle cx="27" cy="24" r="4.5"/>
           <path d="M25 24l1.5 1.5L29 22"/>
         </svg>
-        <h3>Git panel built in</h3>
-        <p>Do the everyday git stuff without leaving the window. Branch, fetch, pull, push, and commit — plus a recent-commit log so you always know where you left off.</p>
+        <h3>Git, in plain English</h3>
+        <p>One Sync button instead of fetch, pull, and push. Save your changes, see your recent saves, and if a pull is blocked by local edits, Grove offers to stash and pull for you.</p>
       </article>
 
       <article class="feature-card">
@@ -182,8 +203,8 @@
           <path d="M8 6h14l6 6v18H8z"/><path d="M22 6v6h6"/>
           <path d="M12 20h7M12 24h5"/>
         </svg>
-        <h3>File tree + Diff</h3>
-        <p>Browse your project your way — tree or icon grid — and see exactly what changed, unified or side-by-side, before you commit to anything.</p>
+        <h3>Files, with real previews</h3>
+        <p>Browse the checkout in a file tree and preview what you click. Markdown renders GitHub-style — tables, code, even Mermaid diagrams — and exports to PDF in one step.</p>
       </article>
 
       <article class="feature-card">
@@ -191,8 +212,17 @@
           <rect x="4" y="8" width="28" height="20" rx="3"/>
           <path d="M10 18l3 3-3 3M16 21h10"/>
         </svg>
-        <h3>Shell tab</h3>
-        <p>Need a real terminal? It's right there, rooted in the same folder as your agent — run a test, tail a log, copy a path, no context switch.</p>
+        <h3>Shell tabs</h3>
+        <p>Need a real terminal? Open as many as you like, all rooted in the same folder as your agent — run the tests in one, tail a log in another, no context switch.</p>
+      </article>
+
+      <article class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="18" r="13"/>
+          <path d="M5 18h26M18 5c3.5 3.6 5 8 5 13s-1.5 9.4-5 13c-3.5-3.6-5-8-5-13s1.5-9.4 5-13z"/>
+        </svg>
+        <h3>Your project's web pages, pinned</h3>
+        <p>Pin the issue tracker, docs, or dashboard that goes with each project. They open in the Browser tab, right next to your code, and stay with that workspace.</p>
       </article>
 
       <article class="feature-card">
@@ -201,7 +231,7 @@
           <path d="M18 4v28M4 12l14 8 14-8"/>
         </svg>
         <h3>No destructive defaults</h3>
-        <p>Grove won't let a stray click wipe your work. Force push, branch delete, and discard aren't in here — and anything that reaches beyond your machine asks first.</p>
+        <p>Grove won't let a stray click wipe your work. There's no force push, discarding a file or dropping an unpushed commit always asks first, and anything that reaches beyond your machine asks too.</p>
       </article>
 
       <article class="feature-card feature-highlight">
@@ -224,43 +254,57 @@
   <div class="section-inner">
     <p class="eyebrow">Screenshots</p>
     <h2>See it in the window.</h2>
-    <p class="section-sub">The same checkout, five ways to work on it.</p>
+    <p class="section-sub">The same checkout, every way you work on it.</p>
 
     <div class="screenshot-gallery">
       <div class="screenshot-item">
-        <a class="screenshot-frame" href="screenshots/home.png">
-          <img src="screenshots/home.png" width="1800" height="1113" loading="lazy"
-               alt="Grove's Home tab showing pinned sites for a workspace — Jira board, GitHub repo, and Trello board — opened as tabs alongside the checkout" />
+        <a class="screenshot-frame" href="screenshots/agent.png">
+          <img src="screenshots/agent.png" width="1800" height="1125" loading="lazy"
+               alt="Grove's Agent tab running Claude Code in a project workspace, with the workspace list, worktrees, and git panel in the sidebar" />
         </a>
-        <p class="screenshot-caption">Pin your Jira board, GitHub repo, or Trello board — one click away, without leaving the workspace.</p>
+        <p class="screenshot-caption">Your agent of choice, already in the right folder — with every project and worktree one click away.</p>
+      </div>
+      <div class="screenshot-item">
+        <a class="screenshot-frame" href="screenshots/changes-review.png">
+          <img src="screenshots/changes-review.png" width="1800" height="1125" loading="lazy"
+               alt="Grove's Changes tab showing a unified diff of a React component, with an inline comment box and a Send to Agent button" />
+        </a>
+        <p class="screenshot-caption">Review the diff, comment on a line, and send it straight to your agent.</p>
+      </div>
+      <div class="screenshot-item">
+        <a class="screenshot-frame" href="screenshots/palette.png">
+          <img src="screenshots/palette.png" width="1800" height="1125" loading="lazy"
+               alt="Grove's ⌘K palette listing saved prompts and shell commands for the workspace" />
+        </a>
+        <p class="screenshot-caption">Press ⌘K to run a saved prompt or command against the current checkout.</p>
+      </div>
+      <div class="screenshot-item">
+        <a class="screenshot-frame" href="screenshots/files-markdown.png">
+          <img src="screenshots/files-markdown.png" width="1800" height="1125" loading="lazy"
+               alt="Grove's Files tab with a project file tree and a rendered Markdown README, including a Mermaid architecture diagram and a table" />
+        </a>
+        <p class="screenshot-caption">A file tree with live previews — Markdown renders with tables and Mermaid diagrams.</p>
       </div>
       <div class="screenshot-item">
         <a class="screenshot-frame" href="screenshots/shell.png">
-          <img src="screenshots/shell.png" width="1800" height="1133" loading="lazy"
-               alt="Grove's Shell tab showing an interactive login shell rooted at the selected workspace" />
+          <img src="screenshots/shell.png" width="1800" height="1125" loading="lazy"
+               alt="Grove's Shell tab with two shell tabs open, showing git log and worktree output for the workspace" />
         </a>
-        <p class="screenshot-caption">A real login shell, rooted at the exact same checkout as your agent.</p>
+        <p class="screenshot-caption">As many login shells as you need, rooted at the same checkout as your agent.</p>
       </div>
       <div class="screenshot-item">
-        <a class="screenshot-frame" href="screenshots/files.png">
-          <img src="screenshots/files.png" width="1800" height="1133" loading="lazy"
-               alt="Grove's Files tab showing an expandable file tree for a Node.js project" />
+        <a class="screenshot-frame" href="screenshots/browser.png">
+          <img src="screenshots/browser.png" width="1800" height="1125" loading="lazy"
+               alt="Grove's Browser tab with pinned Vite and React documentation sites open as tabs beside the workspace" />
         </a>
-        <p class="screenshot-caption">An expandable file tree, or an icon grid — your call in Settings.</p>
-      </div>
-      <div class="screenshot-item">
-        <a class="screenshot-frame" href="screenshots/diff-sidebyside.png">
-          <img src="screenshots/diff-sidebyside.png" width="1800" height="1133" loading="lazy"
-               alt="Grove's Diff tab rendering a side-by-side comparison of changed files" />
-        </a>
-        <p class="screenshot-caption">Unified or side-by-side — diffs render either way, per file.</p>
+        <p class="screenshot-caption">Pin the docs, tracker, or dashboard for each project — right beside your code.</p>
       </div>
       <div class="screenshot-item">
         <a class="screenshot-frame" href="screenshots/settings.png">
-          <img src="screenshots/settings.png" width="1400" height="1194" loading="lazy"
-               alt="Grove's Settings window showing the worktrees folder, git executable, and agent configuration" />
+          <img src="screenshots/settings.png" width="1040" height="900" loading="lazy"
+               alt="Grove's Settings window on the General tab, showing Markdown preview options and accent color choices" />
         </a>
-        <p class="screenshot-caption">Every default is automatic — worktrees root, git binary, agent, shell.</p>
+        <p class="screenshot-caption">Sensible defaults out of the box — and an accent color that's yours.</p>
       </div>
     </div>
   </div>
@@ -311,7 +355,7 @@
   <div class="section-inner">
     <p class="eyebrow">Supported agents</p>
     <h2>Choose your AI coding partner.</h2>
-    <p class="section-sub">Grove finds the agent binary automatically — no PATH configuration required.</p>
+    <p class="section-sub">Grove finds the agent binary automatically — no PATH configuration required. Using something else? Add any CLI agent in Settings.</p>
     <div class="agent-row">
       <div class="agent-pill">Claude Code</div>
       <div class="agent-pill">opencode</div>
@@ -343,7 +387,7 @@
           <li><span class="check">✓</span> All current features</li>
           <li><span class="check">✓</span> All future updates</li>
           <li><span class="check">✓</span> Unlimited workspaces &amp; worktrees</li>
-          <li><span class="check">✓</span> All AI agents — Claude Code, opencode, Codex, Gemini CLI, Aider</li>
+          <li><span class="check">✓</span> All AI agents — Claude Code, opencode, Codex, Gemini CLI, Aider, or your own</li>
           <li><span class="check">✓</span> macOS 15+ · Developer ID signed &amp; notarized</li>
         </ul>
 
@@ -365,7 +409,7 @@
           <li><span class="check">✓</span> All current features</li>
           <li><span class="check">✓</span> All future updates</li>
           <li><span class="check">✓</span> Unlimited workspaces &amp; worktrees</li>
-          <li><span class="check">✓</span> All AI agents — Claude Code, opencode, Codex, Gemini CLI, Aider</li>
+          <li><span class="check">✓</span> All AI agents — Claude Code, opencode, Codex, Gemini CLI, Aider, or your own</li>
           <li><span class="check">✓</span> macOS 15+ · Developer ID signed &amp; notarized</li>
         </ul>
 
@@ -386,7 +430,7 @@
           <li><span class="check">✓</span> All current features</li>
           <li><span class="check">✓</span> All future updates</li>
           <li><span class="check">✓</span> Unlimited workspaces &amp; worktrees</li>
-          <li><span class="check">✓</span> All AI agents — Claude Code, opencode, Codex, Gemini CLI, Aider</li>
+          <li><span class="check">✓</span> All AI agents — Claude Code, opencode, Codex, Gemini CLI, Aider, or your own</li>
           <li><span class="check">✓</span> macOS 15+ · Developer ID signed &amp; notarized</li>
         </ul>
 
