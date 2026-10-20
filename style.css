@@ -378,6 +378,73 @@ body > nav {
 }
 .hero-shot img { display: block; width: 100%; height: auto; }
 
+/* Hero carousel: screenshots stacked in one frame and cross-faded. Every
+   slide is the same 1800×1125 capture size, so the frame's aspect ratio is
+   fixed and nothing reflows as slides change. */
+.hero-slides { position: relative; aspect-ratio: 1800 / 1125; background: #111111; }
+.hero-shot img.hero-slide {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.hero-shot img.hero-slide.is-active { opacity: 1; }
+
+/* `.window-wrap` prefix outranks Pico's [role=group] button-group styling
+   (full width, stretched children, squared inner corners). */
+.window-wrap .hero-controls {
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin: 1.5rem 0 0;
+  box-shadow: none;
+}
+.window-wrap .hero-controls > * { flex: none; border-radius: 999px; }
+.hero-caption {
+  margin: 0.5rem 0 0;
+  min-height: 1.5em;
+  font-size: 0.9375rem;
+  color: rgba(238, 238, 238, 0.6);
+  text-align: center;
+}
+/* Dots are 24px hit targets with a smaller visible pip drawn by ::before. */
+.hero-dot,
+.hero-pause {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(238, 238, 238, 0.6);
+  cursor: pointer;
+  box-shadow: none;
+}
+.hero-dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(238, 238, 238, 0.28);
+  transition: width 0.25s ease, background 0.25s ease;
+}
+.hero-dot { width: auto; min-width: 24px; padding: 0 4px; }
+.hero-dot:hover::before { background: rgba(238, 238, 238, 0.55); }
+.hero-dot[aria-current="true"]::before { width: 22px; background: var(--accent); }
+.hero-pause { margin-left: 0.5rem; }
+.hero-pause svg { width: 12px; height: 12px; }
+.hero-pause svg[hidden] { display: none; }
+.hero-pause:hover { color: #EEEEEE; }
+.hero-dot:focus-visible,
+.hero-pause:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; box-shadow: none; }
+
 @keyframes hero-frame-in { to { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
@@ -386,6 +453,8 @@ body > nav {
     opacity: 1 !important;
     transform: none !important;
   }
+  .hero-shot img.hero-slide,
+  .hero-dot::before { transition: none; }
 }
 
 /* ── Section wrapper ────────────────────────────────────────── */

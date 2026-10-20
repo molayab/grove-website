@@ -16,7 +16,7 @@
   <link rel="icon" href="../favicon-16.png" sizes="16x16" type="image/png" />
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
   <link rel="stylesheet" href="../vendor/pico.min.css" />
-  <link rel="stylesheet" href="../style.css?v=20261020-3" />
+  <link rel="stylesheet" href="../style.css?v=20261020-4" />
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
   <script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
@@ -51,13 +51,35 @@
     <p class="hero-trial">Prueba gratis &nbsp;·&nbsp; Firmado con Developer ID y notarizado por Apple</p>
   </div>
 
-  <!-- Hero: la paleta ⌘K sobre una sesión del agente -->
+  <!-- Hero: auto-advancing carousel of app screenshots -->
   <div class="window-wrap">
-    <div class="hero-shot">
-      <img src="../screenshots/palette.png" width="1800" height="1125"
-           alt="La ventana de Grove con la paleta ⌘K abierta sobre una sesión de Claude Code, listando prompts y comandos de shell guardados para el espacio de trabajo, junto a la lista de proyectos, los worktrees y el panel de git"
-           loading="eager" />
+    <div class="hero-shot" id="hero-carousel" role="region" aria-roledescription="carousel" aria-label="Capturas de Grove">
+      <div class="hero-slides">
+        <img class="hero-slide is-active" src="../screenshots/palette.png" width="1800" height="1125"
+             alt="La ventana de Grove con la paleta ⌘K abierta sobre una sesión de Claude Code, listando prompts y comandos de shell guardados" loading="eager" decoding="async" />
+        <img class="hero-slide" src="../screenshots/agent.png" width="1800" height="1125"
+             alt="La pestaña Agent de Grove ejecutando Claude Code, con la lista de proyectos, los worktrees y el panel de git en la barra lateral" loading="lazy" decoding="async" aria-hidden="true" />
+        <img class="hero-slide" src="../screenshots/changes-review.png" width="1800" height="1125"
+             alt="La pestaña Changes de Grove mostrando un diff unificado con un cuadro de comentario y un botón Send to Agent" loading="lazy" decoding="async" aria-hidden="true" />
+        <img class="hero-slide" src="../screenshots/files-markdown.png" width="1800" height="1125"
+             alt="La pestaña Files de Grove con el árbol de archivos y un README en Markdown renderizado, con un diagrama Mermaid" loading="lazy" decoding="async" aria-hidden="true" />
+        <img class="hero-slide" src="../screenshots/shell.png" width="1800" height="1125"
+             alt="La pestaña Shell de Grove con dos pestañas de shell abiertas, mostrando git log y los worktrees" loading="lazy" decoding="async" aria-hidden="true" />
+        <img class="hero-slide" src="../screenshots/browser.png" width="1800" height="1125"
+             alt="La pestaña Browser de Grove con la documentación de Vite y React ancladas como pestañas" loading="lazy" decoding="async" aria-hidden="true" />
+      </div>
     </div>
+    <div class="hero-controls" role="group" aria-label="Elige una captura">
+      <button type="button" class="hero-dot" aria-label="Prompts y comandos guardados, a un ⌘K" aria-current="true"></button>
+      <button type="button" class="hero-dot" aria-label="Tu agente de IA, ya en la carpeta correcta" aria-current="false"></button>
+      <button type="button" class="hero-dot" aria-label="Revisa el diff y envía notas al agente" aria-current="false"></button>
+      <button type="button" class="hero-dot" aria-label="Árbol de archivos con vistas previas de Markdown" aria-current="false"></button>
+      <button type="button" class="hero-dot" aria-label="Todas las pestañas de shell que necesites" aria-current="false"></button>
+      <button type="button" class="hero-dot" aria-label="Las páginas de tu proyecto, junto al código" aria-current="false"></button>
+      <button type="button" class="hero-pause" id="hero-pause" aria-label="Pausar presentación"
+              data-label-pause="Pausar presentación" data-label-play="Reproducir presentación"><svg class="hero-icon-pause" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><rect x="2" y="1.5" width="3" height="9" rx="0.75"/><rect x="7" y="1.5" width="3" height="9" rx="0.75"/></svg><svg class="hero-icon-play" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true" hidden><path d="M3 1.8v8.4a.6.6 0 0 0 .9.5l6.6-4.2a.6.6 0 0 0 0-1L3.9 1.3a.6.6 0 0 0-.9.5z"/></svg></button>
+    </div>
+    <p class="hero-caption" id="hero-caption">Prompts y comandos guardados, a un ⌘K</p>
   </div>
 </section>
 
@@ -553,6 +575,68 @@
     if (e.key === 'ArrowLeft') show(current - 1);
     if (e.key === 'ArrowRight') show(current + 1);
   });
+})();
+</script>
+
+<script>
+(function () {
+  // Hero carousel: cross-fades the stacked screenshots every few seconds.
+  // Pauses while hovered or focused, while the tab is hidden, and when the
+  // visitor uses the pause button; never auto-plays under reduced motion.
+  var root = document.getElementById('hero-carousel');
+  if (!root) return;
+  var slides = Array.prototype.slice.call(root.querySelectorAll('.hero-slide'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.hero-dot'));
+  var caption = document.getElementById('hero-caption');
+  var pauseBtn = document.getElementById('hero-pause');
+  var INTERVAL = 4500;
+  var current = 0;
+  var timer = null;
+  var hovering = false;
+  var userPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function show(i) {
+    current = (i + slides.length) % slides.length;
+    slides.forEach(function (slide, n) {
+      var active = n === current;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+    dots.forEach(function (dot, n) {
+      dot.setAttribute('aria-current', n === current ? 'true' : 'false');
+    });
+    if (caption) caption.textContent = dots[current].getAttribute('aria-label');
+  }
+
+  function stop() { clearInterval(timer); timer = null; }
+  function sync() {
+    stop();
+    if (!userPaused && !hovering && !document.hidden) {
+      timer = setInterval(function () { show(current + 1); }, INTERVAL);
+    }
+  }
+  function renderPause() {
+    if (!pauseBtn) return;
+    pauseBtn.setAttribute('aria-label', pauseBtn.getAttribute(userPaused ? 'data-label-play' : 'data-label-pause'));
+    pauseBtn.querySelector('.hero-icon-pause').toggleAttribute('hidden', userPaused);
+    pauseBtn.querySelector('.hero-icon-play').toggleAttribute('hidden', !userPaused);
+  }
+
+  dots.forEach(function (dot, n) {
+    dot.addEventListener('click', function () { show(n); sync(); });
+  });
+  if (pauseBtn) pauseBtn.addEventListener('click', function () {
+    userPaused = !userPaused;
+    renderPause();
+    sync();
+  });
+  root.addEventListener('mouseenter', function () { hovering = true; sync(); });
+  root.addEventListener('mouseleave', function () { hovering = false; sync(); });
+  document.addEventListener('visibilitychange', sync);
+
+  show(0);
+  renderPause();
+  sync();
 })();
 </script>
 
