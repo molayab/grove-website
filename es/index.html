@@ -16,7 +16,7 @@
   <link rel="icon" href="../favicon-16.png" sizes="16x16" type="image/png" />
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
   <link rel="stylesheet" href="../vendor/pico.min.css" />
-  <link rel="stylesheet" href="../style.css?v=20261020" />
+  <link rel="stylesheet" href="../style.css?v=20261020-2" />
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
   <script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
@@ -53,7 +53,7 @@
 
   <!-- Intro animado: workspaces -> worktrees -> git -> spaces (pestañas) -->
   <div class="window-wrap">
-    <div class="hero-shot" role="img" aria-label="La ventana de Grove: una barra lateral de proyectos, los worktrees y el estado de git del proyecto seleccionado, y las pestañas Home, Agent, Shell y Files sobre una sesión CLI con el agente">
+    <div class="hero-shot" role="img" aria-label="La ventana de Grove: una barra lateral de proyectos, los worktrees y el estado de git del proyecto seleccionado, y las pestañas Browser, Agent, Shell, Changes y Files sobre una sesión CLI con el agente">
       <div class="hero-anim">
         <div class="ha-titlebar">
           <div class="ha-titlebar-left">
@@ -63,9 +63,10 @@
             <span class="ha-sidebar-toggle"><span></span><span></span></span>
           </div>
           <nav class="ha-tabs">
-            <span class="ha-tab">Home</span>
+            <span class="ha-tab">Browser</span>
             <span class="ha-tab ha-active">Agent</span>
             <span class="ha-tab">Shell</span>
+            <span class="ha-tab">Changes</span>
             <span class="ha-tab">Files</span>
           </nav>
         </div>
@@ -155,7 +156,7 @@
           <path d="M12 16l4 4-4 4M19 24h5"/>
         </svg>
         <h3>Agentes de IA, de forma nativa</h3>
-        <p>Trae tu propio agente de IA — Claude Code, opencode, Codex, Gemini CLI o Aider — y simplemente funciona, ya apuntado a la carpeta correcta. Sin configurar el PATH, sin una ventana de terminal aparte que vigilar.</p>
+        <p>Trae tu propio agente de IA — Claude Code, opencode, Codex, Gemini CLI, Aider o cualquier otro CLI que agregues tú — y simplemente funciona, ya apuntando a la carpeta correcta. Ejecuta varias pestañas de agente lado a lado, sin configurar el PATH.</p>
       </article>
 
       <article class="feature-card">
@@ -164,7 +165,27 @@
           <path d="M18 13.5V20M18 20l-6.5 3M18 20l6.5 3"/>
         </svg>
         <h3>Worktrees primero</h3>
-        <p>Trabaja en tres ramas a la vez sin perder tu lugar. Cada worktree tiene su propio agente, shell, archivos y diff — haz clic en un worktree y todo lo sigue, automáticamente.</p>
+        <p>Trabaja en tres ramas a la vez, sin perder tu lugar. Crea un worktree nuevo desde cualquier rama con un clic — cada uno tiene su propio agente, shell, archivos y cambios, y todo te sigue cuando cambias.</p>
+      </article>
+
+      <article class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 10h18M9 16h18M9 22h10"/>
+          <path d="M25 21l2.5 2.5L25 26"/>
+          <path d="M19 23.5h8.5"/>
+        </svg>
+        <h3>Revisa y devuélveselo</h3>
+        <p>La pestaña Changes se actualiza en vivo mientras tu agente edita archivos. Lee el diff, comenta cualquier línea y envía esa nota directamente al agente — sin copiar rutas ni números de línea.</p>
+      </article>
+
+      <article class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="7" width="24" height="22" rx="3"/>
+          <path d="M11 14h14M11 19h9"/>
+          <path d="M22 24h4"/>
+        </svg>
+        <h3>Prompts y comandos, a un ⌘K</h3>
+        <p>Guarda los prompts y comandos que usas todos los días, por proyecto o en una biblioteca compartida. Presiona ⌘K, elige uno y aparece en tu agente o en una pestaña de shell — listo para ejecutar.</p>
       </article>
 
       <article class="feature-card">
@@ -173,8 +194,8 @@
           <circle cx="27" cy="24" r="4.5"/>
           <path d="M25 24l1.5 1.5L29 22"/>
         </svg>
-        <h3>Panel de git integrado</h3>
-        <p>Haz el trabajo de git de todos los días sin salir de la ventana. Cambia de rama, haz fetch, pull, push y commit — más un historial de commits recientes para saber siempre dónde lo dejaste.</p>
+        <h3>Git, en lenguaje claro</h3>
+        <p>Un solo botón Sync en lugar de fetch, pull y push. Guarda tus cambios, mira tus guardados recientes y, si un pull está bloqueado por cambios locales, Grove te ofrece hacer stash y pull por ti.</p>
       </article>
 
       <article class="feature-card">
@@ -182,8 +203,8 @@
           <path d="M8 6h14l6 6v18H8z"/><path d="M22 6v6h6"/>
           <path d="M12 20h7M12 24h5"/>
         </svg>
-        <h3>Árbol de archivos + Diff</h3>
-        <p>Explora tu proyecto a tu manera — en árbol o en cuadrícula de iconos — y ve exactamente qué cambió, unificado o lado a lado, antes de comprometerte a nada.</p>
+        <h3>Archivos, con vistas previas reales</h3>
+        <p>Explora el checkout en un árbol de archivos y previsualiza lo que seleccionas. El Markdown se muestra al estilo GitHub — tablas, código e incluso diagramas Mermaid — y se exporta a PDF en un paso.</p>
       </article>
 
       <article class="feature-card">
@@ -191,8 +212,17 @@
           <rect x="4" y="8" width="28" height="20" rx="3"/>
           <path d="M10 18l3 3-3 3M16 21h10"/>
         </svg>
-        <h3>Pestaña de shell</h3>
-        <p>¿Necesitas una terminal real? Está ahí mismo, en la misma carpeta que tu agente — ejecuta una prueba, revisa un log, copia una ruta, sin cambiar de contexto.</p>
+        <h3>Pestañas de shell</h3>
+        <p>¿Necesitas una terminal de verdad? Abre todas las que quieras, todas ubicadas en la misma carpeta que tu agente — corre los tests en una, sigue un log en otra, sin cambiar de contexto.</p>
+      </article>
+
+      <article class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="18" r="13"/>
+          <path d="M5 18h26M18 5c3.5 3.6 5 8 5 13s-1.5 9.4-5 13c-3.5-3.6-5-8-5-13s1.5-9.4 5-13z"/>
+        </svg>
+        <h3>Las páginas de tu proyecto, ancladas</h3>
+        <p>Ancla el gestor de issues, la documentación o el dashboard de cada proyecto. Se abren en la pestaña Browser, justo al lado de tu código, y se quedan con ese espacio de trabajo.</p>
       </article>
 
       <article class="feature-card">
@@ -201,7 +231,7 @@
           <path d="M18 4v28M4 12l14 8 14-8"/>
         </svg>
         <h3>Nada destructivo por defecto</h3>
-        <p>Grove no deja que un clic accidental borre tu trabajo. Force push, eliminar ramas y descartar cambios no están aquí — y todo lo que sale de tu máquina pide confirmación antes.</p>
+        <p>Grove no deja que un clic accidental borre tu trabajo. No hay force push, descartar un archivo o eliminar un commit sin publicar siempre pide confirmación, y todo lo que sale de tu máquina también.</p>
       </article>
 
       <article class="feature-card feature-highlight">
@@ -224,43 +254,57 @@
   <div class="section-inner">
     <p class="eyebrow">Capturas</p>
     <h2>Míralo en la ventana.</h2>
-    <p class="section-sub">El mismo checkout, cinco formas de trabajar en él.</p>
+    <p class="section-sub">El mismo checkout, todas las formas en que trabajas en él.</p>
 
     <div class="screenshot-gallery">
       <div class="screenshot-item">
-        <a class="screenshot-frame" href="../screenshots/home.png">
-          <img src="../screenshots/home.png" width="1800" height="1113" loading="lazy"
-               alt="La pestaña Home de Grove mostrando sitios anclados para un espacio de trabajo — tablero de Jira, repositorio de GitHub y tablero de Trello — abiertos como pestañas junto al checkout" />
+        <a class="screenshot-frame" href="../screenshots/agent.png">
+          <img src="../screenshots/agent.png" width="1800" height="1125" loading="lazy"
+               alt="La pestaña Agent de Grove ejecutando Claude Code en un espacio de trabajo, con la lista de proyectos, los worktrees y el panel de git en la barra lateral" />
         </a>
-        <p class="screenshot-caption">Ancla tu tablero de Jira, repositorio de GitHub o tablero de Trello — a un clic, sin salir del espacio de trabajo.</p>
+        <p class="screenshot-caption">Tu agente favorito, ya en la carpeta correcta — con cada proyecto y worktree a un clic.</p>
+      </div>
+      <div class="screenshot-item">
+        <a class="screenshot-frame" href="../screenshots/changes-review.png">
+          <img src="../screenshots/changes-review.png" width="1800" height="1125" loading="lazy"
+               alt="La pestaña Changes de Grove mostrando un diff unificado de un componente de React, con un cuadro de comentario en línea y un botón Send to Agent" />
+        </a>
+        <p class="screenshot-caption">Revisa el diff, comenta una línea y envíala directamente a tu agente.</p>
+      </div>
+      <div class="screenshot-item">
+        <a class="screenshot-frame" href="../screenshots/palette.png">
+          <img src="../screenshots/palette.png" width="1800" height="1125" loading="lazy"
+               alt="La paleta ⌘K de Grove con prompts y comandos de shell guardados para el espacio de trabajo" />
+        </a>
+        <p class="screenshot-caption">Presiona ⌘K para ejecutar un prompt o comando guardado sobre el checkout actual.</p>
+      </div>
+      <div class="screenshot-item">
+        <a class="screenshot-frame" href="../screenshots/files-markdown.png">
+          <img src="../screenshots/files-markdown.png" width="1800" height="1125" loading="lazy"
+               alt="La pestaña Files de Grove con el árbol de archivos de un proyecto y un README en Markdown renderizado, con un diagrama Mermaid y una tabla" />
+        </a>
+        <p class="screenshot-caption">Un árbol de archivos con vistas previas — el Markdown se muestra con tablas y diagramas Mermaid.</p>
       </div>
       <div class="screenshot-item">
         <a class="screenshot-frame" href="../screenshots/shell.png">
-          <img src="../screenshots/shell.png" width="1800" height="1133" loading="lazy"
-               alt="La pestaña Shell de Grove mostrando una shell interactiva ubicada en el espacio de trabajo seleccionado" />
+          <img src="../screenshots/shell.png" width="1800" height="1125" loading="lazy"
+               alt="La pestaña Shell de Grove con dos pestañas de shell abiertas, mostrando la salida de git log y de los worktrees del espacio de trabajo" />
         </a>
-        <p class="screenshot-caption">Una shell real, ubicada en el mismo checkout exacto que tu agente.</p>
+        <p class="screenshot-caption">Todas las shells que necesites, ubicadas en el mismo checkout que tu agente.</p>
       </div>
       <div class="screenshot-item">
-        <a class="screenshot-frame" href="../screenshots/files.png">
-          <img src="../screenshots/files.png" width="1800" height="1133" loading="lazy"
-               alt="La pestaña Files de Grove mostrando un árbol de archivos expandible para un proyecto Node.js" />
+        <a class="screenshot-frame" href="../screenshots/browser.png">
+          <img src="../screenshots/browser.png" width="1800" height="1125" loading="lazy"
+               alt="La pestaña Browser de Grove con la documentación de Vite y React ancladas como pestañas junto al espacio de trabajo" />
         </a>
-        <p class="screenshot-caption">Un árbol de archivos expandible, o una cuadrícula de iconos — tú decides en Configuración.</p>
-      </div>
-      <div class="screenshot-item">
-        <a class="screenshot-frame" href="../screenshots/diff-sidebyside.png">
-          <img src="../screenshots/diff-sidebyside.png" width="1800" height="1133" loading="lazy"
-               alt="La pestaña Diff de Grove mostrando una comparación lado a lado de los archivos modificados" />
-        </a>
-        <p class="screenshot-caption">Unificado o lado a lado — los diffs se muestran como prefieras, por archivo.</p>
+        <p class="screenshot-caption">Ancla la documentación, el gestor de issues o el dashboard de cada proyecto — junto a tu código.</p>
       </div>
       <div class="screenshot-item">
         <a class="screenshot-frame" href="../screenshots/settings.png">
-          <img src="../screenshots/settings.png" width="1400" height="1194" loading="lazy"
-               alt="La ventana de Configuración de Grove mostrando la carpeta de worktrees, el ejecutable de git y la configuración del agente" />
+          <img src="../screenshots/settings.png" width="1040" height="900" loading="lazy"
+               alt="La ventana de Configuración de Grove en la pestaña General, mostrando opciones de vista previa de Markdown y colores de acento" />
         </a>
-        <p class="screenshot-caption">Todo viene configurado automáticamente — carpeta raíz de worktrees, binario de git, agente, shell.</p>
+        <p class="screenshot-caption">Valores predeterminados sensatos desde el inicio — y un color de acento a tu gusto.</p>
       </div>
     </div>
   </div>
@@ -311,7 +355,7 @@
   <div class="section-inner">
     <p class="eyebrow">Agentes compatibles</p>
     <h2>Elige tu compañero de IA para programar.</h2>
-    <p class="section-sub">Grove encuentra el binario del agente automáticamente — no necesitas configurar el PATH.</p>
+    <p class="section-sub">Grove encuentra el binario del agente automáticamente — no necesitas configurar el PATH. ¿Usas otro? Agrega cualquier agente CLI en Configuración.</p>
     <div class="agent-row">
       <div class="agent-pill">Claude Code</div>
       <div class="agent-pill">opencode</div>
@@ -343,7 +387,7 @@
           <li><span class="check">✓</span> Todas las funciones actuales</li>
           <li><span class="check">✓</span> Todas las actualizaciones futuras</li>
           <li><span class="check">✓</span> Espacios de trabajo y worktrees ilimitados</li>
-          <li><span class="check">✓</span> Todos los agentes de IA — Claude Code, opencode, Codex, Gemini CLI, Aider</li>
+          <li><span class="check">✓</span> Todos los agentes de IA — Claude Code, opencode, Codex, Gemini CLI, Aider o el tuyo</li>
           <li><span class="check">✓</span> macOS 15+ · Firmado con Developer ID y notarizado</li>
         </ul>
 
@@ -365,7 +409,7 @@
           <li><span class="check">✓</span> Todas las funciones actuales</li>
           <li><span class="check">✓</span> Todas las actualizaciones futuras</li>
           <li><span class="check">✓</span> Espacios de trabajo y worktrees ilimitados</li>
-          <li><span class="check">✓</span> Todos los agentes de IA — Claude Code, opencode, Codex, Gemini CLI, Aider</li>
+          <li><span class="check">✓</span> Todos los agentes de IA — Claude Code, opencode, Codex, Gemini CLI, Aider o el tuyo</li>
           <li><span class="check">✓</span> macOS 15+ · Firmado con Developer ID y notarizado</li>
         </ul>
 
@@ -386,7 +430,7 @@
           <li><span class="check">✓</span> Todas las funciones actuales</li>
           <li><span class="check">✓</span> Todas las actualizaciones futuras</li>
           <li><span class="check">✓</span> Espacios de trabajo y worktrees ilimitados</li>
-          <li><span class="check">✓</span> Todos los agentes de IA — Claude Code, opencode, Codex, Gemini CLI, Aider</li>
+          <li><span class="check">✓</span> Todos los agentes de IA — Claude Code, opencode, Codex, Gemini CLI, Aider o el tuyo</li>
           <li><span class="check">✓</span> macOS 15+ · Firmado con Developer ID y notarizado</li>
         </ul>
 
