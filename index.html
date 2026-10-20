@@ -16,7 +16,7 @@
   <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="stylesheet" href="vendor/pico.min.css" />
-  <link rel="stylesheet" href="style.css?v=20260807" />
+  <link rel="stylesheet" href="style.css?v=20261020" />
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
   <script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
@@ -228,38 +228,38 @@
 
     <div class="screenshot-gallery">
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="screenshots/home.png">
           <img src="screenshots/home.png" width="1800" height="1113" loading="lazy"
                alt="Grove's Home tab showing pinned sites for a workspace — Jira board, GitHub repo, and Trello board — opened as tabs alongside the checkout" />
-        </div>
+        </a>
         <p class="screenshot-caption">Pin your Jira board, GitHub repo, or Trello board — one click away, without leaving the workspace.</p>
       </div>
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="screenshots/shell.png">
           <img src="screenshots/shell.png" width="1800" height="1133" loading="lazy"
                alt="Grove's Shell tab showing an interactive login shell rooted at the selected workspace" />
-        </div>
+        </a>
         <p class="screenshot-caption">A real login shell, rooted at the exact same checkout as your agent.</p>
       </div>
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="screenshots/files.png">
           <img src="screenshots/files.png" width="1800" height="1133" loading="lazy"
                alt="Grove's Files tab showing an expandable file tree for a Node.js project" />
-        </div>
+        </a>
         <p class="screenshot-caption">An expandable file tree, or an icon grid — your call in Settings.</p>
       </div>
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="screenshots/diff-sidebyside.png">
           <img src="screenshots/diff-sidebyside.png" width="1800" height="1133" loading="lazy"
                alt="Grove's Diff tab rendering a side-by-side comparison of changed files" />
-        </div>
+        </a>
         <p class="screenshot-caption">Unified or side-by-side — diffs render either way, per file.</p>
       </div>
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="screenshots/settings.png">
           <img src="screenshots/settings.png" width="1400" height="1194" loading="lazy"
                alt="Grove's Settings window showing the worktrees folder, git executable, and agent configuration" />
-        </div>
+        </a>
         <p class="screenshot-caption">Every default is automatic — worktrees root, git binary, agent, shell.</p>
       </div>
     </div>
@@ -402,6 +402,16 @@
 </section>
 
 <!-- COOKIE BANNER -->
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot viewer">
+  <button type="button" class="lightbox-btn lightbox-close" aria-label="Close">&times;</button>
+  <button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous screenshot">&larr;</button>
+  <button type="button" class="lightbox-btn lightbox-next" aria-label="Next screenshot">&rarr;</button>
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" alt="" />
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+</dialog>
+
 <div id="cookie-banner" class="cookie-banner" hidden>
   <div class="cookie-banner-inner">
     <p class="cookie-banner-text">
@@ -512,6 +522,49 @@
     .catch(function () {
       // Static fallback already in the markup covers this case.
     });
+})();
+</script>
+
+<script>
+(function () {
+  // Screenshot lightbox. Each thumbnail is a plain link to the full PNG, so
+  // without JS (or without <dialog> support) clicking still opens the image.
+  var dialog = document.getElementById('lightbox');
+  if (!dialog || typeof dialog.showModal !== 'function') return;
+  var img = document.getElementById('lightbox-img');
+  var caption = document.getElementById('lightbox-caption');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.screenshot-frame'));
+  var current = 0;
+
+  function show(i) {
+    current = (i + links.length) % links.length;
+    var link = links[current];
+    var item = link.closest('.screenshot-item');
+    var cap = item && item.querySelector('.screenshot-caption');
+    img.src = link.getAttribute('href');
+    img.alt = link.querySelector('img').alt;
+    caption.textContent = cap ? cap.textContent : '';
+  }
+
+  links.forEach(function (link, i) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      show(i);
+      dialog.showModal();
+    });
+  });
+
+  dialog.querySelector('.lightbox-prev').addEventListener('click', function () { show(current - 1); });
+  dialog.querySelector('.lightbox-next').addEventListener('click', function () { show(current + 1); });
+  dialog.querySelector('.lightbox-close').addEventListener('click', function () { dialog.close(); });
+  // Clicking the dark backdrop (anything but the image or a control) closes it.
+  dialog.addEventListener('click', function (e) {
+    if (e.target === dialog || e.target.classList.contains('lightbox-figure')) dialog.close();
+  });
+  dialog.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
 })();
 </script>
 

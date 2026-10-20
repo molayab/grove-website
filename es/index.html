@@ -16,7 +16,7 @@
   <link rel="icon" href="../favicon-16.png" sizes="16x16" type="image/png" />
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
   <link rel="stylesheet" href="../vendor/pico.min.css" />
-  <link rel="stylesheet" href="../style.css?v=20260807" />
+  <link rel="stylesheet" href="../style.css?v=20261020" />
   <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
   <script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
@@ -228,38 +228,38 @@
 
     <div class="screenshot-gallery">
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="../screenshots/home.png">
           <img src="../screenshots/home.png" width="1800" height="1113" loading="lazy"
                alt="La pestaña Home de Grove mostrando sitios anclados para un espacio de trabajo — tablero de Jira, repositorio de GitHub y tablero de Trello — abiertos como pestañas junto al checkout" />
-        </div>
+        </a>
         <p class="screenshot-caption">Ancla tu tablero de Jira, repositorio de GitHub o tablero de Trello — a un clic, sin salir del espacio de trabajo.</p>
       </div>
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="../screenshots/shell.png">
           <img src="../screenshots/shell.png" width="1800" height="1133" loading="lazy"
                alt="La pestaña Shell de Grove mostrando una shell interactiva ubicada en el espacio de trabajo seleccionado" />
-        </div>
+        </a>
         <p class="screenshot-caption">Una shell real, ubicada en el mismo checkout exacto que tu agente.</p>
       </div>
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="../screenshots/files.png">
           <img src="../screenshots/files.png" width="1800" height="1133" loading="lazy"
                alt="La pestaña Files de Grove mostrando un árbol de archivos expandible para un proyecto Node.js" />
-        </div>
+        </a>
         <p class="screenshot-caption">Un árbol de archivos expandible, o una cuadrícula de iconos — tú decides en Configuración.</p>
       </div>
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="../screenshots/diff-sidebyside.png">
           <img src="../screenshots/diff-sidebyside.png" width="1800" height="1133" loading="lazy"
                alt="La pestaña Diff de Grove mostrando una comparación lado a lado de los archivos modificados" />
-        </div>
+        </a>
         <p class="screenshot-caption">Unificado o lado a lado — los diffs se muestran como prefieras, por archivo.</p>
       </div>
       <div class="screenshot-item">
-        <div class="screenshot-frame">
+        <a class="screenshot-frame" href="../screenshots/settings.png">
           <img src="../screenshots/settings.png" width="1400" height="1194" loading="lazy"
                alt="La ventana de Configuración de Grove mostrando la carpeta de worktrees, el ejecutable de git y la configuración del agente" />
-        </div>
+        </a>
         <p class="screenshot-caption">Todo viene configurado automáticamente — carpeta raíz de worktrees, binario de git, agente, shell.</p>
       </div>
     </div>
@@ -416,6 +416,16 @@
 </footer>
 
 <!-- COOKIE BANNER -->
+<dialog id="lightbox" class="lightbox" aria-label="Visor de capturas">
+  <button type="button" class="lightbox-btn lightbox-close" aria-label="Cerrar">&times;</button>
+  <button type="button" class="lightbox-btn lightbox-prev" aria-label="Captura anterior">&larr;</button>
+  <button type="button" class="lightbox-btn lightbox-next" aria-label="Captura siguiente">&rarr;</button>
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" alt="" />
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+</dialog>
+
 <div id="cookie-banner" class="cookie-banner" hidden>
   <div class="cookie-banner-inner">
     <p class="cookie-banner-text">
@@ -513,6 +523,49 @@
     .catch(function () {
       // Static fallback already in the markup covers this case.
     });
+})();
+</script>
+
+<script>
+(function () {
+  // Screenshot lightbox. Each thumbnail is a plain link to the full PNG, so
+  // without JS (or without <dialog> support) clicking still opens the image.
+  var dialog = document.getElementById('lightbox');
+  if (!dialog || typeof dialog.showModal !== 'function') return;
+  var img = document.getElementById('lightbox-img');
+  var caption = document.getElementById('lightbox-caption');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.screenshot-frame'));
+  var current = 0;
+
+  function show(i) {
+    current = (i + links.length) % links.length;
+    var link = links[current];
+    var item = link.closest('.screenshot-item');
+    var cap = item && item.querySelector('.screenshot-caption');
+    img.src = link.getAttribute('href');
+    img.alt = link.querySelector('img').alt;
+    caption.textContent = cap ? cap.textContent : '';
+  }
+
+  links.forEach(function (link, i) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      show(i);
+      dialog.showModal();
+    });
+  });
+
+  dialog.querySelector('.lightbox-prev').addEventListener('click', function () { show(current - 1); });
+  dialog.querySelector('.lightbox-next').addEventListener('click', function () { show(current + 1); });
+  dialog.querySelector('.lightbox-close').addEventListener('click', function () { dialog.close(); });
+  // Clicking the dark backdrop (anything but the image or a control) closes it.
+  dialog.addEventListener('click', function (e) {
+    if (e.target === dialog || e.target.classList.contains('lightbox-figure')) dialog.close();
+  });
+  dialog.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
 })();
 </script>
 
