@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Grove</title>
-  <meta name="description" content="Grove's privacy policy: what data we collect, which analytics we use, and how you can control cookies." />
+  <meta name="description" content="Grove's privacy policy: what the website and the Mac app collect, which analytics they use, and how you control cookies, crash reports and usage analytics." />
   <meta property="og:title" content="Privacy Policy — Grove" />
-  <meta property="og:description" content="Grove's privacy policy: what data we collect, which analytics we use, and how you can control cookies." />
+  <meta property="og:description" content="Grove's privacy policy: what the website and the Mac app collect, which analytics they use, and how you control cookies, crash reports and usage analytics." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://grove.molayab.com/privacy-policy.html" />
   <meta property="og:site_name" content="Grove" />
@@ -17,7 +17,7 @@
   <meta property="og:image:alt" content="Grove for Mac" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Privacy Policy — Grove" />
-  <meta name="twitter:description" content="Grove's privacy policy: what data we collect, which analytics we use, and how you can control cookies." />
+  <meta name="twitter:description" content="Grove's privacy policy: what the website and the Mac app collect, which analytics they use, and how you control cookies, crash reports and usage analytics." />
   <meta name="twitter:image" content="https://grove.molayab.com/og-image.png" />
   <link rel="canonical" href="https://grove.molayab.com/privacy-policy.html" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -47,22 +47,25 @@
 
     <p class="eyebrow">Legal</p>
     <h1 class="legal-title">Privacy Policy</h1>
-    <p class="legal-updated">Last updated: August 6, 2026</p>
+    <p class="legal-updated">Last updated: November 4, 2026</p>
 
     <div class="legal-callout">
       <strong>Short version:</strong> Downloading and trying Grove doesn't require an account or
       an email address. This site uses a cookie-free analytics beacon (Cloudflare) on every
       visit, and — only if you say yes in the cookie banner — Google Analytics, which sets a
       cookie. Purchases are handled entirely by Gumroad. You can change your cookie choice
-      anytime from the <strong>Cookie Settings</strong> link in the footer.
+      anytime from the <strong>Cookie Settings</strong> link in the footer. The Grove app never
+      sends your code anywhere; it can send crash reports (on by default) and anonymous usage
+      analytics (off by default), and you control both in its Settings.
     </div>
 
     <div class="legal-prose">
 
       <h2>1. Who this policy covers</h2>
       <p>
-        This policy covers <code>grove.molayab.com</code> and its Spanish translation. Grove the
-        macOS app is built and this site is run by an independent developer, Mateo Olaya Bernal.
+        This policy covers <code>grove.molayab.com</code>, its Spanish translation, and the data
+        the Grove macOS app sends (section 7). Grove is built and this site is run by an
+        independent developer, Mateo Olaya Bernal.
         For anything privacy-related, reach out at <a href="mailto:hello@molayab.com">hello@molayab.com</a>.
       </p>
 
@@ -137,10 +140,45 @@
 
       <h2>7. The Grove app itself</h2>
       <p>
-        This policy covers the <code>grove.molayab.com</code> website. Grove the macOS app runs
-        locally on your Mac and works with your own git repositories and AI agent credentials —
-        it doesn't send your code or project contents to us. License activation contacts Gumroad
-        to validate your license key.
+        Grove runs locally on your Mac and works with your own git repositories and AI agent
+        credentials. <strong>It never sends your code, file contents, file names, or prompts to
+        us.</strong> The AI agents you run inside Grove talk to their own providers under those
+        providers' terms, exactly as they would in a terminal. The app itself makes these network
+        requests:
+      </p>
+      <ul>
+        <li>
+          <strong>License checks</strong> go to Gumroad to validate your license key.
+        </li>
+        <li>
+          <strong>Update checks</strong> ask GitHub for the list of Grove releases.
+        </li>
+        <li>
+          <strong>Crash reports</strong> (Firebase Crashlytics, by Google), <strong>on by
+          default</strong>. When Grove crashes, it sends the crash log: the stack trace, the app
+          and macOS versions, the Mac model, and a random installation identifier. We use these
+          only to find and fix bugs.
+        </li>
+        <li>
+          <strong>Usage analytics</strong> (Google Analytics for Firebase), <strong>off by
+          default</strong>. If you turn it on, Grove sends basic app events (first launch,
+          sessions, the app and macOS versions, the Mac model, approximate country, and a random
+          app-instance identifier) plus a license activation or deactivation event with the
+          license price. We use this to understand how many people use Grove and whether they
+          buy it.
+        </li>
+      </ul>
+      <p>
+        You can turn crash reports and usage analytics on or off at any time in
+        <strong>Grove › Settings › General › Privacy</strong>. Turning usage analytics on or off
+        applies immediately. A crash-report change applies the next time Grove launches, and
+        turning crash reports off also deletes any reports that haven't been sent yet.
+        Neither is used to identify you, and we don't combine them with anything else to build a
+        profile of you.
+      </p>
+      <p>
+        <strong>Older versions:</strong> Grove 0.7.1 and earlier don't have this setting and send
+        both crash reports and usage analytics. Update to the latest version to control them.
       </p>
 
       <h2>8. If you email us</h2>
@@ -155,7 +193,8 @@
         Depending on where you live, you may have rights over data collected about you — for
         example, to access, correct, delete, or export it, or to object to or withdraw consent
         for processing (such as Google Analytics cookies, which you can decline or revoke at any
-        time per section 5). This includes rights under the EU/UK General Data Protection
+        time per section 5, or the app's crash reports and usage analytics, which you can turn off
+        in its Settings per section 7). This includes rights under the EU/UK General Data Protection
         Regulation and similar laws elsewhere. To exercise any of these, email
         <a href="mailto:hello@molayab.com">hello@molayab.com</a> — we'll respond directly rather
         than through an automated process, since this is a small, independently-run site.
@@ -163,16 +202,17 @@
 
       <h2>10. International data transfers</h2>
       <p>
-        Google Analytics and Gumroad are both operated by companies based in the United States,
-        so data they process (analytics events, purchase records) may be transferred to and
-        processed in the United States or other countries where they operate. Each provider
+        Google Analytics, Firebase (Crashlytics and Analytics, both by Google), and Gumroad are
+        operated by companies based in the United States, so data they process (analytics events,
+        crash reports, purchase records) may be transferred to and processed in the United States
+        or other countries where they operate. Each provider
         maintains its own safeguards for these transfers under its respective policy.
       </p>
 
       <h2>11. Changes to this policy</h2>
       <p>
         We may update this policy from time to time, for example if we add or remove an analytics
-        tool. Changes apply from the "Last updated" date above. If a change meaningfully expands
+        tool on this site or in the app. Changes apply from the "Last updated" date above. If a change meaningfully expands
         what we collect, we'll update the cookie banner so returning visitors see it again.
       </p>
 
