@@ -907,6 +907,21 @@ dialog.lightbox::backdrop { background: transparent; }
 .legal-prose strong { color: var(--text); }
 .legal-prose table { font-size: 0.875rem; margin-bottom: 1.5rem; }
 
+.guide .legal-title { line-height: 1.15; }
+.legal-prose h3 { font-size: 1.0625rem; margin: 1.75rem 0 0.5rem; }
+.legal-prose code { font-size: 0.875em; }
+.legal-prose figure { margin: 2rem 0; }
+.legal-prose figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.legal-prose figcaption { font-size: 0.8125rem; color: var(--text-3); margin-top: 0.625rem; }
+.guide-cta { margin-top: 3rem; }
+.guide-cta p { margin: 1rem 0 0; }
+
 /* ── Footer ─────────────────────────────────────────────────── */
 footer {
   border-top: 1px solid var(--border);
