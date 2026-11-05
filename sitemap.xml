@@ -22,4 +22,32 @@
     <loc>https://grove.molayab.com/refund-policy.html</loc>
     <lastmod>2026-11-04</lastmod>
   </url>
+  <url>
+    <loc>https://grove.molayab.com/git-worktree-app-mac.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://grove.molayab.com/git-worktree-app-mac.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://grove.molayab.com/es/git-worktree-app-mac.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://grove.molayab.com/git-worktree-app-mac.html" />
+  </url>
+  <url>
+    <loc>https://grove.molayab.com/es/git-worktree-app-mac.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://grove.molayab.com/git-worktree-app-mac.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://grove.molayab.com/es/git-worktree-app-mac.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://grove.molayab.com/git-worktree-app-mac.html" />
+  </url>
+  <url>
+    <loc>https://grove.molayab.com/claude-code-mac-app.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://grove.molayab.com/claude-code-mac-app.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://grove.molayab.com/es/claude-code-mac-app.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://grove.molayab.com/claude-code-mac-app.html" />
+  </url>
+  <url>
+    <loc>https://grove.molayab.com/es/claude-code-mac-app.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://grove.molayab.com/claude-code-mac-app.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://grove.molayab.com/es/claude-code-mac-app.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://grove.molayab.com/claude-code-mac-app.html" />
+  </url>
 </urlset>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git worktree app for Mac — manage worktrees in one window | Grove</title>
+  <meta name="description" content="Grove for Mac lists every git worktree and switches with one click — your AI agent, shell, files, diff and git panel follow the checkout. Native, $9.99." />
+  <meta property="og:title" content="Git worktree app for Mac — manage worktrees in one window | Grove" />
+  <meta property="og:description" content="Grove for Mac lists every git worktree and switches with one click — your AI agent, shell, files, diff and git panel follow the checkout. Native, $9.99." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://grove.molayab.com/git-worktree-app-mac.html" />
+  <meta property="og:site_name" content="Grove" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta property="og:image" content="https://grove.molayab.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Grove for Mac" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Git worktree app for Mac — manage worktrees in one window | Grove" />
+  <meta name="twitter:description" content="Grove for Mac lists every git worktree and switches with one click — your AI agent, shell, files, diff and git panel follow the checkout. Native, $9.99." />
+  <meta name="twitter:image" content="https://grove.molayab.com/og-image.png" />
+  <link rel="canonical" href="https://grove.molayab.com/git-worktree-app-mac.html" />
+  <link rel="alternate" hreflang="en" href="https://grove.molayab.com/git-worktree-app-mac.html" />
+  <link rel="alternate" hreflang="es" href="https://grove.molayab.com/es/git-worktree-app-mac.html" />
+  <link rel="alternate" hreflang="x-default" href="https://grove.molayab.com/git-worktree-app-mac.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="vendor/pico.min.css" />
+  <link rel="stylesheet" href="style.css?v=20261104-2" />
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "TechArticle", "headline": "A git worktree app for Mac that moves your whole workspace", "description": "Grove for Mac lists every git worktree and switches with one click — your AI agent, shell, files, diff and git panel follow the checkout. Native, $9.99.", "inLanguage": "en", "url": "https://grove.molayab.com/git-worktree-app-mac.html", "image": "https://grove.molayab.com/og-image.png", "dateModified": "2026-11-04", "author": {"@type": "Person", "name": "Mateo Olaya Bernal", "url": "https://molayab.com"}, "about": {"@type": "SoftwareApplication", "name": "Grove", "alternateName": "Grove for Mac", "operatingSystem": "macOS 26 or later", "applicationCategory": "DeveloperApplication", "url": "https://grove.molayab.com/"}}
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html"><span class="logo">Grove</span></a>
+    <div class="nav-actions">
+      <a href="index.html#features" class="nav-link">Features</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="es/git-worktree-app-mac.html" class="lang-link" hreflang="es" lang="es">ES</a>
+      <a href="index.html#download" role="button" class="btn btn-primary-dark">Download</a>
+    </div>
+  </div>
+</nav>
+
+<!-- GUIDE CONTENT -->
+<section class="section legal guide">
+  <div class="section-inner legal-inner">
+
+    <p class="eyebrow">Guide</p>
+    <h1 class="legal-title">A git worktree app for Mac that moves your whole workspace</h1>
+    <p class="legal-updated">Grove for Mac · Updated November 2026</p>
+
+    <div class="legal-callout">
+      <strong>Short version:</strong> Grove is a native macOS app that lists every git worktree in your
+      repository and lets you switch between them with one click. When you switch, your AI coding agent, shell,
+      file tree, diff and git panel all move to that checkout together, so you never end up committing on one
+      branch while reviewing another.
+    </div>
+
+    <div class="legal-prose">
+
+      <h2>Why developers use git worktrees</h2>
+      <p>
+        <code>git worktree</code> lets one repository have several working directories at once, each on its own
+        branch. You can fix a bug on <code>main</code> while a feature branch keeps building, review a pull request
+        without stashing your work, or give each AI coding agent its own branch so two agents never edit the same
+        files.
+      </p>
+      <p>
+        The catch is everything around the command. After <code>git worktree add</code> you still have to
+        <code>cd</code> into the new folder, open another terminal tab, point your editor and diff tool at it, and
+        restart your agent there. Then you have to remember which window belongs to which branch.
+      </p>
+
+      <h2>How Grove manages multiple worktrees</h2>
+      <ul>
+        <li>
+          <strong>Every worktree in one list.</strong> The Worktrees panel in the sidebar shows all the worktrees
+          of the selected repository, including the ones you created on the command line.
+        </li>
+        <li>
+          <strong>Create one from a branch.</strong> Pick an existing branch or type a new one. Grove creates a
+          standard git worktree under a folder you choose in Settings, laid out as
+          <code>&lt;root&gt;/&lt;repo&gt;/&lt;branch&gt;</code>, so you never have to think about paths.
+        </li>
+        <li>
+          <strong>One click switches everything.</strong> Selecting a worktree points the whole app at that
+          checkout: the Agent and Shell panes, the file tree, the Changes diff, and the git panel for branch,
+          commit, pull and push.
+        </li>
+        <li>
+          <strong>Each worktree keeps its own state.</strong> The agent you picked, your terminal tabs, pinned
+          websites and any pending diff-review comments are remembered per checkout and come back after a relaunch.
+        </li>
+        <li>
+          <strong>Removal is confirmed.</strong> Removing a worktree deletes a checkout from disk, so Grove asks
+          first and tells you if you'd lose unsent review comments.
+        </li>
+      </ul>
+
+      <figure>
+        <img src="screenshots/agent.png" width="1800" height="1125" loading="lazy"
+             alt="Grove's sidebar with the workspace list, the Worktrees panel and the git panel, next to Claude Code running in the selected checkout" />
+        <figcaption>The Worktrees panel sits in the sidebar. The agent, shell and diff follow whichever checkout is selected.</figcaption>
+      </figure>
+
+      <h2>Parallel branches with AI coding agents</h2>
+      <p>
+        Worktrees and coding agents fit together well: run Claude Code on a feature branch in one worktree and
+        Codex on a bug fix in another, each in its own isolated checkout. The terminal session for each checkout
+        keeps running when you switch away, so an agent in the middle of a task isn't interrupted. When it's done,
+        open the Changes tab for that worktree and review exactly what it changed.
+      </p>
+      <p>
+        More on the agent side in <a href="claude-code-mac-app.html">Run Claude Code in a native Mac app</a>.
+      </p>
+
+      <h2>Real git, no lock-in</h2>
+      <p>
+        Grove runs the <code>git</code> already installed on your Mac. The worktrees it creates are ordinary git
+        worktrees: <code>git worktree list</code> shows them, and you can keep using the command line next to
+        Grove. Nothing is stored in a proprietary format, and Grove doesn't force-push or delete branches.
+      </p>
+
+      <h2>A native Mac app, not a web wrapper</h2>
+      <p>
+        Grove is built in Swift and SwiftUI rather than Electron. It follows your system's appearance, opens
+        quickly, and keeps your agents and shells running even if you close the window.
+      </p>
+
+      <h2>Questions</h2>
+      <h3>Does Grove work with worktrees I already have?</h3>
+      <p>Yes. It reads the repository's worktree list, so existing worktrees show up as soon as you add the repository.</p>
+      <h3>Do I have to stop using the git CLI?</h3>
+      <p>No. Grove uses standard git under the hood, so the command line, other git clients and Grove all see the same state.</p>
+      <h3>What does it cost?</h3>
+      <p>
+        There's a 7-day free trial. After that, a license is $9.99 one-time for one Mac, with every future update
+        included. Grove needs macOS 26 or later.
+      </p>
+
+    </div>
+
+    <div class="legal-callout guide-cta">
+      <strong>Try Grove for Mac free for 7 days.</strong> Signed and notarized by Apple, no subscription.
+      <p><a href="index.html#download" role="button" class="btn btn-primary">Download Grove</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-banner-inner">
+    <p class="cookie-banner-text">
+      We use a cookie-free analytics beacon on every visit, and — only if you accept — Google
+      Analytics, which sets a cookie. See our <a href="privacy-policy.html">Privacy Policy</a>.
+    </p>
+    <div class="cookie-banner-actions">
+      <button type="button" id="cookie-decline" class="btn btn-ghost cookie-banner-btn">Decline</button>
+      <button type="button" id="cookie-accept" class="btn btn-primary cookie-banner-btn">Accept</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="logo">Grove</span>
+    <div class="footer-links">
+      <a href="mailto:hello@molayab.com">Support</a>
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="git-worktree-app-mac.html">Git worktrees on Mac</a>
+      <a href="claude-code-mac-app.html">Claude Code on Mac</a>
+      <a href="#" id="cookie-settings-link">Cookie Settings</a>
+    </div>
+    <span class="footer-copy">© 2026 Mateo Olaya Bernal</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var saved = localStorage.getItem('grove-theme');
+  if (saved) dark = saved === 'dark';
+  root.setAttribute('data-theme', dark ? 'dark' : 'light');
+})();
+</script>
+
+<script>
+(function () {
+  var CONSENT_KEY = 'grove-cookie-consent';
+  var GA_ID = 'G-435ZWRJN2B';
+  var banner = document.getElementById('cookie-banner');
+
+  function loadGA() {
+    if (window.__groveGaLoaded) return;
+    window.__groveGaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+  }
+
+  function showBanner() { if (banner) banner.hidden = false; }
+  function hideBanner() { if (banner) banner.hidden = true; }
+
+  var consent = localStorage.getItem(CONSENT_KEY);
+  if (consent === 'accepted') {
+    loadGA();
+  } else if (consent !== 'declined') {
+    showBanner();
+  }
+
+  var acceptBtn = document.getElementById('cookie-accept');
+  var declineBtn = document.getElementById('cookie-decline');
+  var settingsLink = document.getElementById('cookie-settings-link');
+
+  if (acceptBtn) acceptBtn.addEventListener('click', function () {
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    hideBanner();
+    loadGA();
+  });
+  if (declineBtn) declineBtn.addEventListener('click', function () {
+    localStorage.setItem(CONSENT_KEY, 'declined');
+    hideBanner();
+  });
+  if (settingsLink) settingsLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    showBanner();
+  });
+})();
+</script>
+
+</body>
+</html>

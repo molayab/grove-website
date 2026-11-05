@@ -18,6 +18,7 @@ index.html            Single-page marketing site (hero, features, screenshots, p
 refund-policy.html     Legal page: refund policy (English only — see Localization below)
 privacy-policy.html    Legal page: privacy policy + cookie disclosure (English only — see Localization below)
 es/index.html          Spanish translation of the marketing page
+git-worktree-app-mac.html, claude-code-mac-app.html   SEO guide pages (en); Spanish copies under es/
 style.css              All styles for every page — design tokens + per-section rules, loaded after Pico
 vendor/pico.min.css     Vendored Pico CSS (MIT) — classless-free build, used as the base stylesheet
 favicon.svg, favicon-*.png, apple-touch-icon.png   Site favicon (SVG + PNG fallbacks)
@@ -87,6 +88,16 @@ favicons, `screenshots/`, `download.json`) since it lives one directory down.
   *is* translated on `es/index.html`, since it's a short functional prompt, not legal prose.
 - When editing marketing copy in `index.html`, check whether `es/index.html` needs the
   same change. They're independent files, not generated from a shared source.
+
+## SEO guide pages
+
+`git-worktree-app-mac.html` and `claude-code-mac-app.html` (plus their `es/` copies) are long-form
+pages, each built around one search intent, tracked by molayab/grove#125. They reuse the legal
+pages' `.legal-inner`/`.legal-prose` layout with a `.guide` modifier, and are linked from every
+footer. Every claim on them must match the shipped app: check the app repo before adding a feature,
+and never add benchmark numbers that haven't been measured. A new guide needs: en + es copies with
+hreflang pairs, a `TechArticle` JSON-LD block, a footer link on every page, and a `sitemap.xml`
+entry.
 
 ## Business context relevant to content changes
 
