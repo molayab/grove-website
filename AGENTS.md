@@ -22,6 +22,9 @@ style.css              All styles for every page — design tokens + per-section
 vendor/pico.min.css     Vendored Pico CSS (MIT) — classless-free build, used as the base stylesheet
 favicon.svg, favicon-*.png, apple-touch-icon.png   Site favicon (SVG + PNG fallbacks)
 screenshots/            PNGs referenced by index.html and es/index.html
+og-image.png            1200×630 social preview card (og:image / twitter:image on every page)
+sitemap.xml             Sitemap with hreflang alternates — add every new public page here
+robots.txt              Allows all crawlers, AI included, and points at the sitemap
 CNAME                   GitHub Pages custom domain
 ```
 
@@ -52,6 +55,8 @@ only accent color; the rest of the palette is `#000000` / `#DDDDDD` / `#EEEEEE` 
 don't introduce other hues.
 
 When adding a new page:
+- Give it a self-referencing `<link rel="canonical">`, the full `og:*`/`twitter:*` set, and an
+  entry in `sitemap.xml`.
 - Copy the `<head>` (including both stylesheet links), `<nav>`, `<footer>`, and
   theme-detection `<script>` from an existing page (`index.html` or `refund-policy.html`)
   verbatim so nav/footer/theme stay consistent.
