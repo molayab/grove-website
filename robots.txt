@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://grove.molayab.com/sitemap.xml
