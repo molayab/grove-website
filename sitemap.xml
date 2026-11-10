@@ -50,4 +50,18 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://grove.molayab.com/es/claude-code-mac-app.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://grove.molayab.com/claude-code-mac-app.html" />
   </url>
+  <url>
+    <loc>https://grove.molayab.com/ai-coding-agents-mac-app.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://grove.molayab.com/ai-coding-agents-mac-app.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://grove.molayab.com/es/ai-coding-agents-mac-app.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://grove.molayab.com/ai-coding-agents-mac-app.html" />
+  </url>
+  <url>
+    <loc>https://grove.molayab.com/es/ai-coding-agents-mac-app.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://grove.molayab.com/ai-coding-agents-mac-app.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://grove.molayab.com/es/ai-coding-agents-mac-app.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://grove.molayab.com/ai-coding-agents-mac-app.html" />
+  </url>
 </urlset>

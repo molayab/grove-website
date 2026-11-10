@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Mac app for AI coding agents | Grove for Mac</title>
+  <meta name="description" content="Grove is a native Mac app for AI coding agents: Claude Code, Codex, Gemini CLI, opencode or Aider, each with its own shell, diff and git worktree. $9.99 once." />
+  <meta property="og:title" content="A Mac app for AI coding agents | Grove for Mac" />
+  <meta property="og:description" content="Grove is a native Mac app for AI coding agents: Claude Code, Codex, Gemini CLI, opencode or Aider, each with its own shell, diff and git worktree. $9.99 once." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://grove.molayab.com/ai-coding-agents-mac-app.html" />
+  <meta property="og:site_name" content="Grove for Mac" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta property="og:image" content="https://grove.molayab.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Grove for Mac" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="A Mac app for AI coding agents | Grove for Mac" />
+  <meta name="twitter:description" content="Grove is a native Mac app for AI coding agents: Claude Code, Codex, Gemini CLI, opencode or Aider, each with its own shell, diff and git worktree. $9.99 once." />
+  <meta name="twitter:image" content="https://grove.molayab.com/og-image.png" />
+  <link rel="canonical" href="https://grove.molayab.com/ai-coding-agents-mac-app.html" />
+  <link rel="alternate" hreflang="en" href="https://grove.molayab.com/ai-coding-agents-mac-app.html" />
+  <link rel="alternate" hreflang="es" href="https://grove.molayab.com/es/ai-coding-agents-mac-app.html" />
+  <link rel="alternate" hreflang="x-default" href="https://grove.molayab.com/ai-coding-agents-mac-app.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="vendor/pico.min.css" />
+  <link rel="stylesheet" href="style.css?v=20261104-2" />
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a675791a599947a0b2e0495e4e436ee0"}'></script><!-- End Cloudflare Web Analytics -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "TechArticle", "headline": "A Mac app for AI coding agents", "description": "Grove is a native Mac app for AI coding agents: Claude Code, Codex, Gemini CLI, opencode or Aider, each with its own shell, diff and git worktree. $9.99 once.", "inLanguage": "en", "url": "https://grove.molayab.com/ai-coding-agents-mac-app.html", "image": "https://grove.molayab.com/og-image.png", "dateModified": "2026-11-09", "author": {"@type": "Person", "name": "Mateo Olaya Bernal", "url": "https://molayab.com"}, "about": {"@type": "SoftwareApplication", "name": "Grove for Mac", "alternateName": "Grove", "operatingSystem": "macOS 26 or later", "applicationCategory": "DeveloperApplication", "url": "https://grove.molayab.com/"}}
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html"><span class="logo">Grove for Mac</span></a>
+    <div class="nav-actions">
+      <a href="index.html#features" class="nav-link">Features</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="es/ai-coding-agents-mac-app.html" class="lang-link" hreflang="es" lang="es">ES</a>
+      <a href="index.html#download" role="button" class="btn btn-primary-dark">Download</a>
+    </div>
+  </div>
+</nav>
+
+<!-- GUIDE CONTENT -->
+<section class="section legal guide">
+  <div class="section-inner legal-inner">
+
+    <p class="eyebrow">Guide</p>
+    <h1 class="legal-title">A Mac app for AI coding agents</h1>
+    <p class="legal-updated">Grove for Mac · Updated November 2026</p>
+
+    <div class="legal-callout">
+      <strong>Short version:</strong> Coding agents like Claude Code, Codex and Gemini CLI live in the terminal,
+      but the work around them doesn't: you also need a shell, your files, a diff of what changed and git. Grove
+      is a native Mac app that puts all of that in one window, tied to the git worktree the agent is working in.
+      You bring the agent; Grove doesn't add an AI of its own.
+    </div>
+
+    <div class="legal-prose">
+
+      <h2>What an agent actually needs around it</h2>
+      <p>
+        An agent session is more than a chat. While it works you run the tests, read the files it touched, check
+        the diff, and commit or throw away the result. In a plain terminal that means a few windows and a git
+        client that don't know about each other, all pointed at the same folder by hand.
+      </p>
+      <p>
+        Grove keeps those pieces together. Each checkout gets an Agent tab, as many Shell tabs as you want, a
+        Files tab with previews, a Changes tab with the diff, and a git panel in the sidebar. They all open in the
+        same folder, so there's nothing to <code>cd</code> into and nothing to keep in sync.
+      </p>
+
+      <figure>
+        <img src="screenshots/agent.png" width="1800" height="1125" loading="lazy"
+             alt="Grove's Agent tab running Claude Code, with workspaces, worktrees and the git panel in the sidebar" />
+        <figcaption>The agent, already in the right folder, with every project and worktree in the sidebar.</figcaption>
+      </figure>
+
+      <h2>Bring the agent you already use</h2>
+      <p>
+        Grove works with Claude Code, opencode, Codex, Gemini CLI and Aider out of the box. For anything else,
+        point Grove at the executable in Settings and it shows up next to the others. Each checkout remembers
+        which agent you picked.
+      </p>
+      <p>
+        The agent runs exactly as it would in Terminal: the real command in a real terminal (a PTY), with your
+        own environment, configuration and login. Grove doesn't proxy requests, ship its own model, or pass your
+        code to the agent. If you change agents next month, your workspace doesn't change with them.
+        <a href="claude-code-mac-app.html">Run Claude Code in a native Mac app</a> covers this in more detail.
+      </p>
+
+      <h2>Several agents at once, without collisions</h2>
+      <p>
+        Two agents editing the same checkout will trip over each other. The usual fix is a git worktree per
+        task: a separate folder on its own branch, sharing one repository. Grove creates a worktree from any
+        branch in a click, and switching worktrees in the sidebar moves the agent, shell, files, diff and git
+        panel together.
+      </p>
+      <p>
+        Agents keep running when you look away. Switch to another worktree or project and the one you left keeps
+        going in the background; come back and you're on the same tab. You can also open several agent tabs in
+        one checkout. See <a href="git-worktree-app-mac.html">A git worktree app for Mac</a> for how worktrees
+        work in Grove.
+      </p>
+
+      <h2>Review before you accept</h2>
+      <p>
+        The Changes tab updates live as the agent edits files, with a GitHub-style diff for each one. Comment on
+        any line, and Grove gathers your comments into one review and types it into the agent's prompt. You read
+        it and press Return yourself; Grove never submits it for you.
+      </p>
+
+      <h2>Safe defaults</h2>
+      <p>
+        Agents move fast, so the app around them shouldn't. Grove has no force push. Discarding a file or
+        dropping an unpushed commit always asks first, and so does anything that reaches beyond your machine.
+        Git actions use plain words: one Sync button instead of fetch, pull and push.
+      </p>
+
+      <h2>Native, not a web app</h2>
+      <p>
+        Grove is written in Swift and SwiftUI rather than Electron or a web UI. It follows your system's
+        appearance, launches quickly, and is signed with a Developer ID and notarized by Apple. Closing the
+        window doesn't stop your agents or shells; they run until you quit.
+      </p>
+
+      <h2>How it compares</h2>
+      <p>
+        <strong>A terminal plus a git client.</strong> Free, and it works. Grove replaces the juggling: the
+        agent, shell, files and diff are already in the same checkout, and switching tasks is one click.
+      </p>
+      <p>
+        <strong>AI terminals and AI editors.</strong> These usually come with their own assistant or model.
+        Grove isn't an editor and doesn't include an AI; it gives the CLI agent you chose a better place to run.
+        Keep your editor for editing.
+      </p>
+      <p>
+        <strong>Other agent workspace apps.</strong> Many are built on web technology and sold as a
+        subscription. Grove is native, and it's a one-time purchase.
+      </p>
+
+      <h2>Questions</h2>
+      <h3>Does Grove include an AI model?</h3>
+      <p>
+        No. You install the agent and sign in with your own account, the same as in Terminal. What the agent
+        sends is between you and its provider; Grove itself doesn't upload your repository.
+      </p>
+      <h3>Which agents does it support?</h3>
+      <p>
+        Claude Code, opencode, Codex, Gemini CLI and Aider are built in, and you can add any other command-line
+        agent by choosing its executable.
+      </p>
+      <h3>What does it cost?</h3>
+      <p>
+        There's a 7-day free trial. After that, a license is $9.99 one-time for one Mac, with every future update
+        included. Grove needs macOS 26 or later.
+      </p>
+
+    </div>
+
+    <div class="legal-callout guide-cta">
+      <strong>Try Grove for Mac free for 7 days.</strong> Signed and notarized by Apple, no subscription.
+      <p><a href="index.html#download" role="button" class="btn btn-primary">Download Grove</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-banner-inner">
+    <p class="cookie-banner-text">
+      We use a cookie-free analytics beacon on every visit, and — only if you accept — Google
+      Analytics, which sets a cookie. See our <a href="privacy-policy.html">Privacy Policy</a>.
+    </p>
+    <div class="cookie-banner-actions">
+      <button type="button" id="cookie-decline" class="btn btn-ghost cookie-banner-btn">Decline</button>
+      <button type="button" id="cookie-accept" class="btn btn-primary cookie-banner-btn">Accept</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="logo">Grove for Mac</span>
+    <div class="footer-links">
+      <a href="mailto:hello@molayab.com">Support</a>
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="git-worktree-app-mac.html">Git worktrees on Mac</a>
+      <a href="claude-code-mac-app.html">Claude Code on Mac</a>
+      <a href="ai-coding-agents-mac-app.html">AI coding agents on Mac</a>
+      <a href="#" id="cookie-settings-link">Cookie Settings</a>
+    </div>
+    <span class="footer-copy">© 2026 Mateo Olaya Bernal</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var saved = localStorage.getItem('grove-theme');
+  if (saved) dark = saved === 'dark';
+  root.setAttribute('data-theme', dark ? 'dark' : 'light');
+})();
+</script>
+
+<script>
+(function () {
+  var CONSENT_KEY = 'grove-cookie-consent';
+  var GA_ID = 'G-435ZWRJN2B';
+  var banner = document.getElementById('cookie-banner');
+
+  function loadGA() {
+    if (window.__groveGaLoaded) return;
+    window.__groveGaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+  }
+
+  function showBanner() { if (banner) banner.hidden = false; }
+  function hideBanner() { if (banner) banner.hidden = true; }
+
+  var consent = localStorage.getItem(CONSENT_KEY);
+  if (consent === 'accepted') {
+    loadGA();
+  } else if (consent !== 'declined') {
+    showBanner();
+  }
+
+  var acceptBtn = document.getElementById('cookie-accept');
+  var declineBtn = document.getElementById('cookie-decline');
+  var settingsLink = document.getElementById('cookie-settings-link');
+
+  if (acceptBtn) acceptBtn.addEventListener('click', function () {
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    hideBanner();
+    loadGA();
+  });
+  if (declineBtn) declineBtn.addEventListener('click', function () {
+    localStorage.setItem(CONSENT_KEY, 'declined');
+    hideBanner();
+  });
+  if (settingsLink) settingsLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    showBanner();
+  });
+})();
+</script>
+
+</body>
+</html>
