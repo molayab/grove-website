@@ -39,6 +39,19 @@ while visitors keep getting the old stylesheet from browser/CDN cache indefinite
 date in **every** `<link>` that references `style.css` whenever you touch it (grep for
 `style.css?v=` to find them all).
 
+## Client-side content
+
+A few sections fill themselves in with small inline, vanilla `<script>` blocks at the bottom of
+`index.html` and `es/index.html` (no framework, no dependencies), each with static markup that
+still works when the script fails or JS is off:
+
+- **Download** reads `download.json` (kept current by the `sync-release-info` workflow).
+- **From the blog** fetches `https://molayab.com/feed.xml` (CORS `*`) and renders the three newest
+  posts tagged `grove` into `[data-blog-feed]`, which stays `hidden` until that succeeds; the
+  "All Grove posts" link is the fallback. Feed content is external: build nodes with
+  `createElement`/`textContent`, never `innerHTML`, and only link to `https://molayab.com/`.
+  The script is duplicated in both pages (dates use `en` / `es`), so change both.
+
 ## Design system
 
 Every page loads `vendor/pico.min.css` first, then `style.css`. `style.css` defines the brand's
