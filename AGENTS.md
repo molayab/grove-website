@@ -27,6 +27,8 @@ og-image.png            1200×630 social preview card (og:image / twitter:image 
 sitemap.xml             Sitemap with hreflang alternates — add every new public page here
 robots.txt              Allows all crawlers, AI included, and points at the sitemap
 CNAME                   GitHub Pages custom domain
+download.json           Release metadata driving the Download section — generated, see Automation below
+scripts/                Node scripts run by .github/workflows/ (built-ins only, no package.json)
 ```
 
 There is no `/dist`, no bundler, no JS framework. Pages are deployed as-is on push to `main`.
@@ -38,6 +40,22 @@ There's no hashed-filename build step, so without this a CSS-only change can dep
 while visitors keep getting the old stylesheet from browser/CDN cache indefinitely — bump the
 date in **every** `<link>` that references `style.css` whenever you touch it (grep for
 `style.css?v=` to find them all).
+
+## Automation
+
+Two scheduled/event-driven GitHub Actions keep generated content in sync. Both run a Node script
+that uses only built-ins (no npm install), commit as `github-actions[bot]` straight to `main`, and
+commit only when the output actually changed. Both scripts are safe to run by hand from the repo
+root.
+
+- `sync-release-info` (`scripts/sync-release-info.mjs`, on `release` published/edited and
+  `workflow_dispatch`) rewrites `download.json` from the latest GitHub release.
+- `sync-blog-posts` (`scripts/sync-blog-posts.mjs`, daily schedule and `workflow_dispatch`) reads
+  `https://molayab.com/feed.xml`, keeps the three newest posts tagged `grove`, and rewrites only
+  what sits between `<!-- blog-posts:start -->` and `<!-- blog-posts:end -->` in `index.html` and
+  `es/index.html` (Spanish date format on the `es/` page; post titles stay as published). Don't
+  hand-edit between those markers — the next run overwrites it; change the markup in the script.
+  On any fetch/parse failure it exits non-zero and writes nothing.
 
 ## Design system
 
