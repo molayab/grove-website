@@ -26,7 +26,6 @@ straight from this repo's `main` branch. The one framework dependency is a vendo
 | `vendor/pico.min.css` | Vendored [Pico CSS](https://picocss.com) |
 | `screenshots/` | App screenshots used on the site |
 | `download.json` | Release metadata (auto-synced from GitHub Releases) that drives the download button |
-| `scripts/`, `.github/workflows/` | Automation: `sync-release-info` rewrites `download.json` on every release; `sync-blog-posts` refreshes the "From the blog" list daily |
 | `CNAME` | GitHub Pages custom domain |
 
 Grove itself — the macOS app's source — lives in a separate, private repository.
