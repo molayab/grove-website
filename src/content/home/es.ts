@@ -86,12 +86,8 @@ export const home: HomeContent = {
   "demo": {
     "eyebrow": "Demo",
     "title": "Míralo en movimiento.",
-    "sub": "Cambia de worktree y tu agente, shell y diff te siguen — y luego el tour de 25 segundos.",
+    "sub": "El recorrido de 25 segundos por Grove: agentes, worktrees, revisión de diffs y prompts guardados en una sola ventana.",
     "items": [
-      {
-        "label": "Grabación de pantalla de Grove cambiando entre git worktrees mientras el agente, el shell, los archivos y los cambios lo siguen",
-        "caption": "Cambia de worktree: el agente, el shell, los archivos y los cambios te siguen."
-      },
       {
         "label": "Video promocional de Grove: agentes de IA, git worktrees, revisión de diff y prompts guardados en una sola ventana nativa de Mac",
         "caption": "Grove en 25 segundos."

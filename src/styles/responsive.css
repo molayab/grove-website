@@ -9,7 +9,6 @@
   .why-inner { flex-direction: column; gap: 3rem; }
   .why-visual { width: 100%; }
   .badge-stack { max-width: none; }
-  .demo-grid { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; }
   .screenshot-gallery { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
   .blog-grid { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; }

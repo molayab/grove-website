@@ -31,10 +31,6 @@ export const heroSlides: HeroSlide[] = [
 
 export const demoVideos: (Media & { className: string; attrs: Record<string, boolean | string> })[] = [
   {
-    src: '/screenshots/grove-worktrees.mp4', width: 1920, height: 1264, className: 'demo-video-worktrees',
-    attrs: { autoplay: true, muted: true, loop: true, playsinline: true, preload: 'metadata' },
-  },
-  {
     src: '/screenshots/grove-promo-youtube.mp4', width: 1920, height: 1080, className: 'demo-video-promo',
     attrs: { controls: true, playsinline: true, preload: 'none', poster: '/screenshots/agent.png' },
   },
