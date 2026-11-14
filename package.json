@@ -9,6 +9,7 @@
     "sync-release": "node scripts/sync-release-info.mjs"
   },
   "dependencies": {
-    "astro": "^7.4.12"
+    "astro": "^7.4.12",
+    "design-template-kit": "https://github.com/molayab/design-template-kit/archive/refs/tags/v0.1.0.tar.gz"
   }
 }

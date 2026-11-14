@@ -38,7 +38,7 @@ languages, two English-only legal pages). Goals, in order:
 | `src/data/` | `pages.ts` (page registry → hreflang, EN/ES switch, sitemap), `home.ts` (language-independent data: slides, prices, links), `icons.ts`. |
 | `src/i18n.ts` | Nav/footer strings per locale. |
 | `src/scripts/` | Vanilla ES modules, each exporting `init*()`, called from the component that needs it. |
-| `src/styles/` | `core/` (reusable), `theme/grove.css` (brand values), `site/` (Grove sections), `pico-bridge.css`, vendored `pico.min.css`. See [design/design-system.md](design/design-system.md). |
+| `src/styles/` | `theme/grove.css` (brand values), `site/` (Grove sections), `pico-bridge.css`, vendored `pico.min.css`; the reusable layer comes from the `design-template-kit` package ([ADR-0003](adr/0003-shared-themeable-css-layer.md)). See [design/design-system.md](design/design-system.md). |
 | `public/` | Copied verbatim: `screenshots/` (images, cover video), favicons, `og-image.png`, `robots.txt`, `CNAME`, `download.json` (fallback copy). |
 | `scripts/sync-release-info.mjs` | Writes `public/download.json` from the latest GitHub release. |
 | `.github/workflows/deploy.yml` | Build + deploy to Pages. |

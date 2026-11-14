@@ -16,7 +16,7 @@ brand colors hard-coded (`rgba(203, 41, 87, …)`) in a dozen rules.
 Split `src/styles/` into layers with a documented token API (see
 [`src/styles/README.md`](../../src/styles/README.md)):
 
-- **`core/`** — brand-neutral, framework-free CSS: tokens, reset, base, typography, buttons,
+- **`core/`** (now the `design-template-kit` package, see the amendment below) — brand-neutral, framework-free CSS: tokens, reset, base, typography, buttons,
   layout, nav, footer, prose pages, cookie banner, lightbox, responsive rules. Works with or
   without Pico (verified by removing Pico: only tables needed styles, now in `core/prose.css`).
 - **`core/tokens.css`** — the API. *Primitives* a project overrides (`--brand`,
@@ -54,11 +54,31 @@ The cost is discipline: no literals in partials and docs kept current.
   keep `--text-3` ≥ 4.5:1; new brand-neutral components go in `core/`, Grove-only in `site/`.
 - Demonstrated: overriding only primitives (teal brand, serif font, 4px radii, navy neutrals)
   re-themed the whole site.
-- Today `core/` lives inside this repo. Sharing it across repos (git submodule, npm package
-  from GitHub, or a separate repo) is a follow-up; until then, copy `core/` + write a theme.
+- Sharing `core/` across repos was left as a follow-up; it was extracted the same day (see the
+  amendment).
 
 ## Action items
 
 1. [x] Split layers, document the token API, remove literals.
-2. [ ] Extract `core/` to its own repo/package once a second site adopts it (molayab.com).
+2. [x] Extract `core/` to its own repo/package — done as `design-template-kit` v0.1.0.
 3. [ ] Add a theme file for molayab.com.
+
+## Amendment (2026-11-14): extracted to `design-template-kit`
+
+`core/` now lives in its own public repo, [`molayab/design-template-kit`](https://github.com/molayab/design-template-kit),
+and Grove consumes it as a pinned dependency. The Grove-only layers stay here
+(`theme/grove.css`, `site/`, `pico-bridge.css`).
+
+- **Distribution.** The kit commits a generated `dist/` (single-file `core.css`, `foundation.css`,
+  `tokens.css`) so it installs straight from GitHub with no build step. Grove depends on the
+  release **tarball URL** (`https://github.com/molayab/design-template-kit/archive/refs/tags/vX.Y.Z.tar.gz`),
+  not `github:owner/repo`: npm resolves the shortcut to `git+ssh`, which fails in GitHub Actions
+  (no SSH key), while the tarball is a plain HTTPS download with an integrity hash in the lockfile.
+- **Versioning.** Semver; a renamed token or class is a major bump. Upgrading = change the tag in
+  `package.json`, `npm install`, re-check pages in both themes.
+- **Rule of thumb.** A style that any site could use belongs in the kit; a style tied to Grove's
+  sections belongs in `src/styles/site/`.
+- **molayab.com** is not migrated yet (Jekyll today; the owner plans to move it to Astro or another
+  generator). The kit's README documents the static-HTML/CDN route for a future adopter.
+- **Moved verbatim.** The build output is rule-for-rule identical to before the extraction; the only
+  difference is that the mobile `.section` padding rule sits in its own `@media` block.

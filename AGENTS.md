@@ -46,8 +46,9 @@ src/data/               pages.ts (page registry), home.ts (language-independent 
 src/i18n.ts             Nav / footer strings per language
 src/scripts/            Vanilla JS modules, each exporting an init function (initCarousel, initDownload,
                         initBlog, initLightbox, initConsent); components call them from their own <script>
-src/styles/             core/ (reusable, themeable) + theme/grove.css (brand values) + site/ (Grove sections) +
-                        pico-bridge.css; index.css is the entry. See src/styles/README.md for the token API
+src/styles/             theme/grove.css (brand values) + site/ (Grove sections) +
+                        pico-bridge.css; index.css is the entry. The reusable layer is the `design-template-kit` package
+                        (github.com/molayab/design-template-kit, pinned in package.json); see src/styles/README.md
 src/styles/pico.min.css Vendored Pico CSS (MIT) — classless-free build, Grove's third-party base layer
 public/                 Copied as-is: favicons, og-image.png, screenshots/, download.json, robots.txt, CNAME
 scripts/sync-release-info.mjs  Regenerates public/download.json from the latest GitHub release
@@ -88,7 +89,7 @@ no dependencies), each with static markup that still works when the script fails
 ## Design system
 
 Every page loads one stylesheet, `src/styles/index.css`. Brand values (colors, fonts) live only in
-`src/styles/theme/grove.css`, which overrides the primitives declared in `core/tokens.css`;
+`src/styles/theme/grove.css`, which overrides the primitives declared in the kit's `tokens.css` (`design-template-kit`);
 `pico-bridge.css` re-points Pico's own `--pico-*` variables (primary color, card background, border
 radius, etc.) at those same tokens — so native Pico elements (`article`, `[role="button"]`, form controls) stay in sync
 with the brand palette automatically. Prefer real Pico elements over bespoke divs where they fit:
@@ -109,7 +110,7 @@ Design-system gotchas (found in the design audit):
   ≥ 4.5:1 — don't lower its alpha. Never hard-code a brand color in a partial; use tokens/`color-mix()`.
 - Pico pads `body > main` and gives every `<section>` a bottom margin; `pico-bridge.css` resets both
   (otherwise the page background shows as a strip between sections in light mode). They live in
-  `pico-bridge.css` so `core/` stays framework-free.
+  `pico-bridge.css` so the kit stays framework-free.
 - Page content sits in `<main>` (set in `Base.astro`); keep one landmark per page.
 
 When adding a new page:

@@ -47,17 +47,21 @@ dark and light mode at desktop and ~390px wide. For visual changes, prefer runni
 
 Edit only `src/styles/theme/grove.css` (primitives). Recompute contrast for `--brand-on-dark`
 and `--brand-on-light` (≥ 4.5:1) and update [design/design-system.md](../design/design-system.md).
-New semantic tokens go in `src/styles/core/tokens.css` and are documented in
-`src/styles/README.md`.
+New semantic tokens belong in the kit (see "Change shared styles").
 
-## Reuse the CSS in another project (e.g. molayab.com)
+## Change shared styles (the kit)
 
-1. Copy `src/styles/core/` into the project (until it is extracted to its own repo —
-   [ADR-0003](../adr/0003-shared-themeable-css-layer.md)).
-2. Create `theme/<project>.css` from `theme/grove.css` with that brand's values.
-3. Load `core/index.css` then the theme (CSS `@import`, a Jekyll `<link>`, or a bundler).
-4. Use the markup conventions from `Nav.astro`, `Footer.astro`, `.section`/`.section-inner`,
-   `.btn*` and `.legal*`. Pico and `pico-bridge.css` are not needed.
+Shared CSS comes from [`design-template-kit`](https://github.com/molayab/design-template-kit),
+pinned in `package.json`. To change it: edit the kit's `src/`, `npm run build`, commit `dist/`,
+bump `version`, tag `vX.Y.Z`; then here set the tarball URL in `package.json` to the new tag,
+`npm install`, and re-check every page in dark and light. Grove-only styles stay in
+`src/styles/site/`. See [ADR-0003](../adr/0003-shared-themeable-css-layer.md).
+
+## Use the kit in another project
+
+Follow the kit's README: install the tarball (or load `dist/core.css` from a tag via a CDN),
+write a theme file from `themes/example.css`, load it after the kit. Pico and
+`pico-bridge.css` are Grove-only and not needed.
 
 ## Update Pico
 
