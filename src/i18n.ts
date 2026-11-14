@@ -2,9 +2,10 @@ import type { Lang } from './data/pages';
 
 export const ui = {
   en: {
-    nav: { features: 'Features', screenshots: 'Screenshots', pricing: 'Pricing', download: 'Download', support: 'Support', langName: 'EN' },
+    nav: { features: 'Features', screenshots: 'Screenshots', pricing: 'Pricing', blog: 'Blog', download: 'Download', support: 'Support', langName: 'EN' },
     footer: {
       support: 'Support',
+      blog: 'Blog',
       privacy: 'Privacy',
       refund: 'Refund Policy',
       worktrees: 'Git worktrees on Mac',
@@ -14,9 +15,10 @@ export const ui = {
     },
   },
   es: {
-    nav: { features: 'Funciones', screenshots: 'Capturas', pricing: 'Precios', download: 'Descargar', support: 'Soporte', langName: 'ES' },
+    nav: { features: 'Funciones', screenshots: 'Capturas', pricing: 'Precios', blog: 'Blog (EN)', download: 'Descargar', support: 'Soporte', langName: 'ES' },
     footer: {
       support: 'Soporte',
+      blog: 'Blog (EN)',
       privacy: 'Privacidad (EN)',
       refund: 'Política de reembolsos (EN)',
       worktrees: 'Git worktrees en Mac',

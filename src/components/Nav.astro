@@ -32,6 +32,7 @@ const base = variant === 'home' ? '' : home(lang);
           <a href={`${base}#features`} class="nav-link">{t.features}</a>
           {variant === 'home' && <a href="#screenshots" class="nav-link">{t.screenshots}</a>}
           <a href={`${base}#pricing`} class="nav-link">{t.pricing}</a>
+          <a href={`${base}#blog`} class="nav-link">{t.blog}</a>
           {twin && <a href={twin} class="lang-link" hreflang={other} lang={other}>{ui[other].nav.langName}</a>}
           <a href={`${base}#download`} role="button" class="btn btn-primary-dark">{t.download}</a>
         </>
