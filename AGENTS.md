@@ -30,9 +30,9 @@ src/data/               pages.ts (page registry), home.ts (language-independent 
 src/i18n.ts             Nav / footer strings per language
 src/scripts/            Vanilla JS modules, each exporting an init function (initCarousel, initDownload,
                         initBlog, initLightbox, initConsent); components call them from their own <script>
-src/styles/index.css    Entry that @imports one partial per section (reset, tokens, nav, hero, features, …,
-                        responsive last) — add new component styles as a new partial
-src/styles/pico.min.css Vendored Pico CSS (MIT) — classless-free build, used as the base stylesheet
+src/styles/             core/ (reusable, themeable) + theme/grove.css (brand values) + site/ (Grove sections) +
+                        pico-bridge.css; index.css is the entry. See src/styles/README.md for the token API
+src/styles/pico.min.css Vendored Pico CSS (MIT) — classless-free build, Grove's third-party base layer
 public/                 Copied as-is: favicons, og-image.png, screenshots/, download.json, robots.txt, CNAME
 scripts/sync-release-info.mjs  Regenerates public/download.json from the latest GitHub release
 ```
@@ -41,7 +41,7 @@ Pages: `index` (marketing), `es/index` (Spanish), `refund-policy` and `privacy-p
 English only — see Localization), and the SEO guides `git-worktree-app-mac`,
 `claude-code-mac-app`, `ai-coding-agents-mac-app` (each with an `es/` copy).
 
-CSS is imported from `Base.astro` (Pico first, then `src/styles/index.css`) and Astro emits it with a
+CSS is imported from `Base.astro` via `src/styles/index.css` (Pico → core → theme → Pico bridge → site) and Astro emits it with a
 content-hashed filename, so there is **no manual cache-busting** — the old `style.css?v=` query
 string is gone. `src/styles/pico.min.css` is a plain checked-in file: update it by re-downloading
 the release from picocss.com or the `@picocss/pico` npm tarball.
@@ -67,10 +67,10 @@ no dependencies), each with static markup that still works when the script fails
 
 ## Design system
 
-Every page loads Pico first, then `src/styles/index.css`. `tokens.css` defines the brand's
-own CSS custom properties at the top (`:root`) for colors, radii, and fonts, and also re-points
-Pico's own `--pico-*` variables (primary color, card background, border radius, etc.) at those
-same tokens — so native Pico elements (`article`, `[role="button"]`, form controls) stay in sync
+Every page loads one stylesheet, `src/styles/index.css`. Brand values (colors, fonts) live only in
+`src/styles/theme/grove.css`, which overrides the primitives declared in `core/tokens.css`;
+`pico-bridge.css` re-points Pico's own `--pico-*` variables (primary color, card background, border
+radius, etc.) at those same tokens — so native Pico elements (`article`, `[role="button"]`, form controls) stay in sync
 with the brand palette automatically. Prefer real Pico elements over bespoke divs where they fit:
 cards are `<article>`, button-styled links carry `role="button"` alongside their `.btn*` class.
 
@@ -79,16 +79,17 @@ The site is **dark-first** with a light-mode override via `prefers-color-scheme`
 theme is inferred from the OS, there's no visible toggle control yet; Pico also reads
 `data-theme`, so the same attribute drives both). Grove crimson (`--accent`, `#CB2957`) is the
 only accent color; the rest of the palette is `#000000` / `#DDDDDD` / `#EEEEEE` plus white —
-don't introduce other hues.
+don't introduce other hues. The hero follows the theme (dark and light).
 
 Design-system gotchas (found in the design audit):
-- Pico bumps the root font size to 106–125% on wide screens. `tokens.css` pins `--pico-font-size: 100%`
+- Pico bumps the root font size to 106–125% on wide screens. `pico-bridge.css` pins `--pico-font-size: 100%`
   so the `rem` sizes in the partials mean what they say — don't remove it.
 - Raw `--accent` (`#CB2957`) is ~3.6:1 on the dark surfaces, so it's for fills (buttons, borders,
-  dots). Use `--accent-text` for crimson *text* (eyebrows, links, `code`); the always-dark hero uses
-  the fixed `#E8527C`. `--text-3` is also kept ≥ 4.5:1 — don't lower its alpha.
-- Pico pads `body > main` and gives every `<section>` a bottom margin; `base.css` resets both
-  (otherwise the page background shows as a strip between sections in light mode).
+  dots). Use `--accent-text` for crimson *text* (eyebrows, links, `code`). `--text-3` is also kept
+  ≥ 4.5:1 — don't lower its alpha. Never hard-code a brand color in a partial; use tokens/`color-mix()`.
+- Pico pads `body > main` and gives every `<section>` a bottom margin; `pico-bridge.css` resets both
+  (otherwise the page background shows as a strip between sections in light mode). They live in
+  `pico-bridge.css` so `core/` stays framework-free.
 - Page content sits in `<main>` (set in `Base.astro`); keep one landmark per page.
 
 When adding a new page:
@@ -177,3 +178,6 @@ light and dark mode, plus mobile widths (the CSS has breakpoints at 860px and 60
 `npm run build` is the gate CI applies. URLs must not change: after a build, `dist/` should contain
 `index.html`, `es/index.html`, `privacy-policy.html`, `refund-policy.html` and each guide at its
 existing `*.html` path.
+
+Astro's default HTML compression drops the space in text like `click\n<strong>Accept</strong>`, so
+`compressHTML` is off in `astro.config.mjs` — keep it that way.

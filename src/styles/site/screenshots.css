@@ -13,7 +13,7 @@
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--border);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--shadow-md);
   line-height: 0;
 }
 .screenshot-frame img {

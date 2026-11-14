@@ -1,0 +1,12 @@
+/* Grove marketing-page sections. `responsive.css` stays last — its media
+   queries override the rules above. */
+@import './hero.css';
+@import './download.css';
+@import './features.css';
+@import './demo.css';
+@import './screenshots.css';
+@import './why.css';
+@import './agents.css';
+@import './pricing.css';
+@import './blog.css';
+@import './responsive.css';

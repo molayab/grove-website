@@ -10,19 +10,37 @@ const { copy } = Astro.props;
 <div class="window-wrap">
   <div class="hero-shot" id="hero-carousel" role="region" aria-roledescription="carousel" aria-label={copy.label}>
     <div class="hero-slides">
-      {heroSlides.map((slide, i) => (
-        <img
-          class:list={['hero-slide', { 'hero-slide-cover': slide.cover, 'is-active': i === 0 }]}
-          src={slide.src}
-          width={slide.width}
-          height={slide.height}
-          alt={copy.slides[i].alt}
-          loading={i === 0 ? 'eager' : 'lazy'}
-          decoding="async"
-          aria-hidden={i === 0 ? undefined : 'true'}
-          data-duration={slide.duration}
-        />
-      ))}
+      {heroSlides.map((slide, i) => {
+        const classes = ['hero-slide', { 'hero-slide-cover': slide.cover, 'is-active': i === 0 }];
+        return slide.video ? (
+          <video
+            class:list={classes}
+            src={slide.src}
+            poster={slide.poster}
+            width={slide.width}
+            height={slide.height}
+            aria-label={copy.slides[i].alt}
+            aria-hidden={i === 0 ? undefined : 'true'}
+            data-duration={slide.duration}
+            muted
+            loop
+            playsinline
+            preload="auto"
+          />
+        ) : (
+          <img
+            class:list={classes}
+            src={slide.src}
+            width={slide.width}
+            height={slide.height}
+            alt={copy.slides[i].alt}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+            aria-hidden={i === 0 ? undefined : 'true'}
+            data-duration={slide.duration}
+          />
+        );
+      })}
     </div>
   </div>
   <div class="hero-controls" role="group" aria-label={copy.controlsLabel}>

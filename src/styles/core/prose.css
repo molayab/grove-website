@@ -14,7 +14,7 @@
 
 .legal-callout {
   background: var(--accent-dim);
-  border: 1px solid rgba(203, 41, 87, 0.3);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
   border-radius: var(--radius-sm);
   padding: 1.25rem 1.5rem;
   font-size: 0.9375rem;
@@ -49,7 +49,20 @@
   text-decoration: underline;
 }
 .legal-prose strong { color: var(--text); }
-.legal-prose table { font-size: 0.875rem; margin-bottom: 1.5rem; }
+.legal-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin: 1.25rem 0 1.5rem;
+}
+.legal-prose th,
+.legal-prose td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5rem 1rem 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.legal-prose th { color: var(--text); font-weight: 600; }
 
 .guide .legal-title { line-height: 1.15; }
 .legal-prose h3 { font-size: 1.0625rem; margin: 1.75rem 0 0.5rem; }

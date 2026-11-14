@@ -1,6 +1,6 @@
 export function initCarousel() {
   // Hero carousel: cross-fades the stacked slides every few seconds (or the
-  // slide's own data-duration, e.g. the animated cover).
+  // slide's own data-duration, e.g. the looping cover video).
   // Pauses while hovered or focused, while the tab is hidden, and when the
   // visitor uses the pause button; never auto-plays under reduced motion.
   var root = document.getElementById('hero-carousel');
@@ -26,11 +26,29 @@ export function initCarousel() {
       dot.setAttribute('aria-current', n === current ? 'true' : 'false');
     });
     if (caption) caption.textContent = dots[current].getAttribute('aria-label');
+    var active = slides[current];
+    if (active.tagName === 'VIDEO') active.currentTime = 0;
+    syncVideo();
+  }
+
+  // Video slides only play while they are the visible slide, and never under
+  // reduced motion / a user pause / a hidden tab.
+  function syncVideo() {
+    slides.forEach(function (slide, n) {
+      if (slide.tagName !== 'VIDEO') return;
+      if (n === current && !userPaused && !document.hidden) {
+        var p = slide.play();
+        if (p && p.catch) p.catch(function () {});
+      } else {
+        slide.pause();
+      }
+    });
   }
 
   function stop() { clearTimeout(timer); timer = null; }
   function sync() {
     stop();
+    syncVideo();
     if (!userPaused && !hovering && !document.hidden) {
       var wait = Number(slides[current].getAttribute('data-duration')) || INTERVAL;
       timer = setTimeout(function () { show(current + 1); sync(); }, wait);

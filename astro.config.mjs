@@ -6,5 +6,8 @@ export default defineConfig({
   site: 'https://grove.molayab.com',
   output: 'static',
   trailingSlash: 'ignore',
+  // The default HTML compressor drops the space between text and an inline
+  // element split across lines ("click\n<strong>" -> "click<strong>").
+  compressHTML: false,
   build: { format: 'preserve' },
 });

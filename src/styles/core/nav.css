@@ -7,14 +7,9 @@ body > nav {
   z-index: 100;
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  background: rgba(0, 0, 0, 0.75);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
   border-bottom: 1px solid var(--border);
 }
-@media (prefers-color-scheme: light) {
-  body > nav { background: rgba(238, 238, 238, 0.82); }
-}
-:root[data-theme="light"] body > nav { background: rgba(238, 238, 238, 0.82); }
-:root[data-theme="dark"] body > nav { background: rgba(0, 0, 0, 0.75); }
 
 .nav-inner {
   width: 100%;

@@ -23,7 +23,7 @@
   padding: 1.75rem;
   transition: border-color 0.2s, transform 0.2s;
 }
-.blog-card:hover { border-color: rgba(203, 41, 87, 0.5); transform: translateY(-2px); }
+.blog-card:hover { border-color: color-mix(in srgb, var(--accent) 50%, transparent); transform: translateY(-2px); }
 
 .blog-date {
   font-family: var(--mono);

@@ -13,14 +13,18 @@ export interface Media {
 }
 
 export interface HeroSlide extends Media {
-  /** Full-bleed cover art (the animated GIF): cropped to fill the frame instead of letterboxed. */
+  /** A looping muted video (plays only while visible); `poster` is shown until it loads. */
+  video?: boolean;
+  poster?: string;
+  /** Cropped to fill the frame instead of letterboxed. */
   cover?: boolean;
   /** How long the carousel stays on this slide, in ms (default set in carousel.js). */
   duration?: number;
 }
 
 export const heroSlides: HeroSlide[] = [
-  { src: '/screenshots/grove-cover-16x9.gif', width: 1280, height: 720, cover: true, duration: 17000 },
+  // Window-only screen recording: sharp at any DPR, no backdrop to clash with the theme.
+  { src: '/screenshots/grove-cover.mp4', poster: '/screenshots/grove-cover-poster.jpg', video: true, width: 1920, height: 1264, cover: true, duration: 16700 },
   { src: '/screenshots/palette.png', width: 1800, height: 1125 },
   { src: '/screenshots/agent.png', width: 1800, height: 1125 },
   { src: '/screenshots/changes-review.png', width: 1800, height: 1125 },
