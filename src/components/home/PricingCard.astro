@@ -1,0 +1,23 @@
+---
+interface Props {
+  name: string;
+  price: string;
+  period: string;
+  buy: string;
+  href: string;
+  badge?: string;
+}
+const { name, price, period, buy, href, badge } = Astro.props;
+---
+
+<article class:list={['pricing-card', { 'pricing-featured': badge }]}>
+  {badge && <span class="pricing-badge" set:html={badge} />}
+  <span class="pricing-name" set:html={name} />
+  <div class="pricing-amount">
+    <span class="pricing-currency">$</span>
+    <span class="pricing-price">{price}</span>
+  </div>
+  <span class="pricing-period" set:html={period} />
+
+  <a href={href} data-gumroad-overlay-checkout="true" role="button" class="btn pricing-btn" set:html={buy} />
+</article>

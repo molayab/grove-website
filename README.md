@@ -13,20 +13,23 @@ purchase license via Gumroad, with a free trial before you buy.
 
 ## What's here
 
-Plain HTML/CSS, no build step, no bundler, no package manager. Published via **GitHub Pages**
-straight from this repo's `main` branch. The one framework dependency is a vendored copy of
-[Pico CSS](https://picocss.com).
+An [Astro](https://astro.build) project that builds to plain static HTML/CSS and is deployed to
+**GitHub Pages** by a GitHub Actions workflow on every push to `main`. The one CSS dependency is a
+vendored copy of [Pico CSS](https://picocss.com).
 
-| File | What it is |
+| Path | What it is |
 |---|---|
-| `index.html` | The marketing page (English) |
-| `es/index.html` | Spanish translation |
-| `privacy-policy.html`, `refund-policy.html` | Legal pages |
-| `style.css` | All styling — design tokens + per-section rules, loaded after Pico |
-| `vendor/pico.min.css` | Vendored [Pico CSS](https://picocss.com) |
-| `screenshots/` | App screenshots used on the site |
-| `download.json` | Release metadata (auto-synced from GitHub Releases) that drives the download button |
-| `CNAME` | GitHub Pages custom domain |
+| `src/pages/` | One `.astro` file per URL: marketing page, `es/` translation, legal pages, SEO guides |
+| `src/layouts/`, `src/components/` | Base layout, `HomePage`, site-wide UI, and one component per marketing section (`components/home/`) |
+| `src/content/home/` | Marketing-page copy per language (`en.ts`, `es.ts`) |
+| `src/data/pages.ts` | Page registry — drives hreflang, the language switcher and `sitemap.xml` |
+| `src/styles/` | One CSS partial per section, `@import`ed by `index.css`, plus vendored `pico.min.css` |
+| `src/scripts/` | Small vanilla JS modules with `init*()` exports (consent, download button, blog feed, carousel, lightbox) |
+| `public/` | Static files copied as-is: screenshots/videos, favicons, `og-image.png`, `robots.txt`, `CNAME`, `download.json` |
+| `.github/workflows/deploy.yml` | Syncs release info from GitHub Releases, builds, deploys to Pages |
+
+Maintainer documentation — architecture, decision records, design system, runbooks — is in
+[`docs/`](docs/README.md).
 
 Grove itself — the macOS app's source — lives in a separate, private repository.
 
@@ -34,10 +37,11 @@ Grove itself — the macOS app's source — lives in a separate, private reposit
 
 ## Preview locally
 
-No build step required — open a file directly, or serve the directory:
-
 ```sh
-python3 -m http.server
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # outputs dist/
+npm run preview  # serve the production build
 ```
 
 Check both light and dark mode, and the 860px/600px responsive breakpoints, before shipping a

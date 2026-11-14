@@ -1,0 +1,25 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { screenshots } from '../../data/home';
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['screenshots'] }
+const { copy } = Astro.props;
+---
+
+<section class="section screenshots" id="screenshots">
+  <div class="section-inner">
+    <SectionHeader eyebrow={copy.eyebrow} title={copy.title} sub={copy.sub} />
+
+    <div class="screenshot-gallery">
+      {screenshots.map((shot, i) => (
+        <div class="screenshot-item">
+          <a class="screenshot-frame" href={shot.src}>
+            <img src={shot.src} width={shot.width} height={shot.height} loading="lazy" alt={copy.items[i].alt} />
+          </a>
+          <p class="screenshot-caption" set:html={copy.items[i].caption} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+/* ── Pico bridge (Grove only) ───────────────────────────────────
+   Pico CSS is Grove's base stylesheet, but the core/ partials don't depend on
+   it. This file keeps Pico's own variables in sync with our tokens and undoes
+   the few Pico opinions that fight the layout. Drop it (and Pico) in a project
+   that doesn't use Pico.
+*/
+
+/* Pico declares its light palette on `:root:not([data-theme=dark])`
+   (specificity 0,2,0), which would beat a plain `:root` and leak Pico's
+   blue/white defaults into light mode — hence the extra selectors. */
+:root,
+:root[data-theme],
+:root:not([data-theme]) {
+  /* Pico bumps the root size to 125% on wide screens; our rem sizes assume 16px. */
+  --pico-font-size: 100%;
+  --pico-font-family: var(--font);
+  --pico-border-radius: var(--radius);
+  --pico-background-color: var(--bg);
+  --pico-color: var(--text);
+  --pico-h1-color: var(--text);
+  --pico-h2-color: var(--text);
+  --pico-h3-color: var(--text);
+  --pico-muted-color: var(--text-2);
+  --pico-muted-border-color: var(--border);
+  --pico-primary: var(--accent);
+  --pico-primary-background: var(--accent);
+  --pico-primary-border: var(--accent);
+  --pico-primary-underline: var(--accent);
+  --pico-primary-hover: var(--accent-hover);
+  --pico-primary-hover-background: var(--accent-hover);
+  --pico-primary-focus: color-mix(in srgb, var(--accent) 35%, transparent);
+  --pico-primary-inverse: var(--accent-contrast);
+  --pico-card-background-color: var(--bg-raised);
+  --pico-card-border-color: var(--border);
+  --pico-card-box-shadow: none;
+  --pico-card-sectioning-background-color: var(--bg-raised);
+}
+
+/* Pico pads `body > main`; sections manage their own spacing. */
+body > main { padding: 0; }
+/* ...and adds a bottom margin to every <section>, which shows the page
+   background as a strip between sections (very visible in light mode). */
+section { margin-bottom: 0; }

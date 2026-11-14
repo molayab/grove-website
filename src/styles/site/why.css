@@ -1,0 +1,53 @@
+/* ── Why native ─────────────────────────────────────────────── */
+.why { background: var(--bg); }
+
+.why-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+  text-align: left;
+}
+.why-text { flex: 1; min-width: 0; }
+.why-text .eyebrow { margin-bottom: 0.75rem; }
+.why-text h2 { margin-bottom: 1.75rem; }
+
+.why-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.why-list li {
+  display: flex;
+  gap: 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  align-items: flex-start;
+}
+.check {
+  color: var(--check);
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 0.9375rem;
+}
+
+.why-visual { flex-shrink: 0; }
+.badge-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 240px;
+}
+.badge {
+  font-family: var(--mono);
+  padding: 0.4rem 0.875rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  font-size: 0.78rem;
+  color: var(--text-2);
+  white-space: nowrap;
+}

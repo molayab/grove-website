@@ -1,0 +1,128 @@
+/* ── Design tokens ──────────────────────────────────────────────
+   This file is the theming API. It has two layers:
+
+   1. PRIMITIVES (top block): brand color, fonts, shape and the neutral
+      palettes. These are the values a project overrides — see
+      ../theme/grove.css for a complete example. The defaults below are a
+      deliberately neutral indigo so a project that forgets to theme itself
+      is obviously unthemed.
+
+   2. SEMANTIC tokens (--bg, --text, --accent…): what the components use.
+      They map the primitives onto the dark and light themes. Projects
+      normally don't touch these.
+
+   Theme switching: `data-theme="dark|light"` on <html> wins; without it the
+   OS preference (prefers-color-scheme) decides, dark being the default.
+*/
+
+/* ── 1. Primitives — override these ───────────────────────────── */
+:root {
+  /* Typography. Load web fonts yourself and name them here. */
+  --font: system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Shape */
+  --radius: 14px;
+  --radius-sm: 10px;
+  --radius-pill: 980px;
+
+  /* Brand */
+  --brand: #4F46E5;            /* fills: buttons, dots, borders */
+  --brand-hover: #4338CA;      /* hovered fills */
+  --brand-contrast: #FFFFFF;   /* text/icons on a brand fill (aim for >= 4.5:1) */
+  --brand-on-dark: #818CF8;    /* brand as small TEXT on dark surfaces (>= 4.5:1) */
+  --brand-on-light: #4338CA;   /* brand as small TEXT on light surfaces (>= 4.5:1) */
+
+  /* Neutral palettes */
+  --dark-bg: #000000;
+  --dark-section: #0A0A0A;     /* alternating section background */
+  --dark-raised: #111111;      /* cards, popovers */
+  --dark-text: #EEEEEE;
+
+  --light-bg: #EEEEEE;
+  --light-section: #FFFFFF;
+  --light-raised: #FFFFFF;
+  --light-text: #000000;
+  --light-border: #DDDDDD;
+}
+
+/* ── 2. Semantic tokens — dark (default) ──────────────────────── */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: var(--dark-bg);
+  --bg-section: var(--dark-section);
+  --bg-raised: var(--dark-raised);
+  --text: var(--dark-text);
+  --text-2: color-mix(in srgb, var(--text) 68%, transparent);
+  --text-3: color-mix(in srgb, var(--text) 60%, transparent);
+  --border: color-mix(in srgb, var(--text) 14%, transparent);
+  --border-strong: color-mix(in srgb, var(--text) 24%, transparent); /* outlined buttons */
+
+  --accent: var(--brand);
+  --accent-hover: var(--brand-hover);
+  --accent-contrast: var(--brand-contrast);
+  --accent-text: var(--brand-on-dark);
+  --accent-dim: color-mix(in srgb, var(--accent) 14%, transparent);
+  --check: var(--accent);
+  --glow-alpha: 22%; /* strength of the hero's brand glow */
+
+  --shadow-md: 0 24px 48px rgba(0, 0, 0, 0.28);
+  --shadow-frame:
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    0 80px 160px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Light ────────────────────────────────────────────────────── */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: var(--light-bg);
+  --bg-section: var(--light-section);
+  --bg-raised: var(--light-raised);
+  --text: var(--light-text);
+  --text-2: color-mix(in srgb, var(--text) 62%, transparent);
+  --text-3: color-mix(in srgb, var(--text) 60%, transparent);
+  --border: var(--light-border);
+  --border-strong: color-mix(in srgb, var(--text) 24%, transparent);
+
+  --accent-text: var(--brand-on-light);
+  --accent-dim: color-mix(in srgb, var(--accent) 10%, transparent);
+  --glow-alpha: 11%;
+
+  --shadow-md: 0 18px 40px -12px rgba(0, 0, 0, 0.18);
+  --shadow-frame:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 30px 60px -20px rgba(0, 0, 0, 0.28),
+    0 60px 120px -40px rgba(0, 0, 0, 0.2);
+}
+/* No data-theme (JS off): follow the OS. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --bg: var(--light-bg);
+    --bg-section: var(--light-section);
+    --bg-raised: var(--light-raised);
+    --text: var(--light-text);
+    --text-2: color-mix(in srgb, var(--text) 62%, transparent);
+    --text-3: color-mix(in srgb, var(--text) 60%, transparent);
+    --border: var(--light-border);
+    --border-strong: color-mix(in srgb, var(--text) 24%, transparent);
+    --accent-text: var(--brand-on-light);
+    --accent-dim: color-mix(in srgb, var(--accent) 10%, transparent);
+    --glow-alpha: 11%;
+    --shadow-md: 0 18px 40px -12px rgba(0, 0, 0, 0.18);
+    --shadow-frame:
+      0 0 0 1px rgba(0, 0, 0, 0.06),
+      0 30px 60px -20px rgba(0, 0, 0, 0.28),
+      0 60px 120px -40px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ── Theme-independent tokens ─────────────────────────────────── */
+:root {
+  --accent-glow: color-mix(in srgb, var(--accent) 65%, transparent); /* button hover glow */
+  --media-bg: #111111;                    /* letterbox behind screenshots / video */
+  --overlay-bg: rgba(0, 0, 0, 0.92);      /* modal viewer: always dark */
+  --overlay-fg: #EEEEEE;
+}

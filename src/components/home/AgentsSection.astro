@@ -1,0 +1,17 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { agents } from '../../data/home';
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['agents'] }
+const { copy } = Astro.props;
+---
+
+<section class="section agents">
+  <div class="section-inner">
+    <SectionHeader eyebrow={copy.eyebrow} title={copy.title} sub={copy.sub} />
+    <div class="agent-row">
+      {agents.map((agent) => <div class="agent-pill">{agent}</div>)}
+    </div>
+  </div>
+</section>
