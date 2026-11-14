@@ -1,0 +1,31 @@
+name: Redeploy on release
+
+# The Grove app's release workflow publishes each release (and its DMGs) to this repo.
+# The Download section needs a rebuild when that happens, but deploy.yml can't simply
+# listen to `release`: a release-triggered run is on the tag ref, and the github-pages
+# environment only allows deploys from `main` (it would also build the tagged commit).
+# So this job just starts deploy.yml on the default branch. workflow_dispatch is one of
+# the events the built-in GITHUB_TOKEN is allowed to trigger.
+
+on:
+  release:
+    types: [published, edited]
+
+permissions:
+  actions: write
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start the Pages deploy on the default branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          # Only a freshly published release is worth waiting for; an edit to an older
+          # release just rebuilds with whatever is latest.
+          RELEASE_TAG: ${{ github.event.action == 'published' && github.event.release.tag_name || '' }}
+        run: |
+          gh workflow run deploy.yml \
+            --repo "${{ github.repository }}" \
+            --ref "${{ github.event.repository.default_branch }}" \
+            -f release_tag="$RELEASE_TAG"

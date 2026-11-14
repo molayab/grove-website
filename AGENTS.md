@@ -62,9 +62,13 @@ content-hashed filename, so there is **no manual cache-busting** — the old `st
 string is gone. `src/styles/pico.min.css` is a plain checked-in file: update it by re-downloading
 the release from picocss.com or the `@picocss/pico` npm tarball.
 
-Deploy: `deploy.yml` runs on push to `main`, on `release` published/edited, and manually. It runs
-`sync-release-info.mjs` (falling back to the committed `public/download.json`), builds, and
-publishes `dist/` with `actions/deploy-pages`. The repo's Pages source must be **GitHub Actions**
+Deploy: `deploy.yml` runs on push to `main` and on `workflow_dispatch`. Releases are published to
+this repo by the Grove app's release workflow (cross-repo, `WEBSITE_REPO_TOKEN`);
+`redeploy-on-release.yml` reacts to them by dispatching `deploy.yml` on `main` — never give
+`deploy.yml` a `release` trigger, because the `github-pages` environment only allows `main`
+and a release run is on the tag. The deploy runs `sync-release-info.mjs` (waits for the new
+release's DMG, falls back to the committed `public/download.json`), builds, and publishes
+`dist/` with `actions/deploy-pages`. The repo's Pages source must be **GitHub Actions**
 (Settings → Pages), not "Deploy from a branch".
 
 ## Client-side content

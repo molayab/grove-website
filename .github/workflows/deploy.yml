@@ -3,11 +3,14 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  # A new release changes the Download button, so rebuild (replaces the old
-  # sync-release-info workflow that committed download.json back to main).
-  release:
-    types: [published, edited]
+  # Also started by redeploy-on-release.yml when the app publishes a release here
+  # (with release_tag set), and by hand from the Actions tab.
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Release tag to wait for before reading release info (optional)
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -31,11 +34,12 @@ jobs:
 
       - run: npm ci
 
-      # Refresh public/download.json from the latest release; if the API is
-      # unreachable the committed copy is used as a fallback.
+      # Refresh public/download.json from the latest release (waiting for release_tag's
+      # DMG when given); if the API is unreachable the committed copy is used.
       - name: Sync release info
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
         run: node scripts/sync-release-info.mjs || echo "::warning::Using committed download.json"
 
       - run: npm run build

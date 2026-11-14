@@ -22,9 +22,18 @@ deploy failed. Background: [ADR-0001](../adr/0001-astro-static-site-with-preserv
 
 ## Publish a Grove release
 
-1. Publish (or edit) the release on `molayab/grove-website` with the `Grove.dmg` asset.
-2. The `release` event triggers the deploy; `download.json` is regenerated from it.
+Normally automatic: pushing a `v*.*.*` tag in the app repo (`molayab/grove`) runs its
+`release.yml`, which builds, notarizes and publishes the release here with `Grove-vX.Y.Z.dmg`
+and `Grove.dmg` (using the `WEBSITE_REPO_TOKEN` secret in the app repo).
+
+1. The `release: published` event runs **Redeploy on release** here, which dispatches
+   **Deploy to GitHub Pages** on `main` with `release_tag=vX.Y.Z`.
+2. The deploy's "Sync release info" step waits (up to ~3 min) until that tag is the latest
+   release and its DMG has finished uploading, then writes `download.json` and builds.
 3. Verify the Download section shows the new version, size and date.
+
+Editing an existing release also redeploys (without waiting). To redeploy by hand: Actions →
+Deploy to GitHub Pages → Run workflow (optionally with a tag).
 
 ## When something goes wrong
 
@@ -33,7 +42,8 @@ deploy failed. Background: [ADR-0001](../adr/0001-astro-static-site-with-preserv
 | Site shows a directory listing / 404 at `/` | Pages source | Set Source to GitHub Actions; re-run the workflow (Actions → Deploy → Run workflow). |
 | Deploy job fails at `npm ci` | Lockfile out of sync | `npm install` locally, commit `package-lock.json`. |
 | Build fails | Workflow log | Reproduce with `npm ci && npm run build`; fix on a branch. |
-| Old version in Download | "Sync release info" step warning | Re-run the workflow manually; the committed `public/download.json` was used as fallback. |
+| Old version in Download | Did **Redeploy on release** run and dispatch a deploy? "Sync release info" warnings? | Run Deploy to GitHub Pages by hand. If the app's release step failed, check `WEBSITE_REPO_TOKEN` in `molayab/grove` (expired PAT = no release here). |
+| Deploy rejected: "not allowed to deploy to github-pages" | The run's ref | Deploys must run on `main`; don't add tag/release triggers to `deploy.yml`. |
 | Custom domain lost | `public/CNAME` present in `dist/`? | Restore `public/CNAME`; re-save the domain in Pages settings. |
 | Blog cards missing | `https://molayab.com/feed.xml` reachable, CORS `*`, posts tagged `grove` | Fix on molayab.com — see [ADR-0002](../adr/0002-blog-posts-from-molayab-atom-feed.md). The fallback link still works. |
 
