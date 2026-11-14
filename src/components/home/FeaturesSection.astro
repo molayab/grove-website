@@ -1,0 +1,22 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import FeatureCard from './FeatureCard.astro';
+import { featureOrder } from '../../data/home';
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['features'] }
+const { copy } = Astro.props;
+const last = copy.items.length - 1;
+---
+
+<section class="section features" id="features">
+  <div class="section-inner">
+    <SectionHeader eyebrow={copy.eyebrow} title={copy.title} sub={copy.sub} />
+
+    <div class="feature-grid">
+      {copy.items.map((item, i) => (
+        <FeatureCard icon={featureOrder[i]} title={item.title} body={item.body} highlight={i === last} />
+      ))}
+    </div>
+  </div>
+</section>

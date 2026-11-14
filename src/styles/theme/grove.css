@@ -1,0 +1,22 @@
+/* ── Grove theme ────────────────────────────────────────────────
+   Everything brand-specific lives here: override the primitives declared
+   in ../core/tokens.css. To theme another project (e.g. a personal site)
+   copy this file, change the values, and import it after core/.
+
+   Contrast: --brand-on-dark / --brand-on-light are the brand color nudged
+   until small text reaches >= 4.5:1 on that surface; --brand itself is only
+   ~3.6:1 on the dark surfaces, so it is for fills.
+*/
+:root {
+  --font: system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --brand: #CB2957;
+  --brand-hover: #B01F48;
+  --brand-contrast: #FFFFFF;
+  --brand-on-dark: #E8527C;
+  --brand-on-light: #B8244E;
+
+  /* Neutrals are the defaults from core/tokens.css (#000 / #0A0A0A / #111 /
+     #EEE on dark; #EEE / #FFF / #000 on light) — override here if needed. */
+}

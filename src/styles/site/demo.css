@@ -1,0 +1,23 @@
+/* ── Demo videos ────────────────────────────────────────────── */
+.demo { background: var(--bg-section); }
+/* Wider than the default 980px column so the video reads as the centerpiece. */
+.demo .section-inner { max-width: 1160px; }
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 1080px;
+  margin: 3.5rem auto 0;
+  text-align: left;
+}
+.demo-item { margin: 0; }
+
+.demo-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--media-bg);
+}
+.demo-video-promo { aspect-ratio: 16 / 9; }

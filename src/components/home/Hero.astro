@@ -1,0 +1,22 @@
+---
+import HeroCarousel from './HeroCarousel.astro';
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['hero']; carousel: HomeContent['carousel'] }
+const { copy, carousel } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge" set:html={copy.badge} />
+    <h1 set:html={copy.title} />
+    <p class="hero-sub" set:html={copy.sub} />
+    <div class="hero-cta">
+      <a href="#download" role="button" class="btn btn-primary btn-large" set:html={copy.ctaPrimary} />
+      <a href="#features" role="button" class="btn btn-ghost btn-large" set:html={copy.ctaSecondary} />
+    </div>
+    <p class="hero-trial" set:html={copy.trial} />
+  </div>
+
+  <HeroCarousel copy={carousel} />
+</section>

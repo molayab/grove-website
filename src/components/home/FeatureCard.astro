@@ -1,0 +1,26 @@
+---
+import { featureIcons as icons, type FeatureIcon } from '../../data/icons';
+
+interface Props {
+  icon: FeatureIcon;
+  title: string;
+  body: string;
+  highlight?: boolean;
+}
+const { icon, title, body, highlight = false } = Astro.props;
+---
+
+<article class:list={['feature-card', { 'feature-highlight': highlight }]}>
+  <svg class="feature-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={icons[icon]} />
+  {highlight ? (
+    <div>
+      <h3 set:html={title} />
+      <p set:html={body} />
+    </div>
+  ) : (
+    <>
+      <h3 set:html={title} />
+      <p set:html={body} />
+    </>
+  )}
+</article>

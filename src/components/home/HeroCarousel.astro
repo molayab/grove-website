@@ -1,0 +1,59 @@
+---
+import { heroSlides } from '../../data/home';
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['carousel'] }
+const { copy } = Astro.props;
+---
+
+<!-- Auto-advancing carousel: animated cover first, then the app screenshots -->
+<div class="window-wrap">
+  <div class="hero-shot" id="hero-carousel" role="region" aria-roledescription="carousel" aria-label={copy.label}>
+    <div class="hero-slides">
+      {heroSlides.map((slide, i) => {
+        const classes = ['hero-slide', { 'hero-slide-cover': slide.cover, 'is-active': i === 0 }];
+        return slide.video ? (
+          <video
+            class:list={classes}
+            src={slide.src}
+            poster={slide.poster}
+            width={slide.width}
+            height={slide.height}
+            aria-label={copy.slides[i].alt}
+            aria-hidden={i === 0 ? undefined : 'true'}
+            data-duration={slide.duration}
+            muted
+            loop
+            playsinline
+            preload="auto"
+          />
+        ) : (
+          <img
+            class:list={classes}
+            src={slide.src}
+            width={slide.width}
+            height={slide.height}
+            alt={copy.slides[i].alt}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+            aria-hidden={i === 0 ? undefined : 'true'}
+            data-duration={slide.duration}
+          />
+        );
+      })}
+    </div>
+  </div>
+  <div class="hero-controls" role="group" aria-label={copy.controlsLabel}>
+    {copy.slides.map((slide, i) => (
+      <button type="button" class="hero-dot" aria-label={slide.caption} aria-current={i === 0 ? 'true' : 'false'}></button>
+    ))}
+    <button type="button" class="hero-pause" id="hero-pause" aria-label={copy.pause}
+            data-label-pause={copy.pause} data-label-play={copy.play}><svg class="hero-icon-pause" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><rect x="2" y="1.5" width="3" height="9" rx="0.75"/><rect x="7" y="1.5" width="3" height="9" rx="0.75"/></svg><svg class="hero-icon-play" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true" hidden><path d="M3 1.8v8.4a.6.6 0 0 0 .9.5l6.6-4.2a.6.6 0 0 0 0-1L3.9 1.3a.6.6 0 0 0-.9.5z"/></svg></button>
+  </div>
+  <p class="hero-caption" id="hero-caption">{copy.slides[0].caption}</p>
+</div>
+
+<script>
+  import { initCarousel } from '../../scripts/carousel.js';
+  initCarousel();
+</script>

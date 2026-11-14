@@ -1,0 +1,28 @@
+---
+import { ui } from '../i18n';
+import type { Lang } from '../data/pages';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang].footer;
+const BLOG = 'https://molayab.com/blog/#tag=grove';
+// Guides are translated; the legal pages are English-only (see AGENTS.md).
+const guide = (file: string) => (lang === 'es' ? `/es/${file}` : `/${file}`);
+---
+
+<footer>
+  <div class="footer-inner">
+    <span class="logo">Grove for Mac</span>
+    <div class="footer-links">
+      <a href="mailto:hello@molayab.com">{t.support}</a>
+      <a href={BLOG} hreflang="en">{t.blog}</a>
+      <a href="/privacy-policy.html">{t.privacy}</a>
+      <a href="/refund-policy.html">{t.refund}</a>
+      <a href={guide('git-worktree-app-mac.html')}>{t.worktrees}</a>
+      <a href={guide('claude-code-mac-app.html')}>{t.claudeCode}</a>
+      <a href={guide('ai-coding-agents-mac-app.html')}>{t.agents}</a>
+      <a href="#" id="cookie-settings-link">{t.cookies}</a>
+    </div>
+    <span class="footer-copy">© 2026 <a href="https://molayab.com">Mateo Olaya Bernal</a></span>
+  </div>
+</footer>

@@ -1,0 +1,56 @@
+/* ── Nav ────────────────────────────────────────────────────── */
+/* `body > nav` (not bare `nav`) so any nested <nav> doesn't pick up the
+   sticky site-nav chrome and light-mode background. */
+body > nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-2);
+  transition: color 0.15s;
+  padding: 0.25rem 0;
+}
+.nav-link:hover { color: var(--text); }
+
+.nav-links { display: flex; gap: 0.625rem; align-items: center; margin-left: auto; margin-right: 0.625rem; }
+.nav-actions { display: flex; gap: 0.625rem; align-items: center; }
+.nav-actions .btn { padding: 0.5rem 1.2rem; font-size: 0.875rem; }
+
+/* Language switcher — part of .nav-actions, which stays on the top row on mobile */
+.lang-link {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.7rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+.lang-link:hover { color: var(--text); border-color: var(--text-2); }
