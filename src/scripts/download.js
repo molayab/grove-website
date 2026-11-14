@@ -1,4 +1,4 @@
-(function () {
+export function initDownload() {
   fetch('/download.json', { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw new Error('bad status'); return r.json(); })
     .then(function (data) {
@@ -21,4 +21,4 @@
     .catch(function () {
       // Static fallback already in the markup covers this case.
     });
-})();
+}

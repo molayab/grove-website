@@ -1,0 +1,31 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { DOWNLOAD_URL, RELEASES_URL } from '../../data/home';
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['download'] }
+const { copy } = Astro.props;
+---
+
+<section class="section download" id="download">
+  <div class="section-inner">
+    <SectionHeader eyebrow={copy.eyebrow} title={copy.title} sub={copy.sub} />
+
+    <article class="download-card">
+      <a id="download-btn" role="button" class="btn btn-primary btn-large download-btn" href={DOWNLOAD_URL}>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 3v10M6 9l4 4 4-4M4 16h12"/>
+        </svg>
+        <Fragment set:html={copy.button} />
+      </a>
+      <p class="download-meta" id="download-meta" set:html={copy.fetching} />
+      <p class="download-note" set:html={copy.note} />
+      <a id="download-all-releases" class="download-alt-link" href={RELEASES_URL} set:html={copy.allReleases} />
+    </article>
+  </div>
+</section>
+
+<script>
+  import { initDownload } from '../../scripts/download.js';
+  initDownload();
+</script>

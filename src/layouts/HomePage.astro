@@ -1,0 +1,41 @@
+---
+import Base from './Base.astro';
+import Hero from '../components/home/Hero.astro';
+import DownloadSection from '../components/home/DownloadSection.astro';
+import DemoSection from '../components/home/DemoSection.astro';
+import FeaturesSection from '../components/home/FeaturesSection.astro';
+import ScreenshotsSection from '../components/home/ScreenshotsSection.astro';
+import WhySection from '../components/home/WhySection.astro';
+import AgentsSection from '../components/home/AgentsSection.astro';
+import PricingSection from '../components/home/PricingSection.astro';
+import BlogSection from '../components/home/BlogSection.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { home as en } from '../content/home/en';
+import { home as es } from '../content/home/es';
+import type { Lang } from '../data/pages';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const copy = lang === 'es' ? es : en;
+---
+
+<Base
+  lang={lang}
+  title={copy.meta.title}
+  description={copy.meta.description}
+  path={lang === 'es' ? '/es/' : '/'}
+  navVariant="home"
+  ogImageAlt={copy.meta.ogImageAlt}
+  jsonLd={copy.meta.jsonLd}
+>
+  <Hero copy={copy.hero} carousel={copy.carousel} />
+  <DownloadSection copy={copy.download} />
+  <DemoSection copy={copy.demo} />
+  <FeaturesSection copy={copy.features} />
+  <ScreenshotsSection copy={copy.screenshots} />
+  <WhySection copy={copy.why} />
+  <AgentsSection copy={copy.agents} />
+  <PricingSection copy={copy.pricing} />
+  <BlogSection copy={copy.blog} lang={lang} />
+  <Lightbox lang={lang} />
+</Base>

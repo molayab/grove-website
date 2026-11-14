@@ -1,6 +1,6 @@
 ---
 import '../styles/pico.min.css';
-import '../styles/style.css';
+import '../styles/index.css';
 import { SITE, findPage, type Lang } from '../data/pages';
 import { ui } from '../i18n';
 import Nav from '../components/Nav.astro';
@@ -87,7 +87,8 @@ const ogImage = abs('/og-image.png');
 <Footer lang={lang} />
 
 <script>
-  import '../scripts/consent.js';
+  import { initConsent } from '../scripts/consent.js';
+  initConsent();
 </script>
 </body>
 </html>

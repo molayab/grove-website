@@ -1,0 +1,30 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { demoVideos } from '../../data/home';
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['demo'] }
+const { copy } = Astro.props;
+---
+
+<section class="section demo" id="demo">
+  <div class="section-inner">
+    <SectionHeader eyebrow={copy.eyebrow} title={copy.title} sub={copy.sub} />
+
+    <div class="demo-grid">
+      {demoVideos.map((video, i) => (
+        <figure class="demo-item">
+          <video
+            class:list={['demo-video', video.className]}
+            src={video.src}
+            width={video.width}
+            height={video.height}
+            aria-label={copy.items[i].label}
+            {...video.attrs}
+          ></video>
+          <figcaption class="screenshot-caption" set:html={copy.items[i].caption} />
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

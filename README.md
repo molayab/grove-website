@@ -20,10 +20,11 @@ vendored copy of [Pico CSS](https://picocss.com).
 | Path | What it is |
 |---|---|
 | `src/pages/` | One `.astro` file per URL: marketing page, `es/` translation, legal pages, SEO guides |
-| `src/layouts/`, `src/components/` | Shared `<head>`, nav, footer, cookie banner, lightbox |
+| `src/layouts/`, `src/components/` | Base layout, `HomePage`, site-wide UI, and one component per marketing section (`components/home/`) |
+| `src/content/home/` | Marketing-page copy per language (`en.ts`, `es.ts`) |
 | `src/data/pages.ts` | Page registry — drives hreflang, the language switcher and `sitemap.xml` |
-| `src/styles/` | `style.css` (design tokens + per-section rules) and vendored `pico.min.css` |
-| `src/scripts/` | Small vanilla scripts (consent, download button, blog feed, carousel, lightbox) |
+| `src/styles/` | One CSS partial per section, `@import`ed by `index.css`, plus vendored `pico.min.css` |
+| `src/scripts/` | Small vanilla JS modules with `init*()` exports (consent, download button, blog feed, carousel, lightbox) |
 | `public/` | Static files copied as-is: screenshots/videos, favicons, `og-image.png`, `robots.txt`, `CNAME`, `download.json` |
 | `.github/workflows/deploy.yml` | Syncs release info from GitHub Releases, builds, deploys to Pages |
 

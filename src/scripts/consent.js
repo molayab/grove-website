@@ -1,4 +1,4 @@
-(function () {
+export function initConsent() {
   var CONSENT_KEY = 'grove-cookie-consent';
   var GA_ID = 'G-435ZWRJN2B';
   var banner = document.getElementById('cookie-banner');
@@ -43,4 +43,4 @@
     e.preventDefault();
     showBanner();
   });
-})();
+}

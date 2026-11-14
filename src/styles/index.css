@@ -1,0 +1,24 @@
+/* Stylesheet entry: one partial per component/section, in cascade order.
+   `responsive.css` stays last — its media queries override rules above. */
+@import './reset.css';
+@import './tokens.css';
+@import './base.css';
+@import './typography.css';
+@import './buttons.css';
+@import './nav.css';
+@import './hero.css';
+@import './section.css';
+@import './download.css';
+@import './features.css';
+@import './demo.css';
+@import './screenshots.css';
+@import './lightbox.css';
+@import './why.css';
+@import './agents.css';
+@import './pricing.css';
+@import './blog.css';
+@import './legal.css';
+@import './footer.css';
+@import './cookie-banner.css';
+@import './theme-toggle.css';
+@import './responsive.css';

@@ -19,12 +19,19 @@ astro.config.mjs        site URL + `build.format: 'preserve'` (keeps /page.html 
 package.json            astro is the only dependency; `npm run dev | build | preview`
 src/pages/              One .astro file per URL, mirroring the public path (index, es/index, guides, legal)
   sitemap.xml.ts        Generates sitemap.xml (hreflang alternates) from src/data/pages.ts
-src/data/pages.ts       Registry of public pages: drives hreflang, the EN/ES switcher and the sitemap
-src/i18n.ts             Nav / footer strings per language
 src/layouts/Base.astro  <head> (title, og:*, twitter:*, canonical, hreflang, JSON-LD, theme script), nav, cookie banner, footer
-src/components/         Nav, Footer, CookieBanner, Lightbox
-src/scripts/            Vanilla JS: consent, download, blog, carousel, lightbox (bundled by Astro)
-src/styles/style.css    All styles for every page — design tokens + per-section rules, loaded after Pico
+src/layouts/HomePage.astro  Composes the marketing page from the section components for a given language
+src/components/         Site-wide UI: Nav, Footer, CookieBanner, Lightbox
+src/components/home/    One component per marketing section (Hero, HeroCarousel, DownloadSection, DemoSection,
+                        FeaturesSection/FeatureCard, ScreenshotsSection, WhySection, AgentsSection,
+                        PricingSection/PricingCard, BlogSection) + SectionHeader
+src/content/home/       Translatable copy for the marketing page: en.ts, es.ts (same shape, see types.ts)
+src/data/               pages.ts (page registry), home.ts (language-independent data: slides, prices, links), icons.ts
+src/i18n.ts             Nav / footer strings per language
+src/scripts/            Vanilla JS modules, each exporting an init function (initCarousel, initDownload,
+                        initBlog, initLightbox, initConsent); components call them from their own <script>
+src/styles/index.css    Entry that @imports one partial per section (reset, tokens, nav, hero, features, …,
+                        responsive last) — add new component styles as a new partial
 src/styles/pico.min.css Vendored Pico CSS (MIT) — classless-free build, used as the base stylesheet
 public/                 Copied as-is: favicons, og-image.png, screenshots/, download.json, robots.txt, CNAME
 scripts/sync-release-info.mjs  Regenerates public/download.json from the latest GitHub release
@@ -34,7 +41,7 @@ Pages: `index` (marketing), `es/index` (Spanish), `refund-policy` and `privacy-p
 English only — see Localization), and the SEO guides `git-worktree-app-mac`,
 `claude-code-mac-app`, `ai-coding-agents-mac-app` (each with an `es/` copy).
 
-CSS is imported from `Base.astro` (Pico first, then `style.css`) and Astro emits it with a
+CSS is imported from `Base.astro` (Pico first, then `src/styles/index.css`) and Astro emits it with a
 content-hashed filename, so there is **no manual cache-busting** — the old `style.css?v=` query
 string is gone. `src/styles/pico.min.css` is a plain checked-in file: update it by re-downloading
 the release from picocss.com or the `@picocss/pico` npm tarball.
@@ -49,6 +56,8 @@ publishes `dist/` with `actions/deploy-pages`. The repo's Pages source must be *
 A few sections fill themselves in with small vanilla scripts in `src/scripts/` (no framework,
 no dependencies), each with static markup that still works when the script fails or JS is off:
 
+- **Hero carousel** (`carousel.js`) cross-fades the slides listed in `src/data/home.ts`; the first is
+  the animated 16:9 cover GIF (`cover: true`, cropped to the frame, with its own `duration`).
 - **Download** (`download.js`) reads `/download.json` (refreshed on every deploy by `deploy.yml`).
 - **From the blog** (`blog.js`) fetches `https://molayab.com/feed.xml` (CORS `*`) and renders the
   three newest posts tagged `grove` into `[data-blog-feed]`, which stays `hidden` until that
@@ -58,7 +67,7 @@ no dependencies), each with static markup that still works when the script fails
 
 ## Design system
 
-Every page loads Pico first, then `style.css`. `style.css` defines the brand's
+Every page loads Pico first, then `src/styles/index.css`. `tokens.css` defines the brand's
 own CSS custom properties at the top (`:root`) for colors, radii, and fonts, and also re-points
 Pico's own `--pico-*` variables (primary color, card background, border radius, etc.) at those
 same tokens — so native Pico elements (`article`, `[role="button"]`, form controls) stay in sync
@@ -91,9 +100,8 @@ When adding a new page:
 
 ## Localization
 
-The marketing page has an English original (`src/pages/index.astro`, `lang="en"`) and a Spanish
-translation (`src/pages/es/index.astro`, `lang="es"`) — duplicated page files sharing the same
-layout and components; there is no i18n library or routing config. Shared UI strings (nav,
+The marketing page has an English original (`src/content/home/en.ts`, `lang="en"`) and a Spanish
+translation (`es.ts`, `lang="es"`) — two content files rendered by the same layout and components; there is no i18n library or routing config. Shared UI strings (nav,
 footer, cookie banner, lightbox labels) come from `src/i18n.ts` or the component's `lang` prop.
 
 - hreflang tags and the always-visible `.lang-link` (EN/ES) in the nav are generated from
@@ -107,8 +115,10 @@ footer, cookie banner, lightbox labels) come from `src/i18n.ts` or the component
   jurisdiction-sensitive and a literal translation can accidentally change a legal
   commitment. The cookie-consent banner's UI text (not the linked privacy policy itself)
   *is* translated, since it's a short functional prompt, not legal prose.
-- When editing marketing copy in `src/pages/index.astro`, check whether `src/pages/es/index.astro`
-  needs the same change. They're independent files, not generated from a shared source.
+- Marketing copy lives in `src/content/home/en.ts` and `es.ts`; both pages render through the same
+  components, so a copy change usually needs the same edit in both files (keep list lengths and
+  order identical — items are matched by position with `src/data/home.ts`). Language-independent
+  data (image paths, prices, links) is edited once in `src/data/home.ts`.
 
 ## SEO guide pages
 

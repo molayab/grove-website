@@ -1,0 +1,22 @@
+/* ── Agents ─────────────────────────────────────────────────── */
+.agents { background: var(--bg-section); }
+
+.agent-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+.agent-pill {
+  font-family: var(--mono);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: border-color 0.2s;
+}
+.agent-pill:hover { border-color: var(--accent); }

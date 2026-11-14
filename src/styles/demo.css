@@ -1,0 +1,23 @@
+/* ── Demo videos ────────────────────────────────────────────── */
+.demo { background: var(--bg); }
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem 1.75rem;
+  margin-top: 3.5rem;
+  text-align: left;
+  align-items: start;
+}
+.demo-item { margin: 0; }
+
+.demo-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #000;
+}
+.demo-video-worktrees { aspect-ratio: 1920 / 1264; }
+.demo-video-promo { aspect-ratio: 16 / 9; }

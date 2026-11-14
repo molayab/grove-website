@@ -1,5 +1,6 @@
-(function () {
-  // Hero carousel: cross-fades the stacked screenshots every few seconds.
+export function initCarousel() {
+  // Hero carousel: cross-fades the stacked slides every few seconds (or the
+  // slide's own data-duration, e.g. the animated cover).
   // Pauses while hovered or focused, while the tab is hidden, and when the
   // visitor uses the pause button; never auto-plays under reduced motion.
   var root = document.getElementById('hero-carousel');
@@ -8,7 +9,7 @@
   var dots = Array.prototype.slice.call(document.querySelectorAll('.hero-dot'));
   var caption = document.getElementById('hero-caption');
   var pauseBtn = document.getElementById('hero-pause');
-  var INTERVAL = 4500;
+  var INTERVAL = 4500; // default dwell; a slide can override it with data-duration (ms)
   var current = 0;
   var timer = null;
   var hovering = false;
@@ -27,11 +28,12 @@
     if (caption) caption.textContent = dots[current].getAttribute('aria-label');
   }
 
-  function stop() { clearInterval(timer); timer = null; }
+  function stop() { clearTimeout(timer); timer = null; }
   function sync() {
     stop();
     if (!userPaused && !hovering && !document.hidden) {
-      timer = setInterval(function () { show(current + 1); }, INTERVAL);
+      var wait = Number(slides[current].getAttribute('data-duration')) || INTERVAL;
+      timer = setTimeout(function () { show(current + 1); sync(); }, wait);
     }
   }
   function renderPause() {
@@ -56,4 +58,4 @@
   show(0);
   renderPause();
   sync();
-})();
+}

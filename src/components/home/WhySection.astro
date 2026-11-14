@@ -1,0 +1,30 @@
+---
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['why'] }
+const { copy } = Astro.props;
+---
+
+<section class="section why">
+  <div class="section-inner">
+    <div class="why-inner">
+      <div class="why-text">
+        <p class="eyebrow" set:html={copy.eyebrow} />
+        <h2 set:html={copy.title} />
+        <ul class="why-list">
+          {copy.items.map((item) => (
+            <li>
+              <span class="check">✓</span>
+              <span set:html={item} />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="why-visual">
+        <div class="badge-stack">
+          {copy.badges.map((badge) => <div class="badge">{badge}</div>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

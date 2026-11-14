@@ -1,4 +1,4 @@
-(function () {
+export function initBlog() {
   // "From the blog": the three newest posts tagged `grove` from the blog's
   // Atom feed. Cards are built with createElement/textContent only, never
   // innerHTML, since the feed is external content. On any failure the grid
@@ -90,4 +90,4 @@
       // The "All Grove posts" link below the grid already covers this case.
     })
     .then(function () { clearTimeout(timeout); });
-})();
+}

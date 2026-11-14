@@ -1,4 +1,4 @@
-(function () {
+export function initLightbox() {
   // Screenshot lightbox. Each thumbnail is a plain link to the full PNG, so
   // without JS (or without <dialog> support) clicking still opens the image.
   var dialog = document.getElementById('lightbox');
@@ -37,4 +37,4 @@
     if (e.key === 'ArrowLeft') show(current - 1);
     if (e.key === 'ArrowRight') show(current + 1);
   });
-})();
+}
