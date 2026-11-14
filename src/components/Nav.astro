@@ -21,7 +21,7 @@ const base = variant === 'home' ? '' : home(lang);
     {variant === 'home'
       ? <span class="logo">Grove for Mac</span>
       : <a href={home(lang)}><span class="logo">Grove for Mac</span></a>}
-    <div class="nav-actions">
+    <div class="nav-links">
       {variant === 'legal' ? (
         <>
           <a href={`${base}#pricing`} class="nav-link">{t.pricing}</a>
@@ -33,10 +33,14 @@ const base = variant === 'home' ? '' : home(lang);
           {variant === 'home' && <a href="#screenshots" class="nav-link">{t.screenshots}</a>}
           <a href={`${base}#pricing`} class="nav-link">{t.pricing}</a>
           <a href={`${base}#blog`} class="nav-link">{t.blog}</a>
-          {twin && <a href={twin} class="lang-link" hreflang={other} lang={other}>{ui[other].nav.langName}</a>}
-          <a href={`${base}#download`} role="button" class="btn btn-primary-dark">{t.download}</a>
         </>
       )}
     </div>
+    {variant !== 'legal' && (
+      <div class="nav-actions">
+        {twin && <a href={twin} class="lang-link" hreflang={other} lang={other}>{ui[other].nav.langName}</a>}
+        <a href={`${base}#download`} role="button" class="btn btn-primary-dark">{t.download}</a>
+      </div>
+    )}
   </div>
 </nav>

@@ -42,6 +42,8 @@ export interface HomeContent {
   agents: SectionCopy;
   pricing: SectionCopy & {
     tiers: { name: string; period: string; badge?: string }[];
+    /** Heading for the list of what every license includes. */
+    includesTitle: string;
     features: string[];
     buy: string;
     note: string;

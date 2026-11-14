@@ -20,10 +20,11 @@
   --accent:     #CB2957;
   --accent-hover: #B01F48;
   --accent-dim: rgba(203, 41, 87, 0.14);
+  --accent-text: #E8527C; /* crimson for small text on dark: 5.3:1+ (raw --accent is ~3.6:1) */
   --check:      #CB2957;
   --text:       #EEEEEE;
   --text-2:     rgba(238, 238, 238, 0.68);
-  --text-3:     rgba(238, 238, 238, 0.44);
+  --text-3:     rgba(238, 238, 238, 0.6);
 }
 
 /* Pico variable bridge — keeps native Pico elements (article, [role=button],
@@ -34,6 +35,9 @@
 :root,
 :root[data-theme],
 :root:not([data-theme]) {
+  /* Pico bumps the root size to 125% on wide screens; the design's rem sizes
+     assume 16px, so pin it. */
+  --pico-font-size: 100%;
   --pico-font-family: var(--font);
   --pico-border-radius: var(--radius);
   --pico-background-color: var(--bg);
@@ -66,10 +70,11 @@
     --accent:     #CB2957;
     --accent-hover: #A81F45;
     --accent-dim: rgba(203, 41, 87, 0.1);
+    --accent-text: #B8244E; /* darker crimson for small text on light: 5.3:1+ */
     --check:      #CB2957;
     --text:       #000000;
     --text-2:     rgba(0, 0, 0, 0.62);
-    --text-3:     rgba(0, 0, 0, 0.4);
+    --text-3:     rgba(0, 0, 0, 0.6);
   }
 }
 :root[data-theme="light"] {
@@ -80,10 +85,11 @@
   --accent:     #CB2957;
   --accent-hover: #A81F45;
   --accent-dim: rgba(203, 41, 87, 0.1);
+  --accent-text: #B8244E; /* darker crimson for small text on light: 5.3:1+ */
   --check:      #CB2957;
   --text:       #000000;
   --text-2:     rgba(0, 0, 0, 0.62);
-  --text-3:     rgba(0, 0, 0, 0.4);
+  --text-3:     rgba(0, 0, 0, 0.6);
 }
 :root[data-theme="dark"] {
   --bg:         #000000;
@@ -93,8 +99,9 @@
   --accent:     #CB2957;
   --accent-hover: #B01F48;
   --accent-dim: rgba(203, 41, 87, 0.14);
+  --accent-text: #E8527C; /* crimson for small text on dark: 5.3:1+ (raw --accent is ~3.6:1) */
   --check:      #CB2957;
   --text:       #EEEEEE;
   --text-2:     rgba(238, 238, 238, 0.68);
-  --text-3:     rgba(238, 238, 238, 0.44);
+  --text-3:     rgba(238, 238, 238, 0.6);
 }

@@ -8,3 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-decoration: none; }
+/* Pico pads `body > main`; sections manage their own spacing. */
+body > main { padding: 0; }
+/* ...and adds a bottom margin to every <section>, which shows the page background as a strip between sections. */
+section { margin-bottom: 0; }

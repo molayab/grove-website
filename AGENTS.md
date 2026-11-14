@@ -81,6 +81,16 @@ theme is inferred from the OS, there's no visible toggle control yet; Pico also 
 only accent color; the rest of the palette is `#000000` / `#DDDDDD` / `#EEEEEE` plus white —
 don't introduce other hues.
 
+Design-system gotchas (found in the design audit):
+- Pico bumps the root font size to 106–125% on wide screens. `tokens.css` pins `--pico-font-size: 100%`
+  so the `rem` sizes in the partials mean what they say — don't remove it.
+- Raw `--accent` (`#CB2957`) is ~3.6:1 on the dark surfaces, so it's for fills (buttons, borders,
+  dots). Use `--accent-text` for crimson *text* (eyebrows, links, `code`); the always-dark hero uses
+  the fixed `#E8527C`. `--text-3` is also kept ≥ 4.5:1 — don't lower its alpha.
+- Pico pads `body > main` and gives every `<section>` a bottom margin; `base.css` resets both
+  (otherwise the page background shows as a strip between sections in light mode).
+- Page content sits in `<main>` (set in `Base.astro`); keep one landmark per page.
+
 When adding a new page:
 - Create `src/pages/<name>.astro` (and `src/pages/es/<name>.astro` if translated) wrapping its
   content in `<Base>`; pass `title`, `description`, `path`, `navVariant` (`home` / `page` /

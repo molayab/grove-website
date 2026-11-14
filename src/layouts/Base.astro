@@ -74,6 +74,12 @@ const ogImage = abs('/og-image.png');
       var saved = localStorage.getItem('grove-theme');
       if (saved) dark = saved === 'dark';
       root.setAttribute('data-theme', dark ? 'dark' : 'light');
+      // Follow OS theme changes while there is no saved choice.
+      if (!saved) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+          root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        });
+      }
     })();
   </script>
 </head>
@@ -81,7 +87,9 @@ const ogImage = abs('/og-image.png');
 
 <Nav lang={lang} variant={navVariant} path={path} />
 
-<slot />
+<main>
+  <slot />
+</main>
 
 <CookieBanner lang={lang} />
 <Footer lang={lang} />

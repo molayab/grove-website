@@ -230,6 +230,7 @@ export const home: HomeContent = {
         "period": "one-time · up to 5 Macs"
       }
     ],
+    "includesTitle": "Every license includes",
     "features": [
       "All current features",
       "All future updates",

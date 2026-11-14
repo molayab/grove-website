@@ -19,11 +19,19 @@ const { copy } = Astro.props;
           price={tier.price}
           period={copy.tiers[i].period}
           badge={tier.featured ? copy.tiers[i].badge : undefined}
-          features={copy.features}
           buy={copy.buy}
           href={tier.href}
         />
       ))}
+    </div>
+
+    <div class="pricing-includes">
+      <p class="pricing-includes-title" set:html={copy.includesTitle} />
+      <ul>
+        {copy.features.map((feature) => (
+          <li><span class="check">✓</span> <Fragment set:html={feature} /></li>
+        ))}
+      </ul>
     </div>
 
     <p class="pricing-note" set:html={copy.note} />

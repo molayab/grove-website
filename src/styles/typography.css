@@ -1,6 +1,6 @@
 /* ── Typography ─────────────────────────────────────────────── */
 h1 {
-  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.02;
@@ -28,7 +28,7 @@ code {
   font-family: var(--mono);
   font-size: 0.85em;
   background: var(--accent-dim);
-  color: var(--accent);
+  color: var(--accent-text);
   padding: 0.1em 0.4em;
   border-radius: 5px;
 }
@@ -39,7 +39,7 @@ code {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 0.75rem;
 }
 

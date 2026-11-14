@@ -230,6 +230,7 @@ export const home: HomeContent = {
         "period": "pago único · hasta 5 Macs"
       }
     ],
+    "includesTitle": "Todas las licencias incluyen",
     "features": [
       "Todas las funciones actuales",
       "Todas las actualizaciones futuras",

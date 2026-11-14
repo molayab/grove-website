@@ -1,9 +1,11 @@
 /* ── Features ───────────────────────────────────────────────── */
 .features { background: var(--bg); }
+/* 12 regular cards fill 4 columns x 3 rows; the highlight card spans the last row. */
+.features .section-inner { max-width: 1160px; }
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
   margin-top: 3.5rem;
   text-align: left;
@@ -13,7 +15,7 @@
   background: var(--bg-raised);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.75rem;
+  padding: 1.5rem;
   transition: border-color 0.2s, transform 0.2s;
 }
 .feature-card:hover { border-color: rgba(203, 41, 87, 0.5); transform: translateY(-2px); }
