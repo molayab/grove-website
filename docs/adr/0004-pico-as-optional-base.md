@@ -17,7 +17,7 @@ don't use Pico.
 
 Keep Pico in Grove, imported first, and isolate all Pico-specific glue in
 `src/styles/pico-bridge.css`: map `--pico-*` variables to our tokens, pin
-`--pico-font-size: 100%`, reset `body > main` padding and `section` margins. `core/` contains
+`--pico-font-size: 100%`, reset `body > main` padding and `section` margins. the shared kit (formerly `core/`) contains
 nothing that requires Pico (the lightbox positions its own `<dialog>`; prose styles its own
 tables).
 

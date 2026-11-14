@@ -1,8 +1,9 @@
 # Design system
 
 The visual language of grove.molayab.com, and the reference the `webpage-designer` agent
-keeps current. The **token API** (every variable, how to theme another project) is in
-[`src/styles/README.md`](../../src/styles/README.md); this document covers the concepts,
+keeps current. The **token API** (every variable, how to theme another project) is documented in the
+[design-template-kit README](https://github.com/molayab/design-template-kit#theme-api) (see also
+[`src/styles/README.md`](../../src/styles/README.md)); this document covers the concepts,
 scales, components and rules built on top of it. Decisions behind it:
 [ADR-0003](../adr/0003-shared-themeable-css-layer.md), [ADR-0004](../adr/0004-pico-as-optional-base.md).
 
@@ -15,7 +16,7 @@ scales, components and rules built on top of it. Decisions behind it:
    green GIF backdrop — [ADR-0007](../adr/0007-hero-cover-as-looping-video.md)).
 3. **Dark-first, light as a peer.** Every section, including the hero, follows the theme.
 4. **Accessible by default.** Lighthouse accessibility 100 on every page, in both themes.
-5. **Brand-neutral core.** Anything reusable lives in `src/styles/core/` and reads tokens only.
+5. **Brand-neutral core.** Anything reusable lives in the `design-template-kit` package and reads tokens only.
 
 ## Color
 
@@ -83,14 +84,14 @@ All live in `src/components/` (Astro) with styles in the matching partial.
 
 | Component | Where | Variants / states | Accessibility |
 |---|---|---|---|
-| Button `.btn` | `core/buttons.css` | `-primary`, `-primary-dark` (nav), `-ghost` (outlined, `--border-strong`), `-large`; hover lift + glow, active scale .97 | `<a role="button">` for links, `<button>` for actions; 2px accent focus ring |
-| Nav | `Nav.astro`, `core/nav.css` | `home` (in-page anchors), `page` (links home), `legal` (Pricing + Support); ≤ 600px links move to a 2nd row | Sticky, blurred `--bg` @ 78% |
+| Button `.btn` | kit `buttons.css` | `-primary`, `-primary-dark` (nav), `-ghost` (outlined, `--border-strong`), `-large`; hover lift + glow, active scale .97 | `<a role="button">` for links, `<button>` for actions; 2px accent focus ring |
+| Nav | `Nav.astro`, kit `nav.css` | `home` (in-page anchors), `page` (links home), `legal` (Pricing + Support); ≤ 600px links move to a 2nd row | Sticky, blurred `--bg` @ 78% |
 | Footer | `Footer.astro` | EN/ES labels; legal links marked "(EN)" in Spanish | |
 | SectionHeader | `home/SectionHeader.astro` | eyebrow + h2 + optional sub | |
 | Feature card | `home/FeatureCard.astro` | default, `highlight` (spans the row, accent gradient) | Icon is decorative SVG |
 | Pricing card | `home/PricingCard.astro` | default, featured (badge, accent border/glow); shared "Every license includes" list below the grid | Buy link opens Gumroad overlay |
 | Hero carousel | `home/HeroCarousel.astro`, `carousel.js` | image slides, video slide (`video`, `cover`, `duration`); dots + pause | `role=region` carousel, dots 24px targets with labels, pause button 24×24, reduced motion = no autoplay |
-| Lightbox | `Lightbox.astro`, `core/lightbox.css` | always dark (`--overlay-*`) | `<dialog>`, close/prev/next labelled, Esc closes |
+| Lightbox | `Lightbox.astro`, kit `lightbox.css` | always dark (`--overlay-*`) | `<dialog>`, close/prev/next labelled, Esc closes |
 | Cookie banner | `CookieBanner.astro` | EN/ES; one row ≥ 600px | Decline is always shown next to Accept, same size; GA loads only after Accept |
 | Prose page | `.legal`, `.legal-inner`, `.legal-prose`, `.guide` modifier | callout, tables, figures | One `h1`, ordered `h2`s |
 | Badge / pill / blog card / demo video | `site/*.css` | — | — |
@@ -124,3 +125,4 @@ All live in `src/components/` (Astro) with styles in the matching partial.
 |---|---|---|
 | 2026-11-14 | Root font size pinned to 16px; `--accent-text`; `--text-3` 60%; hero 2-line h1; features 4 columns; shared pricing includes list; two-row mobile nav; `<main>` | Design audit |
 | 2026-11-14 | Layers `core/` / `theme/` / `site/` / `pico-bridge.css`; primitives API; `color-mix()` tints; hero follows theme; `--border-strong`, `--glow-alpha`; cover video | ADR-0003, ADR-0004, ADR-0007 |
+| 2026-11-14 | `core/` extracted to the `design-template-kit` package (v0.1.0); Grove keeps `theme/`, `site/`, `pico-bridge.css` | ADR-0003 amendment |

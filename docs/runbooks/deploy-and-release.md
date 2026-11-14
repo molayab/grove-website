@@ -14,7 +14,9 @@ deploy failed. Background: [ADR-0001](../adr/0001-astro-static-site-with-preserv
 ## Ship a site change
 
 1. Work on a branch; `npm run build` must pass locally.
-2. Open a PR (the `webpage-publisher` agent does this after human approval).
+2. Open a PR (the `webpage-publisher` agent does this after human approval). The **Build check**
+   workflow runs `npm ci && npm run build` on every PR, so install or build failures show up
+   before merging.
 3. Merge to `main` → `Deploy to GitHub Pages` runs: `npm ci` → `sync-release-info.mjs` →
    `npm run build` → upload `dist/` → deploy.
 4. Check the Actions run is green, then load `/`, `/es/`, one guide and one legal page.

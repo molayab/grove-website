@@ -1,8 +1,9 @@
 /* Grove stylesheet entry (imported by layouts/Base.astro).
-   Layers, in cascade order: Pico (third-party base) → core (reusable) →
+   Layers, in cascade order: Pico (third-party base) → design-template-kit (reusable,
+   brand-neutral; github.com/molayab/design-template-kit, version pinned in package.json) →
    theme (brand overrides) → Pico bridge → site (Grove-only sections). */
 @import './pico.min.css';
-@import './core/index.css';
+@import 'design-template-kit/core.css';
 @import './theme/grove.css';
 @import './pico-bridge.css';
 @import './site/index.css';
