@@ -28,6 +28,9 @@ vendored copy of [Pico CSS](https://picocss.com).
 | `public/` | Static files copied as-is: screenshots/videos, favicons, `og-image.png`, `robots.txt`, `CNAME`, `download.json` |
 | `.github/workflows/deploy.yml` | Syncs release info from GitHub Releases, builds, deploys to Pages |
 
+Maintainer documentation — architecture, decision records, design system, runbooks — is in
+[`docs/`](docs/README.md).
+
 Grove itself — the macOS app's source — lives in a separate, private repository.
 
 ---

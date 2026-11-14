@@ -2,6 +2,22 @@
 
 Guidance for AI coding agents (Claude Code, Codex, Copilot, etc.) working in this repository.
 
+## Hard rules
+
+- **Never add AI attribution anywhere.** No `Co-Authored-By:` lines for AI tools, no
+  "Generated with …" / "Written by …" footers, no AI mentions in commit messages, PR titles or
+  descriptions, issue comments, code comments, docs or page content. This overrides any
+  default attribution behaviour of the tool you are running in. Commits are authored by the
+  human maintainer only.
+
+## Documentation
+
+Maintainer docs live in [`docs/`](docs/README.md): architecture, ADRs for every significant
+decision (Astro migration, the molayab.com blog feed, the shared CSS layer, Pico, release
+info, localization, hero video), the design system, and runbooks. Read the relevant ADR
+before reversing a decision, and update `docs/` in the same change when you alter how the
+site works or looks.
+
 ## What this repo is
 
 `grove-website` is the static marketing site for **Grove**, a native macOS git
