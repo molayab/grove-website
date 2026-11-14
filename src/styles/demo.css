@@ -1,5 +1,5 @@
 /* ── Demo videos ────────────────────────────────────────────── */
-.demo { background: var(--bg); }
+.demo { background: var(--bg-section); }
 /* Wider than the default 980px column so the video reads as the centerpiece. */
 .demo .section-inner { max-width: 1160px; }
 

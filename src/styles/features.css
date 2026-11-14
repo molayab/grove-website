@@ -1,5 +1,5 @@
 /* ── Features ───────────────────────────────────────────────── */
-.features { background: var(--bg-section); }
+.features { background: var(--bg); }
 
 .feature-grid {
   display: grid;
