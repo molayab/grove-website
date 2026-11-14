@@ -1,0 +1,24 @@
+---
+import type { Lang } from '../data/pages';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const label = lang === 'es'
+  ? { viewer: 'Visor de capturas', close: 'Cerrar', prev: 'Captura anterior', next: 'Captura siguiente' }
+  : { viewer: 'Screenshot viewer', close: 'Close', prev: 'Previous screenshot', next: 'Next screenshot' };
+---
+
+<dialog id="lightbox" class="lightbox" aria-label={label.viewer}>
+  <button type="button" class="lightbox-btn lightbox-close" aria-label={label.close}>&times;</button>
+  <button type="button" class="lightbox-btn lightbox-prev" aria-label={label.prev}>&larr;</button>
+  <button type="button" class="lightbox-btn lightbox-next" aria-label={label.next}>&rarr;</button>
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" alt="" />
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+</dialog>
+
+<script>
+  import { initLightbox } from '../scripts/lightbox.js';
+  initLightbox();
+</script>

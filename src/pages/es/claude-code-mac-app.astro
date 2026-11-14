@@ -1,0 +1,136 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Ejecuta Claude Code en una app nativa de Mac",
+  "description": "Ejecuta Claude Code, Codex, Gemini CLI y otros agentes de IA en una app nativa de Mac, con shell real, revisión de diffs y git worktrees. $9.99.",
+  "inLanguage": "es",
+  "url": "https://grove.molayab.com/es/claude-code-mac-app.html",
+  "image": "https://grove.molayab.com/og-image.png",
+  "dateModified": "2026-11-04",
+  "author": {
+    "@type": "Person",
+    "name": "Mateo Olaya Bernal",
+    "url": "https://molayab.com"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Grove for Mac",
+    "alternateName": "Grove",
+    "operatingSystem": "macOS 26 or later",
+    "applicationCategory": "DeveloperApplication",
+    "url": "https://grove.molayab.com/"
+  }
+};
+---
+
+<Base
+  lang="es"
+  title="Ejecuta Claude Code en una app nativa de Mac | Grove para Mac"
+  description="Ejecuta Claude Code, Codex, Gemini CLI y otros agentes de IA en una app nativa de Mac, con shell real, revisión de diffs y git worktrees. $9.99."
+  path="/es/claude-code-mac-app.html"
+  navVariant="page"
+  ogType="article"
+  jsonLd={jsonLd}
+>
+
+<!-- GUIDE CONTENT -->
+<section class="section legal guide">
+  <div class="section-inner legal-inner">
+
+    <p class="eyebrow">Guía</p>
+    <h1 class="legal-title">Ejecuta Claude Code en una app nativa de Mac</h1>
+    <p class="legal-updated">Grove para Mac · Actualizado en noviembre de 2026</p>
+
+    <div class="legal-callout">
+      <strong>En corto:</strong> Grove le da a Claude Code, y a otros agentes de línea de comandos, un hogar en
+      una ventana nativa de macOS. El agente corre igual que en Terminal, junto a una shell real, tu árbol de
+      archivos y un diff estilo GitHub de lo que cambió. Y todo sigue al git worktree en el que estás trabajando.
+    </div>
+
+    <div class="legal-prose">
+
+      <h2>Claude Code, sin cambios</h2>
+      <p>
+        Claude Code es un programa de terminal, y Grove lo respeta. Ejecuta el comando <code>claude</code> real en
+        una terminal real (un PTY), en la carpeta de tu proyecto, con tu propio entorno, configuración y sesión.
+        Grove no hace de proxy, no agrega su propio modelo de IA, no inyecta credenciales ni le pasa tu código al
+        agente como argumentos. Es el mismo Claude Code, con un mejor espacio de trabajo alrededor.
+      </p>
+      <p>
+        Grove encuentra los agentes instalados en los lugares habituales, incluidos <code>~/.local/bin</code>,
+        Homebrew y Bun, aunque abras la app desde el Dock y no desde una terminal.
+      </p>
+
+      <h2>Cualquier agente, elegido por proyecto</h2>
+      <p>
+        Grove no está atado a un proveedor. Ejecuta Claude Code, opencode, Codex, Gemini CLI y Aider. Cada checkout
+        recuerda qué agente elegiste, y puedes abrir varias pestañas de agente lado a lado. Tus pestañas, su orden
+        y el agente de cada una vuelven al reabrir la app.
+      </p>
+
+      <h2>Revisa lo que cambió el agente</h2>
+      <p>
+        La pestaña Cambios lista cada archivo modificado con un diff estilo GitHub y resaltado de sintaxis. Los
+        archivos que ya miraste quedan marcados como vistos, y la marca se borra si el agente los vuelve a cambiar.
+        Haz clic en "+" en cualquier línea para dejar un comentario. Los comentarios se juntan en una sola revisión,
+        y <strong>Enviar</strong> la escribe completa en el prompt del agente para que la leas antes de pulsar
+        Return. Grove nunca la envía por ti.
+      </p>
+
+      <figure>
+        <img src="/screenshots/changes-review.png" width="1800" height="1125" loading="lazy"
+             alt="Pestaña Cambios de Grove con un diff unificado, un cuadro de comentario en línea y un botón para enviar al agente" />
+        <figcaption>Los comentarios en el diff se agrupan en una revisión y se escriben en el prompt de Claude Code.</figcaption>
+      </figure>
+
+      <h2>Prompts y comandos que reutilizas</h2>
+      <p>
+        Guarda los prompts que siempre vuelves a escribir y los comandos de shell que usas a diario, por proyecto o
+        en una biblioteca compartida. Ejecútalos desde la barra de herramientas o la paleta ⌘K. Las plantillas
+        completan valores como <code>&#123;&#123;branch&#125;&#125;</code>, <code>&#123;&#123;date&#125;&#125;</code> o tu portapapeles, y te preguntan
+        lo demás antes de ejecutar.
+      </p>
+
+      <h2>Trabajo en paralelo con git worktrees</h2>
+      <p>
+        Dale a cada agente su propia rama en su propio worktree. Al cambiar de worktree en la barra lateral, el
+        agente, la shell, los archivos, el diff y el panel de git se mueven juntos, y cada agente sigue corriendo
+        mientras miras otro. Mira <a href="/es/git-worktree-app-mac.html">Una app de git worktrees para Mac</a> para
+        ver cómo funciona.
+      </p>
+
+      <h2>Hecha para el Mac</h2>
+      <p>
+        Grove está escrita en Swift y SwiftUI, no en Electron. Sigue la apariencia de tu sistema, abre rápido y
+        está firmada con Developer ID y notarizada por Apple. Cerrar la ventana no detiene nada: tus agentes y
+        shells siguen corriendo hasta que salgas de la app.
+      </p>
+
+      <h2>Preguntas</h2>
+      <h3>¿Necesito una suscripción de Claude?</h3>
+      <p>
+        Grove no incluye un modelo de IA. Necesitas Claude Code instalado y tu propia cuenta de Anthropic, igual
+        que en Terminal. Lo que el agente envía queda entre tú y su proveedor; Grove en sí no sube tu repositorio.
+      </p>
+      <h3>¿La puedo usar sin Claude Code?</h3>
+      <p>Sí. Usa opencode, Codex, Gemini CLI o Aider, o solo los paneles de shell, archivos y diff.</p>
+      <h3>¿Cuánto cuesta?</h3>
+      <p>
+        Hay una prueba gratis de 7 días. Después, una licencia cuesta $9.99 en un solo pago para un Mac, con todas
+        las actualizaciones futuras incluidas. Grove necesita macOS 26 o posterior.
+      </p>
+
+    </div>
+
+    <div class="legal-callout guide-cta">
+      <strong>Prueba Grove para Mac gratis durante 7 días.</strong> Firmado y notarizado por Apple, sin suscripción.
+      <p><a href="/es/#download" role="button" class="btn btn-primary">Descargar Grove</a></p>
+    </div>
+
+  </div>
+</section>
+
+</Base>

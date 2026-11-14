@@ -1,0 +1,9 @@
+/* ── Section wrapper ────────────────────────────────────────── */
+.section {
+  padding: 96px 2rem;
+  text-align: center;
+}
+.section-inner {
+  max-width: 980px;
+  margin: 0 auto;
+}

@@ -1,0 +1,27 @@
+---
+import type { Lang } from '../data/pages';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-banner-inner">
+    {lang === 'es' ? (
+      <p class="cookie-banner-text">
+        Usamos un beacon de analítica sin cookies en cada visita y — solo si aceptas — Google
+        Analytics, que sí usa una cookie. Consulta nuestra
+        <a href="/privacy-policy.html">Política de Privacidad (EN)</a>.
+      </p>
+    ) : (
+      <p class="cookie-banner-text">
+        We use a cookie-free analytics beacon on every visit, and — only if you accept — Google
+        Analytics, which sets a cookie. See our <a href="/privacy-policy.html">Privacy Policy</a>.
+      </p>
+    )}
+    <div class="cookie-banner-actions">
+      <button type="button" id="cookie-decline" class="btn btn-ghost cookie-banner-btn">{lang === 'es' ? 'Rechazar' : 'Decline'}</button>
+      <button type="button" id="cookie-accept" class="btn btn-primary cookie-banner-btn">{lang === 'es' ? 'Aceptar' : 'Accept'}</button>
+    </div>
+  </div>
+</div>

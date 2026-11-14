@@ -1,0 +1,23 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { BLOG_URL } from '../../data/home';
+import type { Lang } from '../../data/pages';
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['blog']; lang: Lang }
+const { copy, lang } = Astro.props;
+---
+
+<section class="section blog" id="blog">
+  <div class="section-inner">
+    <SectionHeader eyebrow={copy.eyebrow} title={copy.title} sub={copy.sub} />
+    <div class="blog-grid" data-blog-feed hidden></div>
+    <!-- The blog is English-only. -->
+    <a class="blog-all-link" href={BLOG_URL} hreflang={lang === 'es' ? 'en' : undefined} set:html={copy.allPosts} />
+  </div>
+</section>
+
+<script>
+  import { initBlog } from '../../scripts/blog.js';
+  initBlog();
+</script>

@@ -1,0 +1,39 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import PricingCard from './PricingCard.astro';
+import { pricingTiers } from '../../data/home';
+import type { HomeContent } from '../../content/home/types';
+
+interface Props { copy: HomeContent['pricing'] }
+const { copy } = Astro.props;
+---
+
+<section class="section pricing" id="pricing">
+  <div class="section-inner">
+    <SectionHeader eyebrow={copy.eyebrow} title={copy.title} sub={copy.sub} />
+
+    <div class="pricing-grid">
+      {pricingTiers.map((tier, i) => (
+        <PricingCard
+          name={copy.tiers[i].name}
+          price={tier.price}
+          period={copy.tiers[i].period}
+          badge={tier.featured ? copy.tiers[i].badge : undefined}
+          buy={copy.buy}
+          href={tier.href}
+        />
+      ))}
+    </div>
+
+    <div class="pricing-includes">
+      <p class="pricing-includes-title" set:html={copy.includesTitle} />
+      <ul>
+        {copy.features.map((feature) => (
+          <li><span class="check">✓</span> <Fragment set:html={feature} /></li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="pricing-note" set:html={copy.note} />
+  </div>
+</section>
