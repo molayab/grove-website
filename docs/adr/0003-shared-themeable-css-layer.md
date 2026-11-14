@@ -76,6 +76,8 @@ and Grove consumes it as a pinned dependency. The Grove-only layers stay here
   (no SSH key), while the tarball is a plain HTTPS download with an integrity hash in the lockfile.
 - **Versioning.** Semver; a renamed token or class is a major bump. Upgrading = change the tag in
   `package.json`, `npm install`, re-check pages in both themes.
+- **License.** The kit is MIT-licensed (from v0.1.1) so it can be reused freely; Grove's own
+  content, copy and assets stay proprietary — the kit contains no brand values or Grove assets.
 - **Rule of thumb.** A style that any site could use belongs in the kit; a style tied to Grove's
   sections belongs in `src/styles/site/`.
 - **molayab.com** is not migrated yet (Jekyll today; the owner plans to move it to Astro or another
