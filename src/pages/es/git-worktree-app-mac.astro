@@ -1,0 +1,146 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Una app de git worktrees para Mac que mueve todo tu espacio de trabajo",
+  "description": "Grove para Mac lista todos tus git worktrees y cambia con un clic: tu agente de IA, shell, archivos, diff y git siguen al checkout. Nativa, $9.99.",
+  "inLanguage": "es",
+  "url": "https://grove.molayab.com/es/git-worktree-app-mac.html",
+  "image": "https://grove.molayab.com/og-image.png",
+  "dateModified": "2026-11-04",
+  "author": {
+    "@type": "Person",
+    "name": "Mateo Olaya Bernal",
+    "url": "https://molayab.com"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Grove for Mac",
+    "alternateName": "Grove",
+    "operatingSystem": "macOS 26 or later",
+    "applicationCategory": "DeveloperApplication",
+    "url": "https://grove.molayab.com/"
+  }
+};
+---
+
+<Base
+  lang="es"
+  title="App de git worktrees para Mac — todo en una ventana | Grove para Mac"
+  description="Grove para Mac lista todos tus git worktrees y cambia con un clic: tu agente de IA, shell, archivos, diff y git siguen al checkout. Nativa, $9.99."
+  path="/es/git-worktree-app-mac.html"
+  navVariant="page"
+  ogType="article"
+  jsonLd={jsonLd}
+>
+
+<!-- GUIDE CONTENT -->
+<section class="section legal guide">
+  <div class="section-inner legal-inner">
+
+    <p class="eyebrow">Guía</p>
+    <h1 class="legal-title">Una app de git worktrees para Mac que mueve todo tu espacio de trabajo</h1>
+    <p class="legal-updated">Grove para Mac · Actualizado en noviembre de 2026</p>
+
+    <div class="legal-callout">
+      <strong>En corto:</strong> Grove es una app nativa de macOS que lista todos los worktrees de git de tu
+      repositorio y te deja cambiar entre ellos con un clic. Al cambiar, tu agente de IA, la shell, el árbol de
+      archivos, el diff y el panel de git se mueven juntos a ese checkout, así nunca haces commit en una rama
+      mientras revisas otra.
+    </div>
+
+    <div class="legal-prose">
+
+      <h2>Por qué usar git worktrees</h2>
+      <p>
+        <code>git worktree</code> permite que un repositorio tenga varios directorios de trabajo a la vez, cada uno
+        en su propia rama. Puedes arreglar un bug en <code>main</code> mientras una rama de feature sigue
+        compilando, revisar un pull request sin hacer stash, o darle a cada agente de IA su propia rama para que dos
+        agentes nunca editen los mismos archivos.
+      </p>
+      <p>
+        El problema es todo lo que rodea al comando. Después de <code>git worktree add</code> todavía tienes que
+        hacer <code>cd</code> a la carpeta nueva, abrir otra pestaña de terminal, apuntar tu editor y tu herramienta
+        de diff ahí y reiniciar el agente. Y luego recordar qué ventana es de qué rama.
+      </p>
+
+      <h2>Cómo maneja Grove varios worktrees</h2>
+      <ul>
+        <li>
+          <strong>Todos los worktrees en una lista.</strong> El panel Worktrees de la barra lateral muestra todos
+          los worktrees del repositorio, incluidos los que creaste desde la terminal.
+        </li>
+        <li>
+          <strong>Crea uno desde una rama.</strong> Elige una rama existente o escribe una nueva. Grove crea un git
+          worktree estándar dentro de la carpeta que elijas en Ajustes, con la forma
+          <code>&lt;raíz&gt;/&lt;repo&gt;/&lt;rama&gt;</code>, para que no tengas que pensar en rutas.
+        </li>
+        <li>
+          <strong>Un clic lo cambia todo.</strong> Al seleccionar un worktree, toda la app apunta a ese checkout:
+          los paneles de Agente y Shell, el árbol de archivos, el diff de Cambios y el panel de git para rama,
+          commit, pull y push.
+        </li>
+        <li>
+          <strong>Cada worktree guarda su estado.</strong> El agente que elegiste, tus pestañas de terminal, los
+          sitios fijados y los comentarios de revisión pendientes se recuerdan por checkout y vuelven al reabrir.
+        </li>
+        <li>
+          <strong>Borrar pide confirmación.</strong> Quitar un worktree borra un checkout del disco, así que Grove
+          pregunta antes y te avisa si perderías comentarios de revisión sin enviar.
+        </li>
+      </ul>
+
+      <figure>
+        <img src="/screenshots/agent.png" width="1800" height="1125" loading="lazy"
+             alt="Barra lateral de Grove con la lista de espacios de trabajo, el panel Worktrees y el panel de git, junto a Claude Code en el checkout seleccionado" />
+        <figcaption>El panel Worktrees está en la barra lateral. El agente, la shell y el diff siguen al checkout seleccionado.</figcaption>
+      </figure>
+
+      <h2>Ramas en paralelo con agentes de IA</h2>
+      <p>
+        Los worktrees y los agentes encajan bien: ejecuta Claude Code en una rama de feature en un worktree y Codex
+        en un bugfix en otro, cada uno en su checkout aislado. La sesión de terminal de cada checkout sigue
+        corriendo cuando cambias a otro, así que un agente a mitad de una tarea no se interrumpe. Cuando termine,
+        abre la pestaña Cambios de ese worktree y revisa exactamente qué cambió.
+      </p>
+      <p>
+        Más sobre los agentes en <a href="/es/claude-code-mac-app.html">Ejecuta Claude Code en una app nativa de Mac</a>.
+      </p>
+
+      <h2>Git de verdad, sin ataduras</h2>
+      <p>
+        Grove usa el <code>git</code> que ya tienes instalado. Los worktrees que crea son worktrees normales:
+        <code>git worktree list</code> los muestra y puedes seguir usando la terminal junto a Grove. Nada se guarda
+        en un formato propietario, y Grove no hace force push ni borra ramas.
+      </p>
+
+      <h2>Una app nativa de Mac, no una web empaquetada</h2>
+      <p>
+        Grove está hecha en Swift y SwiftUI, no en Electron. Sigue la apariencia de tu sistema, abre rápido y
+        mantiene tus agentes y shells corriendo aunque cierres la ventana.
+      </p>
+
+      <h2>Preguntas</h2>
+      <h3>¿Funciona con los worktrees que ya tengo?</h3>
+      <p>Sí. Lee la lista de worktrees del repositorio, así que los existentes aparecen apenas agregas el repositorio.</p>
+      <h3>¿Tengo que dejar de usar git en la terminal?</h3>
+      <p>No. Grove usa git estándar por debajo, así que la terminal, otros clientes de git y Grove ven el mismo estado.</p>
+      <h3>¿Cuánto cuesta?</h3>
+      <p>
+        Hay una prueba gratis de 7 días. Después, una licencia cuesta $9.99 en un solo pago para un Mac, con todas
+        las actualizaciones futuras incluidas. Grove necesita macOS 26 o posterior.
+      </p>
+
+    </div>
+
+    <div class="legal-callout guide-cta">
+      <strong>Prueba Grove para Mac gratis durante 7 días.</strong> Firmado y notarizado por Apple, sin suscripción.
+      <p><a href="/es/#download" role="button" class="btn btn-primary">Descargar Grove</a></p>
+    </div>
+
+  </div>
+</section>
+
+</Base>

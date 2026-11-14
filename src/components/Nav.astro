@@ -1,0 +1,41 @@
+---
+import { ui, home } from '../i18n';
+import { findPage, type Lang } from '../data/pages';
+
+interface Props {
+  lang: Lang;
+  /** `home`: in-page anchors. `page`: links back to the home page. `legal`: English-only legal pages. */
+  variant: 'home' | 'page' | 'legal';
+  /** Path of the current page, used to find its other-language twin. */
+  path: string;
+}
+const { lang, variant, path } = Astro.props;
+const t = ui[lang].nav;
+const other: Lang = lang === 'en' ? 'es' : 'en';
+const twin = findPage(path)?.[other];
+const base = variant === 'home' ? '' : home(lang);
+---
+
+<nav>
+  <div class="nav-inner">
+    {variant === 'home'
+      ? <span class="logo">Grove for Mac</span>
+      : <a href={home(lang)}><span class="logo">Grove for Mac</span></a>}
+    <div class="nav-actions">
+      {variant === 'legal' ? (
+        <>
+          <a href={`${base}#pricing`} class="nav-link">{t.pricing}</a>
+          <a href="mailto:hello@molayab.com" class="nav-link">{t.support}</a>
+        </>
+      ) : (
+        <>
+          <a href={`${base}#features`} class="nav-link">{t.features}</a>
+          {variant === 'home' && <a href="#screenshots" class="nav-link">{t.screenshots}</a>}
+          <a href={`${base}#pricing`} class="nav-link">{t.pricing}</a>
+          {twin && <a href={twin} class="lang-link" hreflang={other} lang={other}>{ui[other].nav.langName}</a>}
+          <a href={`${base}#download`} role="button" class="btn btn-primary-dark">{t.download}</a>
+        </>
+      )}
+    </div>
+  </div>
+</nav>

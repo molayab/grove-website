@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Regenerates download.json from this repo's GitHub release so the Download
+// Regenerates public/download.json from this repo's GitHub release so the Download
 // section on the site stays in sync automatically. Run by
-// .github/workflows/sync-release-info.yml on every `release` webhook
+// .github/workflows/deploy.yml on every `release` webhook
 // (published/edited), and safe to re-run by hand — with no `release` event
 // in the environment it just falls back to whatever is currently the latest
 // published release.
@@ -39,5 +39,5 @@ const data = {
   size_bytes: primaryAsset?.size ?? null,
 };
 
-writeFileSync('download.json', `${JSON.stringify(data, null, 2)}\n`);
-console.log(`Wrote download.json for ${data.tag}`);
+writeFileSync('public/download.json', `${JSON.stringify(data, null, 2)}\n`);
+console.log(`Wrote public/download.json for ${data.tag}`);

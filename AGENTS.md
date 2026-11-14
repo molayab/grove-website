@@ -6,55 +6,59 @@ Guidance for AI coding agents (Claude Code, Codex, Copilot, etc.) working in thi
 
 `grove-website` is the static marketing site for **Grove**, a native macOS git
 workspace app sold as a one-time-purchase license by an independent developer
-(Mateo Olaya Bernal). It is plain HTML/CSS — no build step, no bundler, no
-package manager. It's served via GitHub Pages at `grove.molayab.com` (see `CNAME`).
-The one framework dependency is [Pico CSS](https://picocss.com), vendored as a
-static file (see below) rather than pulled from a CDN or npm.
+(Mateo Olaya Bernal). It's an [Astro](https://astro.build) project that builds to plain
+static HTML/CSS (no client framework, no SSR) and is deployed to GitHub Pages at
+`grove.molayab.com` by `.github/workflows/deploy.yml` (see `public/CNAME`). The one CSS
+dependency is [Pico CSS](https://picocss.com), vendored as a static file rather than pulled
+from a CDN or npm.
 
 ## Structure
 
 ```
-index.html            Single-page marketing site (hero, features, screenshots, pricing, footer)
-refund-policy.html     Legal page: refund policy (English only — see Localization below)
-privacy-policy.html    Legal page: privacy policy + cookie disclosure (English only — see Localization below)
-es/index.html          Spanish translation of the marketing page
-git-worktree-app-mac.html, claude-code-mac-app.html, ai-coding-agents-mac-app.html   SEO guide pages (en); Spanish copies under es/
-style.css              All styles for every page — design tokens + per-section rules, loaded after Pico
-vendor/pico.min.css     Vendored Pico CSS (MIT) — classless-free build, used as the base stylesheet
-favicon.svg, favicon-*.png, apple-touch-icon.png   Site favicon (SVG + PNG fallbacks)
-screenshots/            PNGs referenced by index.html and es/index.html
-og-image.png            1200×630 social preview card (og:image / twitter:image on every page)
-sitemap.xml             Sitemap with hreflang alternates — add every new public page here
-robots.txt              Allows all crawlers, AI included, and points at the sitemap
-CNAME                   GitHub Pages custom domain
+astro.config.mjs        site URL + `build.format: 'preserve'` (keeps /page.html and /es/ URLs — don't change)
+package.json            astro is the only dependency; `npm run dev | build | preview`
+src/pages/              One .astro file per URL, mirroring the public path (index, es/index, guides, legal)
+  sitemap.xml.ts        Generates sitemap.xml (hreflang alternates) from src/data/pages.ts
+src/data/pages.ts       Registry of public pages: drives hreflang, the EN/ES switcher and the sitemap
+src/i18n.ts             Nav / footer strings per language
+src/layouts/Base.astro  <head> (title, og:*, twitter:*, canonical, hreflang, JSON-LD, theme script), nav, cookie banner, footer
+src/components/         Nav, Footer, CookieBanner, Lightbox
+src/scripts/            Vanilla JS: consent, download, blog, carousel, lightbox (bundled by Astro)
+src/styles/style.css    All styles for every page — design tokens + per-section rules, loaded after Pico
+src/styles/pico.min.css Vendored Pico CSS (MIT) — classless-free build, used as the base stylesheet
+public/                 Copied as-is: favicons, og-image.png, screenshots/, download.json, robots.txt, CNAME
+scripts/sync-release-info.mjs  Regenerates public/download.json from the latest GitHub release
 ```
 
-There is no `/dist`, no bundler, no JS framework. Pages are deployed as-is on push to `main`.
-`vendor/pico.min.css` is checked in as a plain file — update it by re-downloading the release
-from picocss.com or the `@picocss/pico` npm tarball, there's no package.json tracking the version.
+Pages: `index` (marketing), `es/index` (Spanish), `refund-policy` and `privacy-policy` (legal,
+English only — see Localization), and the SEO guides `git-worktree-app-mac`,
+`claude-code-mac-app`, `ai-coding-agents-mac-app` (each with an `es/` copy).
 
-`style.css` is linked with a cache-busting query string (`style.css?v=YYYYMMDD`) in every page.
-There's no hashed-filename build step, so without this a CSS-only change can deploy successfully
-while visitors keep getting the old stylesheet from browser/CDN cache indefinitely — bump the
-date in **every** `<link>` that references `style.css` whenever you touch it (grep for
-`style.css?v=` to find them all).
+CSS is imported from `Base.astro` (Pico first, then `style.css`) and Astro emits it with a
+content-hashed filename, so there is **no manual cache-busting** — the old `style.css?v=` query
+string is gone. `src/styles/pico.min.css` is a plain checked-in file: update it by re-downloading
+the release from picocss.com or the `@picocss/pico` npm tarball.
+
+Deploy: `deploy.yml` runs on push to `main`, on `release` published/edited, and manually. It runs
+`sync-release-info.mjs` (falling back to the committed `public/download.json`), builds, and
+publishes `dist/` with `actions/deploy-pages`. The repo's Pages source must be **GitHub Actions**
+(Settings → Pages), not "Deploy from a branch".
 
 ## Client-side content
 
-A few sections fill themselves in with small inline, vanilla `<script>` blocks at the bottom of
-`index.html` and `es/index.html` (no framework, no dependencies), each with static markup that
-still works when the script fails or JS is off:
+A few sections fill themselves in with small vanilla scripts in `src/scripts/` (no framework,
+no dependencies), each with static markup that still works when the script fails or JS is off:
 
-- **Download** reads `download.json` (kept current by the `sync-release-info` workflow).
-- **From the blog** fetches `https://molayab.com/feed.xml` (CORS `*`) and renders the three newest
-  posts tagged `grove` into `[data-blog-feed]`, which stays `hidden` until that succeeds; the
-  "All Grove posts" link is the fallback. Feed content is external: build nodes with
-  `createElement`/`textContent`, never `innerHTML`, and only link to `https://molayab.com/`.
-  The script is duplicated in both pages (dates use `en` / `es`), so change both.
+- **Download** (`download.js`) reads `/download.json` (refreshed on every deploy by `deploy.yml`).
+- **From the blog** (`blog.js`) fetches `https://molayab.com/feed.xml` (CORS `*`) and renders the
+  three newest posts tagged `grove` into `[data-blog-feed]`, which stays `hidden` until that
+  succeeds; the "All Grove posts" link is the fallback. Feed content is external: build nodes
+  with `createElement`/`textContent`, never `innerHTML`, and only link to `https://molayab.com/`.
+  One script serves both languages (it reads `<html lang>` for date formatting).
 
 ## Design system
 
-Every page loads `vendor/pico.min.css` first, then `style.css`. `style.css` defines the brand's
+Every page loads Pico first, then `style.css`. `style.css` defines the brand's
 own CSS custom properties at the top (`:root`) for colors, radii, and fonts, and also re-points
 Pico's own `--pico-*` variables (primary color, card background, border radius, etc.) at those
 same tokens — so native Pico elements (`article`, `[role="button"]`, form controls) stay in sync
@@ -62,55 +66,59 @@ with the brand palette automatically. Prefer real Pico elements over bespoke div
 cards are `<article>`, button-styled links carry `role="button"` alongside their `.btn*` class.
 
 The site is **dark-first** with a light-mode override via `prefers-color-scheme` and a
-`data-theme` attribute (toggled by the inline script at the bottom of each page — currently
+`data-theme` attribute (set by the inline script in `Base.astro`'s `<head>` — currently
 theme is inferred from the OS, there's no visible toggle control yet; Pico also reads
 `data-theme`, so the same attribute drives both). Grove crimson (`--accent`, `#CB2957`) is the
 only accent color; the rest of the palette is `#000000` / `#DDDDDD` / `#EEEEEE` plus white —
 don't introduce other hues.
 
 When adding a new page:
-- Give it a self-referencing `<link rel="canonical">`, the full `og:*`/`twitter:*` set, and an
-  entry in `sitemap.xml`.
-- Copy the `<head>` (including both stylesheet links), `<nav>`, `<footer>`, and
-  theme-detection `<script>` from an existing page (`index.html` or `refund-policy.html`)
-  verbatim so nav/footer/theme stay consistent.
+- Create `src/pages/<name>.astro` (and `src/pages/es/<name>.astro` if translated) wrapping its
+  content in `<Base>`; pass `title`, `description`, `path`, `navVariant` (`home` / `page` /
+  `legal`) and, for guides, `ogType="article"` plus a `jsonLd` object. `Base` emits the
+  canonical link and the full `og:*`/`twitter:*` set.
+- Add it to `src/data/pages.ts` — that's what produces the hreflang alternates, the language
+  switcher and the `sitemap.xml` entry. Link it from `Footer.astro` if it should be site-wide.
+- Use root-absolute paths (`/screenshots/x.png`, `/es/`, `/privacy-policy.html`) — the site is
+  served from the domain root and `es/` pages live one directory down.
 - Reuse existing classes (`.section`, `.section-inner`, `.eyebrow`, `.btn*`) before adding
   new CSS. Legal/prose pages should reuse the `.legal`, `.legal-inner`, `.legal-prose`
   classes added for the refund policy page.
-- Keep every page self-contained HTML — no shared includes/templating exists, so structural
-  changes to nav/footer must be applied by hand to every `.html` file.
+- In `.astro` markup a literal `{` or `}` in text starts an expression — write `&#123;` /
+  `&#125;` (e.g. the `{{branch}}` placeholders in the guides).
+- Nav, footer, cookie banner and theme script live in `Base.astro`/`src/components/`, so
+  structural changes are made once; per-language strings go in `src/i18n.ts`.
 
 ## Localization
 
-The marketing page has an English original (`index.html`, `lang="en"`) and a Spanish
-translation (`es/index.html`, `lang="es"`) — plain duplicated static HTML, no i18n
-library or build step, consistent with the rest of this repo. `es/index.html` uses
-`../`-prefixed paths for every shared asset (`style.css`, `vendor/pico.min.css`,
-favicons, `screenshots/`, `download.json`) since it lives one directory down.
+The marketing page has an English original (`src/pages/index.astro`, `lang="en"`) and a Spanish
+translation (`src/pages/es/index.astro`, `lang="es"`) — duplicated page files sharing the same
+layout and components; there is no i18n library or routing config. Shared UI strings (nav,
+footer, cookie banner, lightbox labels) come from `src/i18n.ts` or the component's `lang` prop.
 
-- Both pages carry `<link rel="alternate" hreflang="...">` tags pointing at each other
-  plus `x-default`, and a small always-visible `.lang-link` (EN/ES) in the nav — update
-  both ends whenever you add or rename a page that should be reachable in both languages.
-- Only the marketing page is translated today. `refund-policy.html` and
-  `privacy-policy.html` are English-only; `es/index.html`'s footer links to them labeled
+- hreflang tags and the always-visible `.lang-link` (EN/ES) in the nav are generated from
+  `src/data/pages.ts` — set both `en` and `es` paths when you add a page reachable in both
+  languages.
+- Only the marketing page and the guides are translated today. `refund-policy` and
+  `privacy-policy` are English-only; the Spanish footer links to them labeled
   "(EN)" rather than silently switching languages. Don't translate legal content without
   going through the same review this repo's AGENTS.md already asks for on English legal
   copy (see "Legal/policy content — special care" below) — consumer-protection wording is
   jurisdiction-sensitive and a literal translation can accidentally change a legal
   commitment. The cookie-consent banner's UI text (not the linked privacy policy itself)
-  *is* translated on `es/index.html`, since it's a short functional prompt, not legal prose.
-- When editing marketing copy in `index.html`, check whether `es/index.html` needs the
-  same change. They're independent files, not generated from a shared source.
+  *is* translated, since it's a short functional prompt, not legal prose.
+- When editing marketing copy in `src/pages/index.astro`, check whether `src/pages/es/index.astro`
+  needs the same change. They're independent files, not generated from a shared source.
 
 ## SEO guide pages
 
-`git-worktree-app-mac.html`, `claude-code-mac-app.html` and `ai-coding-agents-mac-app.html` (plus their `es/` copies) are long-form
+`git-worktree-app-mac`, `claude-code-mac-app` and `ai-coding-agents-mac-app` (plus their `es/` copies) are long-form
 pages, each built around one search intent, tracked by molayab/grove#125. They reuse the legal
 pages' `.legal-inner`/`.legal-prose` layout with a `.guide` modifier, and are linked from every
 footer. Every claim on them must match the shipped app: check the app repo before adding a feature,
-and never add benchmark numbers that haven't been measured. A new guide needs: en + es copies with
-hreflang pairs, a `TechArticle` JSON-LD block, a footer link on every page, and a `sitemap.xml`
-entry.
+and never add benchmark numbers that haven't been measured. A new guide needs: en + es page files
+with hreflang pairs (via `src/data/pages.ts`), a `TechArticle` JSON-LD block, a footer link on every
+page, and its `sitemap.xml` entry (automatic from the registry).
 
 ## Business context relevant to content changes
 
@@ -144,6 +152,8 @@ When asked to write or edit legal content:
 
 ## Testing changes
 
-There's no test suite or build. To verify a change, open the HTML file directly in a
-browser (or run a static file server, e.g. `python3 -m http.server`) and check both light
-and dark mode, plus mobile widths (the CSS has breakpoints at 860px and 600px).
+There's no test suite. Run `npm run dev` (or `npm run build && npm run preview`) and check both
+light and dark mode, plus mobile widths (the CSS has breakpoints at 860px and 600px). A clean
+`npm run build` is the gate CI applies. URLs must not change: after a build, `dist/` should contain
+`index.html`, `es/index.html`, `privacy-policy.html`, `refund-policy.html` and each guide at its
+existing `*.html` path.
