@@ -9,12 +9,44 @@ Guidance for AI coding agents (Claude Code, Codex, Copilot, etc.) working in thi
   descriptions, issue comments, code comments, docs or page content. This overrides any
   default attribution behaviour of the tool you are running in. Commits are authored by the
   human maintainer only.
-- **Visual, UX, theming and design-system changes go through the `webpage-pipeline` skill.**
+- **Visual, UX, theming and design-system changes go through the web pipeline.**
   New pages or sections, redesigns, nav/footer controls, theme changes and anything that alters
   how the site looks or behaves for visitors must run designer → human approval → coder → SEO
-  review → human approval → security review → human approval → publisher (`/webpage-pipeline <idea>`). Don't edit components, styles or scripts
+  review → human approval → security review → human approval → publisher (`/web-agentic-pipeline:webpage-pipeline <idea>`, from the
+  [`web-agentic-pipeline`](https://github.com/molayab/web-agentic-pipeline) plugin enabled in
+  `.claude/settings.json`; its agents read the Pipeline profile below). Don't edit components, styles or scripts
   directly for these, however small the change looks, and never commit or open a PR without all
   the human gates. Non-visual fixes (typos, dependency bumps, build/CI) can skip it.
+
+## Pipeline profile
+
+Site facts for the `web-agentic-pipeline` agents (designer, coder, SEO and security reviewers,
+publisher). Keep this current when any of it changes.
+
+- **Default branch / deploy:** `main`; `.github/workflows/deploy.yml` builds and publishes to
+  GitHub Pages on push to `main` and on `workflow_dispatch` (never a `release` trigger, see
+  Structure).
+- **Build:** `npm run build`. Must exist in `dist/`: `index.html`, `es/index.html`,
+  `privacy-policy.html`, `refund-policy.html`, `git-worktree-app-mac.html`,
+  `claude-code-mac-app.html`, `ai-coding-agents-mac-app.html`, their `es/` copies, and
+  `sitemap.xml`.
+- **Canonical host:** `https://grove.molayab.com`.
+- **Pages registry:** `src/data/pages.ts` (hreflang, language switcher, sitemap, `lastmod`).
+- **Locales:** `en` (original), `es`. Copy in `src/content/home/en.ts`/`es.ts`, same shape and order.
+- **Legal pages (agents never edit the wording):** `privacy-policy`, `refund-policy`, English only.
+- **Feeds:** produces none. Consumes `https://molayab.com/feed.xml` (Atom; entries tagged
+  `grove`) in `src/scripts/blog.js`.
+- **Sources of truth:** `public/download.json` (version, DMG link and size; synced from the
+  latest release), `src/data/home.ts` (prices, links, slides), the app repo `molayab/grove` for
+  features and claims.
+- **Public by design:** Google Analytics ID `G-435ZWRJN2B` (loaded only after consent, in
+  `src/scripts/consent.js`), the Cloudflare Web Analytics beacon token in `Base.astro`, Gumroad
+  product URLs and `gumroad.js`.
+- **Intentional public contacts:** `hello@molayab.com`, the name Mateo Olaya Bernal.
+- **External content origins allowed in links:** `https://molayab.com/` (blog feed).
+- **Vendored / non-registry dependencies:** `src/styles/pico.min.css` (Pico CSS, MIT);
+  `design-template-kit` from a pinned GitHub tag tarball.
+- **Attribution:** none, anywhere (see Hard rules).
 
 ## Documentation
 

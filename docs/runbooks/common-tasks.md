@@ -1,8 +1,9 @@
 # Runbook: common tasks
 
 Each recipe ends with: `npm run build` passes, and you checked the result in a browser in
-dark and light mode at desktop and ~390px wide. For visual changes, prefer running the
-`/webpage-pipeline` skill (designer plan → your approval → coder → your approval → PR).
+dark and light mode at desktop and ~390px wide. Visual changes go through
+`/web-agentic-pipeline:webpage-pipeline` (designer plan → your approval → coder → SEO audit →
+your approval → security review → your approval → PR).
 
 ## Edit home-page copy
 
