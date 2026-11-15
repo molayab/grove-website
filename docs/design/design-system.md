@@ -72,9 +72,11 @@ Headings use `text-wrap: balance`; paragraphs `text-wrap: pretty`.
 
 | Token / rule | Value |
 |---|---|
-| Section padding | `96px 2rem` (≤ 600px: `72px 1.5rem`) |
-| Content column | `.section-inner` 980px; wide sections (features, demo) 1160px |
-| Hero text column | 820px; hero media 860px |
+| Gutter | `--gutter` 2rem (≤ 600px: 1.5rem), identical in nav, hero, sections and footer (kit >= 0.2.0) |
+| Section padding | `96px` vertical (≤ 600px: `72px`); the `*-inner` owns the gutter |
+| Content width | `--page-max` 980px (`.section-inner`), `--page-max-wide` 1160px (nav, footer, `.section-inner--wide`: features, demo). Both exclude the gutter |
+| Frame rule | Every inner: `max-width: calc(<measure> + 2 * var(--gutter))`, `padding-inline: var(--gutter)`, so content is exactly the measure; 980px sections are centered inside the 1160px frame |
+| Hero text column | 820px (+ gutter); hero media 860px including gutter |
 | Radii | `--radius` 14px (cards, buttons), `--radius-sm` 10px (media), `--radius-pill` |
 | Breakpoints | 1100px (features 4→3 cols), 860px (2 cols, stacked pricing/gallery), 600px (single column, two-row nav) |
 
@@ -126,4 +128,5 @@ All live in `src/components/` (Astro) with styles in the matching partial.
 | 2026-11-14 | Root font size pinned to 16px; `--accent-text`; `--text-3` 60%; hero 2-line h1; features 4 columns; shared pricing includes list; two-row mobile nav; `<main>` | Design audit |
 | 2026-11-14 | Layers `core/` / `theme/` / `site/` / `pico-bridge.css`; primitives API; `color-mix()` tints; hero follows theme; `--border-strong`, `--glow-alpha`; cover video | ADR-0003, ADR-0004, ADR-0007 |
 | 2026-11-14 | `core/` extracted to the `design-template-kit` package (v0.1.0); Grove keeps `theme/`, `site/`, `pico-bridge.css` | ADR-0003 amendment |
+| 2026-11-14 | One page frame: `--gutter`, `--page-max`, `--page-max-wide` tokens and `.section-inner--wide` (kit v0.2.0, option B); nav/footer/features/demo share the 1160px frame, text sections 980px centered inside | 2026-11-14-layout-gutter-alignment |
 | 2026-11-14 | Footer theme control (System/Light/Dark) planned (no new tokens; site-layer CSS) | 2026-11-14-footer-theme-toggle |

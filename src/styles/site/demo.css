@@ -1,7 +1,6 @@
 /* ── Demo videos ────────────────────────────────────────────── */
 .demo { background: var(--bg-section); }
-/* Wider than the default 980px column so the video reads as the centerpiece. */
-.demo .section-inner { max-width: 1160px; }
+/* Uses the kit's `.section-inner--wide` frame so the video reads as the centerpiece. */
 
 .demo-grid {
   display: grid;

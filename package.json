@@ -10,6 +10,6 @@
   },
   "dependencies": {
     "astro": "^7.4.12",
-    "design-template-kit": "https://github.com/molayab/design-template-kit/archive/refs/tags/v0.1.1.tar.gz"
+    "design-template-kit": "https://github.com/molayab/design-template-kit/archive/refs/tags/v0.2.0.tar.gz"
   }
 }
