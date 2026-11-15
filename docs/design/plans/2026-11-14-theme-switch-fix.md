@@ -1,6 +1,7 @@
 ---
 id: 2026-11-14-theme-switch-fix
-status: implemented
+status: published
+pr: https://github.com/molayab/grove-website/pull/36
 kit_pr: https://github.com/molayab/design-template-kit/pull/2
 approved_by: human
 approved_on: 2026-11-14
