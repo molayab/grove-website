@@ -12,6 +12,7 @@ export const ui = {
       claudeCode: 'Claude Code on Mac',
       agents: 'AI coding agents on Mac',
       cookies: 'Cookie Settings',
+      theme: { label: 'Theme', system: 'System', light: 'Light', dark: 'Dark' },
     },
   },
   es: {
@@ -25,6 +26,7 @@ export const ui = {
       claudeCode: 'Claude Code en Mac',
       agents: 'Agentes de IA en Mac',
       cookies: 'Preferencias de cookies',
+      theme: { label: 'Tema', system: 'Sistema', light: 'Claro', dark: 'Oscuro' },
     },
   },
 } satisfies Record<Lang, unknown>;

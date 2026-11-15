@@ -64,7 +64,9 @@ languages, two English-only legal pages). Goals, in order:
   `localStorage`, re-openable from "Cookie Settings" in the footer). Disclosed in the
   privacy policy — change both together.
 - **Theme.** An inline script in `<head>` sets `data-theme` from a saved choice or the OS and
-  follows OS changes while nothing is saved. CSS tokens switch on `data-theme`.
+  follows OS changes while nothing is saved (storage is re-checked on each OS change). CSS tokens
+  switch on `data-theme`. The footer control (`scripts/theme-toggle.js`) has three states, System /
+  Light / Dark: Light and Dark are saved in `localStorage` (`grove-theme`), System deletes the key.
 
 ## Integration points
 

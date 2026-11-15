@@ -9,6 +9,12 @@ Guidance for AI coding agents (Claude Code, Codex, Copilot, etc.) working in thi
   descriptions, issue comments, code comments, docs or page content. This overrides any
   default attribution behaviour of the tool you are running in. Commits are authored by the
   human maintainer only.
+- **Visual, UX, theming and design-system changes go through the `webpage-pipeline` skill.**
+  New pages or sections, redesigns, nav/footer controls, theme changes and anything that alters
+  how the site looks or behaves for visitors must run designer → human approval → coder → security
+  review → human approval → publisher (`/webpage-pipeline <idea>`). Don't edit components, styles or scripts
+  directly for these, however small the change looks, and never commit or open a PR without both
+  gates. Non-visual fixes (typos, dependency bumps, build/CI) can skip it.
 
 ## Documentation
 
@@ -97,7 +103,7 @@ cards are `<article>`, button-styled links carry `role="button"` alongside their
 
 The site is **dark-first** with a light-mode override via `prefers-color-scheme` and a
 `data-theme` attribute (set by the inline script in `Base.astro`'s `<head>` — currently
-theme is inferred from the OS, there's no visible toggle control yet; Pico also reads
+theme follows the OS ("System") unless the footer System / Light / Dark control saves Light or Dark in `localStorage` as `grove-theme`; System removes the key; Pico also reads
 `data-theme`, so the same attribute drives both). Grove crimson (`--accent`, `#CB2957`) is the
 only accent color; the rest of the palette is `#000000` / `#DDDDDD` / `#EEEEEE` plus white —
 don't introduce other hues. The hero follows the theme (dark and light).
