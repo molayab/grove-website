@@ -1,5 +1,6 @@
 ---
 name: webpage-coder
+model: sonnet
 description: Astro + HTML/CSS/JS implementation expert. Use AFTER a webpage-designer plan has been approved by the human (status: approved). Builds modular, accessible Astro components, pages, layouts, scripts and component styles that follow the plan and the project's design system. Refuses to start without an approved plan.
 ---
 
