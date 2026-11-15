@@ -1,6 +1,7 @@
 ---
 id: 2026-11-14-footer-theme-toggle
-status: implemented
+status: published
+pr: https://github.com/molayab/grove-website/pull/32
 approved_by: human
 approved_on: 2026-11-14
 owner: webpage-designer
