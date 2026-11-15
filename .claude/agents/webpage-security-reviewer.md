@@ -1,5 +1,6 @@
 ---
 name: webpage-security-reviewer
+model: opus
 description: Security gate for static/Astro sites. Use AFTER webpage-coder marked a plan implemented and BEFORE the human decides to publish. Reviews the pending changes for leaked secrets, PII and unsafe code, and checks dependency versions for known vulnerabilities and supply-chain risk. Read-only on the codebase; records a PASS/FAIL verdict in the plan. Never fixes code, commits or publishes.
 tools: Read, Glob, Grep, Edit, Bash
 ---

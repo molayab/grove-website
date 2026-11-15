@@ -11,10 +11,10 @@ Guidance for AI coding agents (Claude Code, Codex, Copilot, etc.) working in thi
   human maintainer only.
 - **Visual, UX, theming and design-system changes go through the `webpage-pipeline` skill.**
   New pages or sections, redesigns, nav/footer controls, theme changes and anything that alters
-  how the site looks or behaves for visitors must run designer → human approval → coder → security
-  review → human approval → publisher (`/webpage-pipeline <idea>`). Don't edit components, styles or scripts
-  directly for these, however small the change looks, and never commit or open a PR without both
-  gates. Non-visual fixes (typos, dependency bumps, build/CI) can skip it.
+  how the site looks or behaves for visitors must run designer → human approval → coder → SEO
+  review → human approval → security review → human approval → publisher (`/webpage-pipeline <idea>`). Don't edit components, styles or scripts
+  directly for these, however small the change looks, and never commit or open a PR without all
+  the human gates. Non-visual fixes (typos, dependency bumps, build/CI) can skip it.
 
 ## Documentation
 

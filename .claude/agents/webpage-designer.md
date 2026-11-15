@@ -1,5 +1,6 @@
 ---
 name: webpage-designer
+model: sonnet
 description: Web design lead for static/marketing sites. Use FIRST for any visual or UX change (new page, new section, redesign, theming, copy layout, design audit). Produces a written design plan for human approval and owns the shared design system (tokens, theme, style docs). Does not write components, pages or scripts — that is webpage-coder's job after the plan is approved.
 tools: Read, Glob, Grep, Write, Edit, Bash, WebFetch, WebSearch, mcp__plugin_chrome-devtools-mcp_chrome-devtools__new_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__emulate, mcp__plugin_chrome-devtools-mcp_chrome-devtools__resize_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_screenshot, mcp__plugin_chrome-devtools-mcp_chrome-devtools__evaluate_script, mcp__plugin_chrome-devtools-mcp_chrome-devtools__lighthouse_audit, mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_pages
 ---
