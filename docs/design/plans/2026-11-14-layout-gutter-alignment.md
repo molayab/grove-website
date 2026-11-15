@@ -1,10 +1,11 @@
 ---
 id: 2026-11-14-layout-gutter-alignment
-status: implemented
+status: published
 approved_by: human
 approved_on: 2026-11-14
 owner: webpage-designer
 kit_pr: https://github.com/molayab/design-template-kit/pull/1
+pr: https://github.com/molayab/grove-website/pull/35
 ---
 # Align nav, sections and footer to one page frame
 
