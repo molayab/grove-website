@@ -1,0 +1,12 @@
+/* Footer fit for the kit's .theme-switch (the component itself lives in design-template-kit >= 0.3.0).
+   Centre the control with the links and reserve its height (28px + 2px border) so showing it
+   from JS does not shift the row. */
+.footer-links { align-items: center; min-height: 30px; }
+
+/* At <= 600px (and on touch) the kit grows the control to --theme-switch-size-touch (44px + 2px
+   border) and it wraps onto its own line. Keep the still-`hidden` group in layout, only
+   invisible (also out of the tab order and accessibility tree), so showing it from JS does not
+   grow the footer (!important beats Pico's `[hidden]{display:none!important}`). Without JS this leaves one empty line, which is acceptable. */
+@media (max-width: 600px), (pointer: coarse) {
+  .footer-links .theme-switch[hidden] { display: inline-flex !important; visibility: hidden; }
+}
