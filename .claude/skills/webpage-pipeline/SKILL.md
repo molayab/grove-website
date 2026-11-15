@@ -1,12 +1,12 @@
 ---
 name: webpage-pipeline
-description: Run a website change through the design → human approval → code → human approval → publish pipeline using the webpage-designer, webpage-coder and webpage-publisher agents. Use when the user asks for a new page, section, redesign, theming or design-system change on a website ("/webpage-pipeline <idea>"), or to resume a plan in docs/design/plans/.
+description: Run a website change through the design → human approval → code → security review → human approval → publish pipeline using the webpage-designer, webpage-coder, webpage-security-reviewer and webpage-publisher agents. Use when the user asks for a new page, section, redesign, theming or design-system change on a website ("/webpage-pipeline <idea>"), or to resume a plan in docs/design/plans/.
 ---
 
 # Website pipeline
 
 ```
-webpage-designer → [HUMAN GATE 1: approve plan] → webpage-coder → [HUMAN GATE 2: publish?] → webpage-publisher
+webpage-designer → [HUMAN GATE 1: approve plan] → webpage-coder → webpage-security-reviewer → [HUMAN GATE 2: publish?] → webpage-publisher
 ```
 
 You (the main conversation) are the orchestrator. The agents never call each other; you
@@ -35,12 +35,21 @@ pass the plan path between them and you run the human gates. Plans live in
    designer, run webpage-designer on them and, if they change what the human approved,
    go back to gate 1.
 
-5. **HUMAN GATE 2.** Summarize what changed (files, deviations, anything unverified) and how
+5. **Security review.** Launch `webpage-security-reviewer` with the plan path. It checks the
+   pending changes and branch history for secrets and PII, the code for unsafe patterns, and
+   the dependency versions for known vulnerabilities and supply-chain risk, then records
+   `Verdict: PASS|FAIL` in the plan.
+   - FAIL → send the findings to webpage-coder (plan back to `status: approved` with a
+     "Security findings" note), then re-run this step. If a secret was committed, tell the
+     human it must be rotated and removed from history; no agent can do that.
+   - PASS with warnings → carry them into gate 2.
+
+6. **HUMAN GATE 2.** Summarize what changed (files, deviations, anything unverified, and the security verdict and warnings) and how
    to preview it (`npm run dev`). Ask whether to publish (open/update a PR). If the user
    wants changes, route visual/UX feedback to webpage-designer and code fixes to
    webpage-coder, then return here.
 
-6. **Publish.** On an explicit yes, launch `webpage-publisher` with the plan path and the
+7. **Publish.** On an explicit yes, launch `webpage-publisher` with the plan path and the
    statement "the human approved publishing in chat". Relay the PR URL and any manual steps.
 
 ## Rules

@@ -69,16 +69,20 @@ const ogImage = abs('/og-image.png');
   <script is:inline>
     (function () {
       var root = document.documentElement;
-      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var saved = localStorage.getItem('grove-theme');
-      if (saved) dark = saved === 'dark';
-      root.setAttribute('data-theme', dark ? 'dark' : 'light');
-      // Follow OS theme changes while there is no saved choice.
-      if (!saved) {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-          root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-        });
+      var mq = window.matchMedia('(prefers-color-scheme: dark)');
+      function saved() {
+        try {
+          var v = localStorage.getItem('grove-theme');
+          return v === 'light' || v === 'dark' ? v : null;
+        } catch (e) { return null; }
       }
+      function apply() {
+        var s = saved();
+        root.setAttribute('data-theme', s || (mq.matches ? 'dark' : 'light'));
+      }
+      apply();
+      // Follow OS theme changes only while the visitor has not picked Light or Dark.
+      mq.addEventListener('change', function () { if (!saved()) apply(); });
     })();
   </script>
 </head>

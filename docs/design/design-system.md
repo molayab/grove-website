@@ -86,7 +86,7 @@ All live in `src/components/` (Astro) with styles in the matching partial.
 |---|---|---|---|
 | Button `.btn` | kit `buttons.css` | `-primary`, `-primary-dark` (nav), `-ghost` (outlined, `--border-strong`), `-large`; hover lift + glow, active scale .97 | `<a role="button">` for links, `<button>` for actions; 2px accent focus ring |
 | Nav | `Nav.astro`, kit `nav.css` | `home` (in-page anchors), `page` (links home), `legal` (Pricing + Support); ≤ 600px links move to a 2nd row | Sticky, blurred `--bg` @ 78% |
-| Footer | `Footer.astro` | EN/ES labels; legal links marked "(EN)" in Spanish | |
+| Footer | `Footer.astro`, `site/theme-toggle.css` | EN/ES labels; legal links marked "(EN)" in Spanish; last item is the theme control: segmented System / Light / Dark (aria-pressed buttons, 32px desktop, 44px at <= 600px; pending plan 2026-11-14-footer-theme-toggle) | Native `<button>`, 2px accent focus ring, target >= 24px |
 | SectionHeader | `home/SectionHeader.astro` | eyebrow + h2 + optional sub | |
 | Feature card | `home/FeatureCard.astro` | default, `highlight` (spans the row, accent gradient) | Icon is decorative SVG |
 | Pricing card | `home/PricingCard.astro` | default, featured (badge, accent border/glow); shared "Every license includes" list below the grid | Buy link opens Gumroad overlay |
@@ -126,3 +126,4 @@ All live in `src/components/` (Astro) with styles in the matching partial.
 | 2026-11-14 | Root font size pinned to 16px; `--accent-text`; `--text-3` 60%; hero 2-line h1; features 4 columns; shared pricing includes list; two-row mobile nav; `<main>` | Design audit |
 | 2026-11-14 | Layers `core/` / `theme/` / `site/` / `pico-bridge.css`; primitives API; `color-mix()` tints; hero follows theme; `--border-strong`, `--glow-alpha`; cover video | ADR-0003, ADR-0004, ADR-0007 |
 | 2026-11-14 | `core/` extracted to the `design-template-kit` package (v0.1.0); Grove keeps `theme/`, `site/`, `pico-bridge.css` | ADR-0003 amendment |
+| 2026-11-14 | Footer theme control (System/Light/Dark) planned (no new tokens; site-layer CSS) | 2026-11-14-footer-theme-toggle |

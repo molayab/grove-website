@@ -10,7 +10,7 @@ section that matches what you need to do.
 | Change colors, fonts, components or layout | [design/design-system.md](design/design-system.md) and [`src/styles/README.md`](../src/styles/README.md) (token API) |
 | Ship a release, fix a broken deploy | [runbooks/deploy-and-release.md](runbooks/deploy-and-release.md) |
 | Add a page, edit copy, swap screenshots, reuse the CSS elsewhere | [runbooks/common-tasks.md](runbooks/common-tasks.md) |
-| Run a change through design → approval → code → PR | [design/plans/](design/plans/) and the `/webpage-pipeline` skill (`.claude/`) |
+| Run a change through design → approval → code → security review → PR | [design/plans/](design/plans/) and the `/webpage-pipeline` skill (`.claude/`) |
 
 Rules for contributors and AI agents (attribution, legal copy, localization, URLs) live in
 [`AGENTS.md`](../AGENTS.md). They take precedence over anything here.
