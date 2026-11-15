@@ -88,7 +88,7 @@ All live in `src/components/` (Astro) with styles in the matching partial.
 |---|---|---|---|
 | Button `.btn` | kit `buttons.css` | `-primary`, `-primary-dark` (nav), `-ghost` (outlined, `--border-strong`), `-large`; hover lift + glow, active scale .97 | `<a role="button">` for links, `<button>` for actions; 2px accent focus ring |
 | Nav | `Nav.astro`, kit `nav.css` | `home` (in-page anchors), `page` (links home), `legal` (Pricing + Support); ≤ 600px links move to a 2nd row | Sticky, blurred `--bg` @ 78% |
-| Footer | `Footer.astro`, `site/theme-toggle.css` | EN/ES labels; legal links marked "(EN)" in Spanish; last item is the theme control: segmented System / Light / Dark (aria-pressed buttons, 32px desktop, 44px at <= 600px; pending plan 2026-11-14-footer-theme-toggle) | Native `<button>`, 2px accent focus ring, target >= 24px |
+| Footer | `Footer.astro`, `site/footer-theme-switch.css` | EN/ES labels; legal links marked "(EN)" in Spanish; last item is the kit's theme switch (`.theme-switch` / `.theme-switch__option`, kit >= 0.3.0): segmented System / Light / Dark, aria-pressed buttons, 28px segments (44px at <= 600px or coarse pointer), active = accent tint + text-at-50% outline + heavier stroke. Site CSS only centres it with the links and reserves its height. Never use the kit's `.theme-toggle` for the group | Native `<button>`, 2px accent focus ring, target >= 24px |
 | SectionHeader | `home/SectionHeader.astro` | eyebrow + h2 + optional sub | |
 | Feature card | `home/FeatureCard.astro` | default, `highlight` (spans the row, accent gradient) | Icon is decorative SVG |
 | Pricing card | `home/PricingCard.astro` | default, featured (badge, accent border/glow); shared "Every license includes" list below the grid | Buy link opens Gumroad overlay |
@@ -130,3 +130,4 @@ All live in `src/components/` (Astro) with styles in the matching partial.
 | 2026-11-14 | `core/` extracted to the `design-template-kit` package (v0.1.0); Grove keeps `theme/`, `site/`, `pico-bridge.css` | ADR-0003 amendment |
 | 2026-11-14 | One page frame: `--gutter`, `--page-max`, `--page-max-wide` tokens and `.section-inner--wide` (kit v0.2.0, option B); nav/footer/features/demo share the 1160px frame, text sections 980px centered inside | 2026-11-14-layout-gutter-alignment |
 | 2026-11-14 | Footer theme control (System/Light/Dark) planned (no new tokens; site-layer CSS) | 2026-11-14-footer-theme-toggle |
+| 2026-11-14 | Footer theme control moved to the kit's `.theme-switch` (28px segments, active outline >= 3:1); fixes the `.theme-toggle` class collision; needs kit v0.3.0 pin | 2026-11-14-theme-switch-fix |
