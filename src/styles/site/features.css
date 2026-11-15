@@ -1,7 +1,7 @@
 /* ── Features ───────────────────────────────────────────────── */
 .features { background: var(--bg); }
-/* 12 regular cards fill 4 columns x 3 rows; the highlight card spans the last row. */
-.features .section-inner { max-width: 1160px; }
+/* 12 regular cards fill 4 columns x 3 rows; the highlight card spans the last row.
+   The section uses the kit's `.section-inner--wide` frame (same as nav and footer). */
 
 .feature-grid {
   display: grid;
