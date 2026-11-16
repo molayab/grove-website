@@ -17,30 +17,38 @@ const base = variant === 'home' ? '' : home(lang);
 ---
 
 <nav>
-  <div class="nav-inner">
+  <div class:list={['nav-inner', variant === 'legal' && 'nav-inner--inline']}>
     {variant === 'home'
       ? <span class="logo">Grove for Mac</span>
       : <a href={home(lang)}><span class="logo">Grove for Mac</span></a>}
-    <div class="nav-links">
-      {variant === 'legal' ? (
-        <>
-          <a href={`${base}#pricing`} class="nav-link">{t.pricing}</a>
-          <a href="mailto:hello@molayab.com" class="nav-link">{t.support}</a>
-        </>
-      ) : (
-        <>
-          <a href={`${base}#features`} class="nav-link">{t.features}</a>
-          {variant === 'home' && <a href="#screenshots" class="nav-link">{t.screenshots}</a>}
-          <a href={`${base}#pricing`} class="nav-link">{t.pricing}</a>
-          <a href={`${base}#blog`} class="nav-link">{t.blog}</a>
-        </>
-      )}
-    </div>
-    {variant !== 'legal' && (
-      <div class="nav-actions">
-        {twin && <a href={twin} class="lang-link" hreflang={other} lang={other}>{ui[other].nav.langName}</a>}
-        <a href={`${base}#download`} role="button" class="btn btn-primary-dark">{t.download}</a>
+    {variant === 'legal' ? (
+      <div class="nav-links">
+        <a href={`${base}#pricing`} class="nav-link">{t.pricing}</a>
+        <a href="mailto:hello@molayab.com" class="nav-link">{t.support}</a>
       </div>
+    ) : (
+      <>
+        <div class="nav-actions">
+          {twin && <a href={twin} class="lang-link" hreflang={other} lang={other}>{ui[other].nav.langName}</a>}
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label={t.menu} data-nav-toggle>
+            <span class="nav-toggle__icon" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="nav-menu" id="nav-menu" data-nav-menu>
+          <div class="nav-links">
+            <a href={`${base}#features`} class="nav-link">{t.features}</a>
+            {variant === 'home' && <a href="#screenshots" class="nav-link">{t.screenshots}</a>}
+            <a href={`${base}#pricing`} class="nav-link">{t.pricing}</a>
+            <a href={`${base}#blog`} class="nav-link">{t.blog}</a>
+          </div>
+          <a href={`${base}#download`} role="button" class="btn btn-primary-dark">{t.download}</a>
+        </div>
+      </>
     )}
   </div>
 </nav>
+
+<script>
+  import { initNav } from '../scripts/nav.js';
+  initNav();
+</script>
