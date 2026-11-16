@@ -1,6 +1,7 @@
 ---
 id: 2026-11-15-mobile-nav-hamburger
-status: implemented
+status: published
+pr: https://github.com/molayab/grove-website/pull/37
 owner: webpage-designer
 approved_by: human
 approved_on: 2026-11-15
