@@ -1,6 +1,7 @@
 ---
 id: 2026-11-15-footer-links-wrap
-status: implemented
+status: published
+pr: https://github.com/molayab/grove-website/pull/38
 owner: webpage-designer
 approved_by: human
 approved_on: 2026-11-15
