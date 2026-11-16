@@ -78,7 +78,7 @@ Headings use `text-wrap: balance`; paragraphs `text-wrap: pretty`.
 | Frame rule | Every inner: `max-width: calc(<measure> + 2 * var(--gutter))`, `padding-inline: var(--gutter)`, so content is exactly the measure; 980px sections are centered inside the 1160px frame |
 | Hero text column | 820px (+ gutter); hero media 860px including gutter |
 | Radii | `--radius` 14px (cards, buttons), `--radius-sm` 10px (media), `--radius-pill` |
-| Breakpoints | 1100px (features 4→3 cols), 860px (2 cols, stacked pricing/gallery), 600px (single column, two-row nav) |
+| Breakpoints | 1100px (features 4→3 cols), 860px (2 cols, stacked pricing/gallery), 600px (single column) ; ≤ 860px also collapses the nav into a menu (kit >= 0.4.0, needs `nav-enhanced` on `<html>`) |
 
 ## Components
 
@@ -87,7 +87,7 @@ All live in `src/components/` (Astro) with styles in the matching partial.
 | Component | Where | Variants / states | Accessibility |
 |---|---|---|---|
 | Button `.btn` | kit `buttons.css` | `-primary`, `-primary-dark` (nav), `-ghost` (outlined, `--border-strong`), `-large`; hover lift + glow, active scale .97 | `<a role="button">` for links, `<button>` for actions; 2px accent focus ring |
-| Nav | `Nav.astro`, kit `nav.css` | `home` (in-page anchors), `page` (links home), `legal` (Pricing + Support); ≤ 600px links move to a 2nd row | Sticky, blurred `--bg` @ 78% |
+| Nav | `Nav.astro`, kit `nav.css` | `home` (in-page anchors), `page` (links home), `legal` (Pricing + Support, `.nav-inner--inline`, never collapses). ≤ 860px with JS: one 56px row = logo + EN/ES pill + icon-only menu button (`.nav-toggle`, 36px, 44px hit area); links and Download live in the `.nav-menu` panel (48px rows, `aria-expanded`, Esc / outside click / link closes it; `src/scripts/nav.js`). Without JS: inline above 600px, two aligned rows below with one hairline | Sticky, blurred `--bg` @ 78% |
 | Footer | `Footer.astro`, `site/footer-theme-switch.css` | EN/ES labels; legal links marked "(EN)" in Spanish; last item is the kit's theme switch (`.theme-switch` / `.theme-switch__option`, kit >= 0.3.0): segmented System / Light / Dark, aria-pressed buttons, 28px segments (44px at <= 600px or coarse pointer), active = accent tint + text-at-50% outline + heavier stroke. Site CSS only centres it with the links and reserves its height. Never use the kit's `.theme-toggle` for the group | Native `<button>`, 2px accent focus ring, target >= 24px |
 | SectionHeader | `home/SectionHeader.astro` | eyebrow + h2 + optional sub | |
 | Feature card | `home/FeatureCard.astro` | default, `highlight` (spans the row, accent gradient) | Icon is decorative SVG |
@@ -131,3 +131,4 @@ All live in `src/components/` (Astro) with styles in the matching partial.
 | 2026-11-14 | One page frame: `--gutter`, `--page-max`, `--page-max-wide` tokens and `.section-inner--wide` (kit v0.2.0, option B); nav/footer/features/demo share the 1160px frame, text sections 980px centered inside | 2026-11-14-layout-gutter-alignment |
 | 2026-11-14 | Footer theme control (System/Light/Dark) planned (no new tokens; site-layer CSS) | 2026-11-14-footer-theme-toggle |
 | 2026-11-14 | Footer theme control moved to the kit's `.theme-switch` (28px segments, active outline >= 3:1); fixes the `.theme-toggle` class collision; needs kit v0.3.0 pin | 2026-11-14-theme-switch-fix |
+| 2026-11-15 | Collapsible hamburger nav (<= 860px) proposed; EN/ES stays in the bar; kit change (v0.4.0) planned | 2026-11-15-mobile-nav-hamburger |

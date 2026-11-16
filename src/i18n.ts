@@ -2,7 +2,7 @@ import type { Lang } from './data/pages';
 
 export const ui = {
   en: {
-    nav: { features: 'Features', screenshots: 'Screenshots', pricing: 'Pricing', blog: 'Blog', download: 'Download', support: 'Support', langName: 'EN' },
+    nav: { features: 'Features', screenshots: 'Screenshots', pricing: 'Pricing', blog: 'Blog', download: 'Download', support: 'Support', langName: 'EN', menu: 'Menu' },
     footer: {
       support: 'Support',
       blog: 'Blog',
@@ -16,7 +16,7 @@ export const ui = {
     },
   },
   es: {
-    nav: { features: 'Funciones', screenshots: 'Capturas', pricing: 'Precios', blog: 'Blog (EN)', download: 'Descargar', support: 'Soporte', langName: 'ES' },
+    nav: { features: 'Funciones', screenshots: 'Capturas', pricing: 'Precios', blog: 'Blog (EN)', download: 'Descargar', support: 'Soporte', langName: 'ES', menu: 'Menú' },
     footer: {
       support: 'Soporte',
       blog: 'Blog (EN)',

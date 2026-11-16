@@ -69,6 +69,8 @@ const ogImage = abs('/og-image.png');
   <script is:inline>
     (function () {
       var root = document.documentElement;
+      // Lets the kit collapse the nav into a menu; without JS the nav stays inline.
+      root.classList.add('nav-enhanced');
       var mq = window.matchMedia('(prefers-color-scheme: dark)');
       function saved() {
         try {
